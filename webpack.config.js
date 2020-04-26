@@ -3,9 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+  devServer: {
+    historyApiFallback: true
+  },
   entry: './src/index.js',
   output: {
     path: path.join(__dirname, '/dist'),
+    publicPath: '/',
     filename: 'index_bundle.js'
   },
   plugins: [
