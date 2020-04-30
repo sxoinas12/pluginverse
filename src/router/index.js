@@ -2,10 +2,32 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 // import styles from './styles.module.less';
 import Pages from '../pages';
+import Layouts from '../layouts';
+
+
+// Layout example may be useful for header and footer
+const LayoutRoute = (props) => {
+  const {
+    header,
+    footer,
+    component,
+    children,
+    ...rest
+  } = props;
+  const Comp = component;
+  return (
+    <Route {...rest}>
+      { header && React.createElement(header)}
+      { children }
+      { component && React.createElement(component)}
+      { footer && React.createElement(footer)}
+    </Route>
+  );
+};
 
 const AppRouter = () => (
   <Router>
-    <Route path="/" exact component={Pages.Home} />
+    <LayoutRoute path="/" exact component={Pages.Home} header={Layouts.Header} footer={Layouts.Footer} />
     <Route path="/author/:id" exact component={Pages.AuthorDetails} />
     <Route path="/authors" exact component={Pages.AuthorList} />
     <Route path="/bundle/:id" exact component={Pages.BundleDetails} />
