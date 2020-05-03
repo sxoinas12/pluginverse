@@ -6,7 +6,8 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.less'],
     alias: {
-      CSSGlobal: path.join(__dirname, 'src/styles')
+      CSSGlobal: path.join(__dirname, 'src/styles'),
+      '@assets': path.join(__dirname, 'src/assets')
     }
   },
   devServer: {

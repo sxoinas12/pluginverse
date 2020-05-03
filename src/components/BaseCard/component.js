@@ -15,9 +15,9 @@ const BaseCard = ({
       <Col className={styles.cardContainer} xs={12}>
         <Row>
           <Col className={styles.tools}>
-            {tools.figma && <img src={require('../../assets/icons/figma.svg')} alt="" />}
-            {tools.adobe && <img src={require('../../assets/icons/adobe.svg')} alt="" />}
-            {tools.sketch && <img src={require('../../assets/icons/sketch.svg')} alt="" />}
+            {tools.figma && <img src={require('@assets/icons/figma.svg')} alt="" />}
+            {tools.adobe && <img src={require('@assets/icons/adobe.svg')} alt="" />}
+            {tools.sketch && <img src={require('@assets/icons/sketch.svg')} alt="" />}
             <div className={styles.icon}>
               <img src={avatar} alt="" />
             </div>
