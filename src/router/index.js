@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 // import styles from './styles.module.less';
+import { Container, Row, Col } from 'react-grid-system';
 import Pages from '../pages';
 import Layouts from '../layouts';
 
@@ -16,12 +17,14 @@ const LayoutRoute = (props) => {
   } = props;
   const Comp = component;
   return (
-    <Route {...rest}>
-      { header && React.createElement(header)}
-      { children }
-      { component && React.createElement(component)}
-      { footer && React.createElement(footer)}
-    </Route>
+    <Container>
+      <Route {...rest}>
+        { header && React.createElement(header)}
+        { children }
+        { component && React.createElement(component)}
+        { footer && React.createElement(footer)}
+      </Route>
+    </Container>
   );
 };
 

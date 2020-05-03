@@ -1,0 +1,41 @@
+.nav-container {
+	padding: 40px 87.5px;
+	background: @white;
+	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+
+	a {
+		text-decoration: none;
+	}
+
+	a:last-child span {
+		margin: 0;
+	}
+	a > span {
+		font-family: Inter;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		line-height: 24px;
+		letter-spacing: -0.02em;
+		color: @gray-1;
+		align-self: center;
+		margin: 32px;
+
+		cursor: pointer;
+		
+		&.active {
+			font-weight: bold
+		}
+	}
+	.left {
+		img {
+			vertical-align: bottom;
+			cursor: pointer;
+		}
+	}
+	.right {
+		span {
+			color: @primary-1;
+		}
+	}
+}
