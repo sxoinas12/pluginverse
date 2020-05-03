@@ -60,6 +60,17 @@ module.exports = {
           'less-loader'
         ],
         exclude: /\.module.less$/
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'svg-url-loader',
+            options: {
+              limit: 10000
+            }
+          }
+        ]
       }
     ]
   }
