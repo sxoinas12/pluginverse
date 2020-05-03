@@ -1,0 +1,66 @@
+.card-container {
+    background: @white;
+    border: 1px solid @gray-5;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    .tools {
+        display: flex;
+        justify-content: flex-end;
+        border-bottom: 1px solid @gray-5;
+        padding-bottom: 16px;
+        padding-top: 16px;
+        position: relative;
+        img {
+            margin-left: 4px;
+        }
+
+        .icon {
+            position: absolute;
+            left: 10%;
+            top: 38%;
+            width: 56px;
+            height: 56px;
+            img {
+                height: 100%;
+                width: 100%;
+            }
+        }   
+    }
+    .description-container {
+        padding-top: 44px;
+        padding-left: 24px;
+        padding-right: 24px;
+        padding-bottom: 24px;
+        .author {
+            font-family: Inter;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 21px;
+            letter-spacing: -0.02em;
+            color: @gray-3;
+    
+        }
+        .header {
+            font-family: Inter;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 28px;
+            line-height: 34px;
+            letter-spacing: -0.03em;
+            color: @off-black;
+        }
+    
+        .description {
+            font-family: Inter;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 16px;
+            letter-spacing: -0.01em;
+            color: @off-black;
+        }
+    }
+    
+}
