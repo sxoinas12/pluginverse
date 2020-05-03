@@ -3,6 +3,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+  resolve: {
+    extensions: ['.js', '.less'],
+    alias: {
+      CSSGlobal: path.join(__dirname, 'src/styles')
+    }
+  },
   devServer: {
     historyApiFallback: true
   },
@@ -46,7 +52,10 @@ module.exports = {
             }
           },
           {
-            loader: 'less-loader'
+            loader: 'less-loader',
+            options: {
+              prependData: '@import \'CSSGlobal/variables.less\';'
+            }
           }
         ]
       },
