@@ -40,6 +40,9 @@ const AppRouter = () => (
     <Route path="/plugin/:id" exact component={Pages.PluginDetails} />
     <Route path="/search" exact component={Pages.Search} />
     <Route path="/contact" exact component={Pages.Contact} />
+
+
+    <Route path="/test" exact component={Pages.NikTest} />
   </Router>
 );
 

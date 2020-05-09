@@ -5,7 +5,7 @@ import styles from './styles.module.less';
 const SearchBox = () => (
   <span className={styles.searchBox}>
     <img src={searchIcon} alt="Search icon" className={styles.left} />
-    <input className={styles.box} placeholder="Search" label="Searchasd"/>
+    <input className={styles.box} placeholder="Search" label="Search"/>
   </span>
 );
 

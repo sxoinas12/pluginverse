@@ -1,0 +1,49 @@
+
+
+.breadcrumb {
+	&>* {
+		display: inline-block;
+		margin-left: 8px;
+		margin-right: 8px;
+		margin-top: 0;
+		margin-bottom: 0;
+		
+		/* Paragraph Normal */
+
+		font-family: Inter;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		line-height: 24px;
+		/* identical to box height, or 131% */
+
+		align-items: center;
+		text-align: center;
+		letter-spacing: -0.02em;
+		text-decoration: none;
+		/* Grey / 3 */
+
+		color: @gray-3;
+
+		vertical-align: middle;
+
+
+		&:first-child {
+			margin-left: 0px;
+			cursor: pointer;
+		}
+		&:last-child {
+			margin-left: 0px;
+			color: @off-black;
+		}
+	}
+
+	.bracer {
+
+		margin-left: 8px; 
+		margin-right: 8px; 
+
+
+	}
+
+}

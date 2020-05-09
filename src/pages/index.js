@@ -8,6 +8,8 @@ import PluginDetails from './PluginDetails';
 import Search from './Search';
 import Home from './Home';
 
+import NikTest from './NikTestPage';
+
 export default {
   AuthorDetails,
   BundleDetails,
@@ -17,5 +19,10 @@ export default {
   Contact,
   PluginDetails,
   Search,
-  Home
+  Home,
+
+
+
+
+  NikTest
 };

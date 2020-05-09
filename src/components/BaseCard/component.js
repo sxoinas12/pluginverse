@@ -12,24 +12,28 @@ const BaseCard = ({
 }) => {
   return (
     <Row>
-      <Col className={styles.cardContainer} xs={12}>
-        <Row>
-          <Col className={styles.tools}>
-            {tools.figma && <img src={require('@assets/icons/figma.svg')} alt="" />}
-            {tools.adobe && <img src={require('@assets/icons/adobe.svg')} alt="" />}
-            {tools.sketch && <img src={require('@assets/icons/sketch.svg')} alt="" />}
-            <div className={styles.icon}>
-              <img src={avatar} alt="" />
-            </div>
-          </Col>
-        </Row>
-        <Row className={styles.descriptionContainer}>
-          <Col xs={12}>
-            <Row className={styles.author}>{author}</Row>
-            <Row className={styles.header}>{header}</Row>
-            <Row className={styles.description}>{description}</Row>
-          </Col>
-        </Row>
+      <Col xs={12}>
+        <div className={styles.cardContainer}>
+          <Row>
+            <Col>
+              <div className={styles.tools}>
+                {tools.figma && <img src={require('@assets/icons/figma.svg')} alt="Figma" />}
+                {tools.adobe && <img src={require('@assets/icons/adobe.svg')} alt="AdobeXD" />}
+                {tools.sketch && <img src={require('@assets/icons/sketch.svg')} alt="Sketch" />}
+                <div className={styles.icon}>
+                  <img src={avatar} alt="" />
+                </div>
+              </div>
+            </Col>
+          </Row>
+          <Row className={styles.descriptionContainer}>
+            <Col xs={12}>
+              <Row className={styles.author}>{author}</Row>
+              <Row className={styles.header}>{header}</Row>
+              <Row className={styles.description}>{description}</Row>
+            </Col>
+          </Row>
+        </div>
       </Col>
     </Row>
   );
