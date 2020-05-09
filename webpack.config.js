@@ -67,9 +67,14 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader
           },
           'css-loader',
-          'less-loader'
+          {
+            loader: 'less-loader',
+            options: {
+              prependData: '@import \'CSSGlobal/variables.less\';'
+            }
+          }
         ],
-        exclude: /\.module.less$/
+        exclude: [/\.module.less$/, /variables.less$/]
       },
       {
         test: /\.svg$/,
