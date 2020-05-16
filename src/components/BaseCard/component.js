@@ -43,7 +43,11 @@ BaseCard.propTypes = {
   author: PropTypes.string,
   header: PropTypes.string,
   description: PropTypes.string,
-  tools: PropTypes.shape({}),
+  tools: PropTypes.shape({
+    figma: PropTypes.shape({}),
+    adobe: PropTypes.shape({}),
+    sketch: PropTypes.shape({})
+  }),
   avatar: PropTypes.string
 };
 
