@@ -27,10 +27,10 @@ const BundleBanner = ({ bundle }) => {
         <Row>
           <Col xs={6} className={styles.actionsContainer}>
             <div className={styles.bundleButton}>
-              <a href="google.com">Go to bundle</a>
+              <a href={`/bundle/${bundle.bundleId}`}>Go to bundle</a>
             </div>
             <div className={styles.viewAll}>
-              <a href="google.com">Viewl all bundle</a>
+              <a href="/bundle">Viewl all bundle</a>
             </div>
           </Col>
         </Row>
@@ -58,7 +58,7 @@ BundleBanner.defaultProps = {
     tools: {
       figma: {}
     },
-    link: 'http://google.com'
+    bundleId: 1
   }
 };
 

@@ -1,18 +1,18 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-grid-system';
-import { Link } from "react-router-dom";
-
+import { Row, Col } from 'react-grid-system';
+import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 import menuIcon from '@assets/icons/menu-icon.svg';
 import styles from './styles.module.less';
 import SearchBox from '../SearchBox';
 
-const NavBar = () => {
-  let [menu, setMenu] = React.useState(false);
+const NavBar = ({ bundleNav }) => {
+  const [menu, setMenu] = React.useState(false);
 
   return (
-    <Row className={styles.navContainer}>
+    <Row className={classNames([styles.navContainer, styles[bundleNav]])}>
       <Col xs={12} sm={4} className={styles.left}>
-        <a onClick={() => setMenu(!menu)}>
+        <a role="button" onClick={() => setMenu(!menu)}>
           <img src={menuIcon} alt="Menu icon" className={styles.left} />
         </a>
         <Link to="/explore">
