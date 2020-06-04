@@ -11,7 +11,7 @@ const MegaMenu = (props) => {
   } = props;
 
   const keys = Object.keys(structure);
-  const columns = 12/keys.length;
+  const columns = 12 / keys.length;
   return (
     <Row className={styles.menuContainer}>
       <Col>
@@ -23,10 +23,10 @@ const MegaMenu = (props) => {
             </Col>
           </Row>
           <Row>
-            {keys.map(key => {
+            {keys.map((key, index) => {
               const titles = Object.keys(structure[key]);
               return (
-                <Col xs={columns} className={styles.menuBlock}>
+                <Col xs={columns} className={styles.menuBlock} key={index}>
                   <div className={styles.subtitle}>{key}</div>
                   {titles.map((cat, index) => <a key={index} className={styles.category} href={structure[key][cat]}>{cat}</a>)}
                 </Col>
