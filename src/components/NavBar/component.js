@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'react-grid-system';
-import { Link } from "react-router-dom";
+import classNames from 'classnames';
 
+import { Link } from "react-router-dom";
 import menuIcon from '@assets/icons/menu-icon.svg';
 import styles from './styles.module.less';
 import SearchBox from '../SearchBox';
 import MegaMenu from '../MegaMenu';
-import classNames from 'classNames';
 
 const NavBar = ({ megaStructure, bundleNav }) => {
   let [menu, setMenu] = React.useState(false);
