@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Row, Col } from 'react-grid-system';
+import { Container, Row, Col } from 'react-grid-system';
 import styles from './styles.module.less';
 
 const MegaMenu = (props) => {
@@ -15,6 +15,7 @@ const MegaMenu = (props) => {
   return (
     <Row className={styles.menuContainer}>
       <Col>
+        <Container>
         <div className={styles.fixContainer}>
           <Row>
             <Col>
@@ -27,12 +28,13 @@ const MegaMenu = (props) => {
               return (
                 <Col xs={columns} className={styles.menuBlock}>
                   <div className={styles.subtitle}>{key}</div>
-                  {titles.map((title, index) => <a key={index} className={styles.category} href={structure[key][title]}>{title}</a>)}
+                  {titles.map((cat, index) => <a key={index} className={styles.category} href={structure[key][cat]}>{cat}</a>)}
                 </Col>
               );
             })}
           </Row>
         </div>
+        </Container>
       </Col>
     </Row>
   );

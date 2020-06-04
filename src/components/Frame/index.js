@@ -10,11 +10,12 @@ const Frame = (props) => {
     title,
     subtitle,
     height,
-    children
+    children,
+    styling
   } = props;
 
   return (
-    <Row>
+    <Row className={styling}>
       <Col xs={12} className={styles.container} style={{ minHeight: height }}>
         <h3>
           {title}

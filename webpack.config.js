@@ -7,13 +7,14 @@ module.exports = {
     extensions: ['.js', '.less'],
     alias: {
       CSSGlobal: path.join(__dirname, 'src/styles'),
-      '@assets': path.join(__dirname, 'src/assets')
+      '@assets': path.join(__dirname, 'src/assets'),
+      '@components': path.join(__dirname, 'src/components')
     }
   },
   devServer: {
     historyApiFallback: true
   },
-  entry: './src/index.js',
+  entry: ['babel-polyfill', './src/index.js'],
   output: {
     path: path.join(__dirname, '/dist'),
     publicPath: '/',

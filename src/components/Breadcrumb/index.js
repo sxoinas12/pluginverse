@@ -12,12 +12,11 @@ const Breadcrumb = (props) => {
   const {
     children
   } = props;
-  const bracer = <span className={styles.bracer}>/</span>;
 
   const enhanced = children.reduce((result, element, index, array) => {
-    result.push(element);
+    result.push(React.cloneElement(element, { key: 2 * index }));
     if (index < array.length - 1) {
-      result.push(bracer);
+      result.push(<span key={ 2 * index + 1} className={styles.bracer}>/</span>);
     }
     return result;
   }, []);
@@ -32,7 +31,7 @@ const Breadcrumb = (props) => {
 
 
 Breadcrumb.propTypes = {
-  children: PropTypes.oneOf([
+  children: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.node
   ])

@@ -17,7 +17,7 @@ const List = (props) => {
   return (
     <Row className={styles.row}>
       {data.map((card, i) => (
-        <Col xs={12} sm={6} md={4} lg={4} xl={3} className={styles.col} key={card._key || i}>
+        <Col xs={12} sm={6} md={4} lg={4} xl={4} className={styles.col} key={card._key || i}>
           <div className={styles.content}>
             <Base {...card} />
           </div>
@@ -29,7 +29,7 @@ const List = (props) => {
 
 
 List.propTypes = {
-  base: PropTypes.element,
+  base: PropTypes.func,
   data: PropTypes.arrayOf(PropTypes.shape({
     author: PropTypes.string,
     header: PropTypes.string,

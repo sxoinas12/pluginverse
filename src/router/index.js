@@ -17,32 +17,33 @@ const LayoutRoute = (props) => {
   } = props;
   const Comp = component;
   return (
-    <Container>
-      <Route {...rest}>
+    <Route {...rest}>
+      <Container fluid>
         { header && React.createElement(header)}
+        <Container>
         { children }
         { component && React.createElement(component)}
+        </Container>
         { footer && React.createElement(footer)}
-      </Route>
-    </Container>
+      </Container>
+    </Route>
   );
 };
 
 const AppRouter = () => (
   <Router>
     <LayoutRoute path="/" exact component={Pages.Home} header={Layouts.Header} footer={Layouts.Footer} />
+    <LayoutRoute path="/test" exact component={Pages.NikTest} header={Layouts.Header} footer={Layouts.Footer} />
     <Route path="/author/:id" exact component={Pages.AuthorDetails} />
     <Route path="/authors" exact component={Pages.AuthorList} />
     <Route path="/bundle/:id" exact component={Pages.BundleDetails} />
     <Route path="/bundles" exact component={Pages.BundleList} />
-    <Route path="/category/:id" exact component={Pages.CategoryDetails} />
+    <LayoutRoute path="/category/:id" exact component={Pages.CategoryDetails} header={Layouts.Header} footer={Layouts.Footer} />
     <Route path="/categories" exact component={Pages.CategoryList} />
     <Route path="/plugin/:id" exact component={Pages.PluginDetails} />
     <Route path="/search" exact component={Pages.Search} />
     <Route path="/contact" exact component={Pages.Contact} />
 
-
-    <Route path="/test" exact component={Pages.NikTest} />
   </Router>
 );
 
