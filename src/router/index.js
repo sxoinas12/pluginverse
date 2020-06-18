@@ -40,7 +40,7 @@ const AppRouter = () => (
     <Route path="/bundles" exact component={Pages.BundleList} />
     <LayoutRoute path="/category/:id" exact component={Pages.CategoryDetails} header={Layouts.Header} footer={Layouts.Footer} />
     <Route path="/categories" exact component={Pages.CategoryList} />
-    <Route path="/plugin/:id" exact component={Pages.PluginDetails} />
+    <LayoutRoute path="/plugin/:id" exact component={Pages.PluginDetails}  header={Layouts.Header} footer={Layouts.Footer}  />
     <Route path="/search" exact component={Pages.Search} />
     <Route path="/contact" exact component={Pages.Contact} />
 
