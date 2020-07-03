@@ -56,7 +56,7 @@ module.exports = {
           {
             loader: 'less-loader',
             options: {
-              prependData: '@import \'CSSGlobal/variables.less\';'
+              prependData: '@import \'CSSGlobal/variables.less\';@import \'CSSGlobal/fonts.less\';'
             }
           }
         ]
@@ -75,7 +75,7 @@ module.exports = {
             }
           }
         ],
-        exclude: [/\.module.less$/, /variables.less$/]
+        exclude: [/\.module.less$/, /variables.less$/, /fonts.less$/]
       },
       {
         test: /\.svg$/,

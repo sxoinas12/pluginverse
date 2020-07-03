@@ -11,6 +11,7 @@ import Breadcrumb from '@components/Breadcrumb';
 import Frame from '@components/Frame';
 import Chip from '@components/Chip';
 import Download from '@components/Download';
+import FeatureBar from '@components/FeatureBar';
 import List from '@components/List';
 
 import styles from './styles.module.less';
@@ -26,7 +27,7 @@ const GET_DOCS = (id) => gql`query{
       },
       author{
         name,
-        icon{url}
+        icon{ url }
       },
       categories {
         id,
@@ -36,12 +37,14 @@ const GET_DOCS = (id) => gql`query{
         id,
         link,
         tool{
-          name
+          name,
+          icon { url }
         }
       },
       tools{
         id,
-        name
+        name,
+        icon { url }
       },
       similars{
         id,
@@ -55,20 +58,24 @@ const GET_DOCS = (id) => gql`query{
           id,
           name
         },
-        links{
+        links {
           id,
           link,
           tool{
-            name
+            name,
+            icon { url }
           }
         },
-        tools{
+        tools {
           id,
-          name
+          name,
+          icon { url }
         },
         author{
           name,
-          icon{url}
+          icon{
+            url
+          }
         }
       }
     }
@@ -85,25 +92,34 @@ export default withRouter((props) => {
   const { plugin } = data;
 
   console.log('PluginDetails:', plugin);
+  if (!plugin)
+    return 'No plugin';
+
   return (
     <Row>
       <Col>
         <div className={styles.container}>
-        	<Row>
-        		<Col s={6}>
-		          <Breadcrumb>
-		            <Link to="/">Home</Link>
-		            <span>{plugin.name || 'Test Plugin'}</span>
-		          </Breadcrumb>
-          		</Col>
-        		<Col s={6}>
-		          <div className={styles.availableTools}>
-		          	<span>Available in:</span>
-		          	<span>Adobe</span>
-		          </div>
-        		</Col>
-        	</Row>
+          <Row>
+            <Col s={6}>
+              <Breadcrumb>
+                <Link to="/">Home</Link>
+                <span>{plugin.name || 'Test Plugin'}</span>
+              </Breadcrumb>
+            </Col>
+            <Col s={6}>
+              <div className={styles.availableTools}>
+                <span>Available in:</span>
+                <span>
+                  {plugin.tools.map((tool) => <img src={global.API_URL+tool.icon.url} alt="Figma" />)}
+                </span>
+              </div>
+            </Col>
+          </Row>
           <div className={styles.box}>
+            <div className={styles.starsCounter}>
+              <img src={require('@assets/icons/stars-arrow-top.svg')} />
+              <span>{plugin.stars || '0'}</span>
+            </div>
             <div className={styles.headerStyle}>
               {plugin.name}
             </div>
@@ -111,9 +127,10 @@ export default withRouter((props) => {
               <Chip />
             </div>
             <div className={styles.author}>
-              <img src={'https://strapi.bappy.tech'+plugin.author.icon.url}/>
+              <img src={global.API_URL + (plugin.author.icon && plugin.author.icon.url)}/>
               <span>
-                by {plugin.author.name}
+                by 
+                {plugin.author.name}
               </span>
             </div>
             <div className={styles.description}>
@@ -122,8 +139,26 @@ export default withRouter((props) => {
             <div className={styles.links}>
               {plugin.links.map((item, index) => <Download key={index} link={item}/>)}
             </div>
-	        </div>
-	        <List data={plugin.similars}/>
+          </div>
+
+          <FeatureBar />
+
+          <List data={plugin.similars.map((item) => {
+            let tools = {};
+            if (item.tools) {
+              for (let i = 0; i < item.tools.length; i += 1) {
+                tools[item.tools.name] = 1;
+              }
+            }
+
+            return {
+              author: item.author && item.author.name,
+              header: item.name,
+              description: item.description,
+              avatar: item.icon && global.API_URL + item.icon.url,
+              tools
+            };
+          })}/>
         </div>
       </Col>
     </Row>

@@ -7,7 +7,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 
 const client = new ApolloClient({
-  uri: 'https://strapi.bappy.tech/graphql'
+  uri: global.API_URL+'/graphql'
 });
 function App() {
   return (
