@@ -14,7 +14,7 @@ const Download = (props) => {
     <div className={styles.link}>
       <a href={clearlink} target="_new">
         <div className={styles.button}>
-          <img src={global.API_URL+link.tool.icon.url} alt={'Download for '+link.tool.name} />
+          <img src={global.API_URL + link.tool.icon.url} alt={'Download for ' + link.tool.name} />
           Download for {link.tool.name}
         </div>
       </a>
@@ -32,7 +32,7 @@ Download.defaultProps = {
   link: {
     tool: {
       name : "TEST TOOL",
-      icon: {url: null}
+      icon: { url: null }
     },
     link: "#"
   }

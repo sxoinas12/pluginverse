@@ -110,7 +110,7 @@ export default withRouter((props) => {
               <div className={styles.availableTools}>
                 <span>Available in:</span>
                 <span>
-                  {plugin.tools.map((tool) => <img src={global.API_URL+tool.icon.url} alt="Figma" />)}
+                  {plugin.tools.map((tool) => <img src={global.API_URL + tool.icon.url} alt="Figma" />)}
                 </span>
               </div>
             </Col>
@@ -129,7 +129,7 @@ export default withRouter((props) => {
             <div className={styles.author}>
               <img src={global.API_URL + (plugin.author.icon && plugin.author.icon.url)}/>
               <span>
-                by 
+                by
                 {plugin.author.name}
               </span>
             </div>
@@ -152,13 +152,13 @@ export default withRouter((props) => {
             }
 
             return {
-              author: item.author && item.author.name,
+              author: (item.author && item.author.name),
               header: item.name,
               description: item.description,
-              avatar: item.icon && global.API_URL + item.icon.url,
+              avatar: (item.icon && global.API_URL + item.icon.url),
               tools
             };
-          })}/>
+          })} />
         </div>
       </Col>
     </Row>

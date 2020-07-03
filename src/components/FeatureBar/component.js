@@ -5,8 +5,8 @@ import { Row, Col } from 'react-grid-system';
 
 import styles from './styles.module.less';
 
-const FeatureBar = ({plugin}) => {
-
+const FeatureBar = ({ plugin }) => 
+{
   return (
     <Row className={styles.container}>
       <Col s={6} l={3}>
@@ -19,11 +19,17 @@ const FeatureBar = ({plugin}) => {
       </Col>
       <Col s={6} l={3}>
         <span>Downloads</span>
-        <p>{plugin.downloads > 1000 ? (plugin.downloads/1000 + 'k') : plugin.downloads}</p>
+        <p>
+          {plugin.downloads > 1000 ? (plugin.downloads / 1000 + 'k') : plugin.downloads}
+        </p>
       </Col>
       <Col s={6} l={3}>
         <span>Trending</span>
-        <p>{plugin.trending < 0 ? '-' : '+'} {plugin.trending * 100} %</p>
+        <p>
+          {plugin.trending < 0 ? '-' : '+'}
+          {plugin.trending * 100}
+          %
+        </p>
       </Col>
     </Row>
   );
@@ -31,7 +37,12 @@ const FeatureBar = ({plugin}) => {
 
 
 FeatureBar.propTypes = {
-  plugin: PropTypes.shape({})
+  plugin: PropTypes.shape({
+    pricing: PropTypes.string,
+    status: PropTypes.string,
+    trending: PropTypes.reals,
+    downloads: PropTypes.number
+  })
 };
 
 FeatureBar.defaultProps = {
