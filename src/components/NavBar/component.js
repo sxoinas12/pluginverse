@@ -5,6 +5,7 @@ import classNames from 'classnames';
 
 import { Link } from "react-router-dom";
 import menuIcon from '@assets/icons/menu-icon.svg';
+import logo from '@assets/logo.svg';
 import styles from './styles.module.less';
 import SearchBox from '../SearchBox';
 import MegaMenu from '../MegaMenu';
@@ -16,8 +17,11 @@ const NavBar = ({ megaStructure, bundleNav }) => {
     <Row className={classNames([styles.navContainer, styles[bundleNav]])} key={1}>
       <Col>
         <Container>
+          <div className={styles.middle}>
+              <img src={logo} alt="Pluginverse Logo" />
+          </div>
           <Row>
-            <Col xs={12} sm={4} className={styles.left}>
+            <Col xs={12} md={6} className={styles.left}>
               <a role="button" onClick={() => setMenu(!menu)}>
                 <img src={menuIcon} alt="Menu icon" className={styles.left} />
               </a>
@@ -28,7 +32,7 @@ const NavBar = ({ megaStructure, bundleNav }) => {
                 <span className={styles.element}>Categories</span>
               </Link>
             </Col>
-            <Col xs={12} sm={8} align="right" className={styles.right}>
+            <Col xs={12} md={6} align="right" className={styles.right}>
               <SearchBox />
               <Link to="/suggest">
                 <span>Suggest a plugin</span>
