@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'react-grid-system';
 import classNames from 'classnames';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import menuIcon from '@assets/icons/menu-icon.svg';
 import logo from '@assets/logo.svg';
 import styles from './styles.module.less';
