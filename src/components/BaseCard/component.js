@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'react-grid-system';
 import styles from './styles.module.less';
-
+const defaultAvatar = require('../../assets/icons/avatar.svg');
 const BaseCard = ({
   header,
   description,
@@ -21,7 +21,7 @@ const BaseCard = ({
                 {tools.adobe && <img src={require('@assets/icons/adobe.svg')} alt="AdobeXD" />}
                 {tools.sketch && <img src={require('@assets/icons/sketch.svg')} alt="Sketch" />}
                 <div className={styles.icon}>
-                  <img src={avatar} alt="" />
+                  <img src={avatar || defaultAvatar} alt="" />
                 </div>
               </div>
             </Col>

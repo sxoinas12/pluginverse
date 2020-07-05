@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 import { Row, Col } from 'react-grid-system';
 import HorizontalCard from '../../components/HorizontalCard';
 import HorizontalList from '../../components/HorizontalList';
+
 import styles from './styles.module.less';
 
-const BundleDetails = ({ match }) => {
+const BundleDetails = ({ params }) => {
   useEffect(() => {
-    if (match.params.id) { // fetch
+    if (params) {
+      // fetch
     }
-  }, [match.params.id]);
+  }, [params]);
 
   const bundle = useMemo(() => {
     return {
@@ -44,17 +46,15 @@ const BundleDetails = ({ match }) => {
             <img src={require('@assets/icons/bundle.svg')} alt="" />
           </div>
         </Row>
-        <HorizontalList base={HorizontalCard} />
+        <HorizontalList base={HorizontalCard} data={[]} />
       </Col>
     </Row>
   );
 };
 
 BundleDetails.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.any
-    })
+  params: PropTypes.shape({
+    id: PropTypes.any
   })
 };
 

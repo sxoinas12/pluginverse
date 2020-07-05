@@ -1,3 +1,3 @@
-global.API_URL = "https://strapi.bappy.tech";
+global.API_URL = 'https://strapi.bappy.tech';
 
 module.exports = global;

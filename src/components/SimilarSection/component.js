@@ -20,7 +20,7 @@ const SimilarSection = ({ title, subtitle, data }) => (
           author: (item.author && item.author.name),
           header: item.name,
           description: item.description,
-          avatar: (item.icon && global.API_URL + item.icon.url),
+          // avatar: (item.icon && global.API_URL + item.icon.url),
           tools
         };
       })}

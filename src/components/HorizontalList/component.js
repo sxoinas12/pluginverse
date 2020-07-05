@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Row, Col } from 'react-grid-system';
 import HorizontalCard from '../HorizontalCard/component';
 
@@ -21,7 +22,10 @@ const HorizontalList = (props) => {
     </Row>
   );
 };
-
+HorizontalList.propTypes = {
+  data: PropTypes.any,
+  base: PropTypes.func,
+}
 
 HorizontalList.defaultProps = {
   base: HorizontalCard,

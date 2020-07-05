@@ -1,7 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Container } from 'react-grid-system';
-import { withRouter } from 'react-router';
 import Pages from '../pages';
 import Layouts from '../layouts';
 // Layout example may be useful for header and footer
@@ -16,25 +15,30 @@ const LayoutRoute = (props) => {
     fluid,
     ...rest
   } = props;
-
   return (
-    <Route {...rest}>
-      <Container fluid>
-        { header && React.createElement(header)}
-        {fluid ? (
-          <Fragment>
-            { children }
-            { component && React.createElement(component)}
-          </Fragment>
-        ) : (
-          <Container>
-            { children }
-            { component && React.createElement(component)}
+    // eslint-disable jsx-props-no-spreading
+    <Route {...rest}
+      render={({ match }) => {
+        return (
+          <Container fluid>
+            { header && React.createElement(header)}
+            {fluid ? (
+              <>
+                { children }
+                { component && React.createElement(component)}
+              </>
+            ) : (
+              <Container>
+                {console.log('this is fine', rest, match)}
+                { children }
+                { component && React.createElement(component, match)}
+              </Container>
+            )}
+            { footer && React.createElement(footer)}
           </Container>
-        )}
-        { footer && React.createElement(footer)}
-      </Container>
-    </Route>
+        )
+      }}      
+      />
   );
 };
 
@@ -51,7 +55,6 @@ const AppRouter = () => (
     <LayoutRoute path="/plugin/:id" exact component={Pages.PluginDetails} header={Layouts.Header} footer={Layouts.Footer} />
     <Route path="/search" exact component={Pages.Search} />
     <Route path="/contact" exact component={Pages.Contact} />
-
   </Router>
 );
 
