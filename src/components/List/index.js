@@ -7,10 +7,10 @@ import BaseCard from '../BaseCard';
 import styles from './styles.module.less';
 
 const List = (props) => {
-
   const {
     base,
-    data
+    data,
+    linkPrefix
   } = props;
   const Base = base;
 
@@ -18,9 +18,19 @@ const List = (props) => {
     <Row className={styles.row}>
       {data.map((card, i) => (
         <Col xs={12} sm={6} md={4} lg={4} xl={4} className={styles.col} key={card._key || i}>
-          <div className={styles.content}>
-            <Base {...card} />
-          </div>
+          {linkPrefix
+            ? (
+              <a className={styles.link} href={`${linkPrefix}/${card.id}`}>
+                <div className={styles.content}>
+                  <Base {...card} />
+                </div>
+              </a>
+            )
+            : (
+              <div className={styles.content}>
+                <Base {...card} />
+              </div>
+            )}
         </Col>
       ))}
     </Row>
@@ -30,6 +40,7 @@ const List = (props) => {
 
 List.propTypes = {
   base: PropTypes.func,
+  linkPrefix: PropTypes.string,
   data: PropTypes.arrayOf(PropTypes.shape({
     author: PropTypes.string,
     header: PropTypes.string,
@@ -41,6 +52,7 @@ List.propTypes = {
 
 List.defaultProps = {
   base: BaseCard,
+  linkPrefix: '/plugin',
   data: [
     {
       author: 'Author 1',
