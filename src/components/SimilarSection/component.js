@@ -10,7 +10,7 @@ const SimilarSection = ({ title, subtitle, data }) => (
   <div className={styles.section}>
     <Section title={title} subtitle={subtitle}>
       <List
-        linkPrefix="/plugin"
+        linkPrefix={(c) => '/plugin' + c.id}
         data={data.map((item) => {
           const tools = {};
           if (item.tools) {

@@ -20,7 +20,7 @@ const List = (props) => {
         <Col xs={12} sm={6} md={4} lg={4} xl={4} className={styles.col} key={card._key || i}>
           {linkPrefix
             ? (
-              <a className={styles.link} href={linkPrefix && linkPrefix(card)}>
+              <a className={styles.link} href={linkPrefix(card)}>
                 <div className={styles.content}>
                   <Base {...card} />
                 </div>
@@ -52,7 +52,7 @@ List.propTypes = {
 
 List.defaultProps = {
   base: BaseCard,
-  linkPrefix: null,
+  linkPrefix: undefined,
   data: [
     {
       author: 'Author 1',
