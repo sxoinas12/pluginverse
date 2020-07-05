@@ -19,6 +19,7 @@ query{
     id,
     name,
     plugins{
+      id,
       name,
       description,
       short_description,      
@@ -41,10 +42,7 @@ export default withRouter((props) => {
 
   if (loading) return "Loading...";
 
-  // console.log(id, loading, error, data);
   const { category } = data;
-
-  // console.log(category);
 
   category.plugins = category.plugins.map((i) => {
     i.author = i.author.name;
@@ -60,7 +58,7 @@ export default withRouter((props) => {
             <span>{category.name || "Test Category"}</span>
           </Breadcrumb>
           <Frame title={category.name} subtitle={category.plugins && (category.plugins.length+'')} height={250} styling={styles.titleStyle}/>
-          <List data={category.plugins}/>
+          <List data={category.plugins} linkPrefix={'/plugin'}/>
         </div>
       </Col>
     </Row>

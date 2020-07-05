@@ -46,7 +46,7 @@ MegaMenu.propTypes = {
 };
 
 MegaMenu.defaultProps = {
-  title: "ALL PLUGIN CATEGORIES",
+  title: 'ALL PLUGIN CATEGORIES',
   structure: {
     'Category 1': {
       'Test 1': 'link1',
