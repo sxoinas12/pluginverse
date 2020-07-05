@@ -9,24 +9,27 @@ import styles from './styles.module.less';
 const SimilarSection = ({ title, subtitle, data }) => (
   <div className={styles.section}>
     <Section title={title} subtitle={subtitle}>
-      <List data={data.map((item) => {
-        const tools = {};
-        if (item.tools) {
-          for (let i = 0; i < item.tools.length; i += 1) {
-            tools[item.tools[i].name] = 1;
+      <List
+        linkPrefix="/plugin"
+        data={data.map((item) => {
+          const tools = {};
+          if (item.tools) {
+            for (let i = 0; i < item.tools.length; i += 1) {
+              tools[item.tools[i].name] = 1;
+            }
           }
-        }
-        return {
-          author: (item.author && item.author.name),
-          header: item.name,
-          description: item.description,
-          avatar: item.icon && item.icon.length > 0 ? (item.icon && global.API_URL + item.icon.url) : null,
-          tools,
-          image: { // need to pass images[0] when we fix graphQL bug
-            url: 'https://strapi.bappy.tech/uploads/ca54d9bd4b0c48de91fd06ef9fb74690.png?294960.89500000014'
-          }
-        };
-      })}
+          return {
+            author: (item.author && item.author.name),
+            header: item.name,
+            description: item.description,
+            avatar: item.icon && item.icon.length > 0 ? (item.icon && global.API_URL + item.icon.url) : null,
+            tools,
+            id: 1314,
+            image: { // need to pass images[0] when we fix graphQL bug
+              url: 'https://strapi.bappy.tech/uploads/ca54d9bd4b0c48de91fd06ef9fb74690.png?294960.89500000014'
+            }
+          };
+        })}
       />
     </Section>
   </div>
@@ -48,6 +51,7 @@ SimilarSection.defaultProps = {
       name: 'Header 1',
       icon: { url: '' },
       description: 'description lorem ipsum 1',
+      id: 1314,
       tools: [{
         name: 'figma'
       }]
@@ -57,6 +61,7 @@ SimilarSection.defaultProps = {
       name: 'Header 2',
       icon: { url: '' },
       description: 'description lorem ipsum 2',
+      id: 1314,
       tools: [{
         name: 'adobexd'
       }]
@@ -66,6 +71,7 @@ SimilarSection.defaultProps = {
       name: 'Header 3',
       icon: { url: '' },
       description: 'description lorem ipsum 3',
+      id: 1314,
       tools: [{
         name: 'sketch'
       }]
