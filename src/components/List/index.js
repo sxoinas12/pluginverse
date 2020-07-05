@@ -7,7 +7,6 @@ import BaseCard from '../BaseCard';
 import styles from './styles.module.less';
 
 const List = (props) => {
-
   const {
     base,
     data

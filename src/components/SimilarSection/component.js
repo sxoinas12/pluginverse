@@ -13,15 +13,18 @@ const SimilarSection = ({ title, subtitle, data }) => (
         const tools = {};
         if (item.tools) {
           for (let i = 0; i < item.tools.length; i += 1) {
-            tools[item.tools.name] = 1;
+            tools[item.tools[i].name] = 1;
           }
         }
         return {
           author: (item.author && item.author.name),
           header: item.name,
           description: item.description,
-          // avatar: (item.icon && global.API_URL + item.icon.url),
-          tools
+          avatar: item.icon && item.icon.length > 0 ? (item.icon && global.API_URL + item.icon.url) : null,
+          tools,
+          image: { // need to pass images[0] when we fix graphQL bug
+            url: 'https://strapi.bappy.tech/uploads/ca54d9bd4b0c48de91fd06ef9fb74690.png?294960.89500000014'
+          }
         };
       })}
       />
