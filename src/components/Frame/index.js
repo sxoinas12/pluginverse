@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Row, Col } from 'react-grid-system';
+import { Container, Row, Col } from 'react-grid-system';
 import styles from './styles.module.less';
 
 
@@ -15,14 +15,16 @@ const Frame = (props) => {
   } = props;
 
   return (
-    <Row className={styling}>
+    <Row className={styling} style={{overflow: 'hidden'}}>
       <Col xs={12} className={styles.container} style={{ minHeight: height }}>
-        <h3>
-          {title}
-        </h3>
-        <p>
-          {subtitle}
-        </p>
+        <Container>
+          <h3>
+            {title}
+          </h3>
+          <p>
+            {subtitle}
+          </p>
+        </Container>
         <div className={styles.content}>
           {children}
         </div>

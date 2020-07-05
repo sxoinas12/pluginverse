@@ -58,7 +58,7 @@ export default withRouter((props) => {
             <span>{category.name || "Test Category"}</span>
           </Breadcrumb>
           <Frame title={category.name} subtitle={category.plugins && (category.plugins.length+'')} height={250} styling={styles.titleStyle}/>
-          <List data={category.plugins} linkPrefix={'/plugin'}/>
+          <List data={category.plugins} linkPrefix={(c) => '/plugin/' + c.id}/>
         </div>
       </Col>
     </Row>

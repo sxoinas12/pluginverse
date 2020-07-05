@@ -20,7 +20,7 @@ const List = (props) => {
         <Col xs={12} sm={6} md={4} lg={4} xl={4} className={styles.col} key={card._key || i}>
           {linkPrefix
             ? (
-              <a className={styles.link} href={`${linkPrefix}/${card.id}`}>
+              <a className={styles.link} href={linkPrefix(card)}>
                 <div className={styles.content}>
                   <Base {...card} />
                 </div>
@@ -40,7 +40,7 @@ const List = (props) => {
 
 List.propTypes = {
   base: PropTypes.func,
-  linkPrefix: PropTypes.string,
+  linkPrefix: PropTypes.func,
   data: PropTypes.arrayOf(PropTypes.shape({
     author: PropTypes.string,
     header: PropTypes.string,
@@ -52,7 +52,7 @@ List.propTypes = {
 
 List.defaultProps = {
   base: BaseCard,
-  linkPrefix: '/plugin',
+  linkPrefix: null,
   data: [
     {
       author: 'Author 1',
