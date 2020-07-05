@@ -18,7 +18,7 @@ const designTools = [
 
 
 const Home = () => (
-  <React.Fragment >
+  <>
     <Row className={styles.frame}>
       <Col>
         <Frame title={'Find the best fit among hundreds of design tool plugins'} subtitle={''} styling={styles.homeFrame}>
@@ -31,12 +31,12 @@ const Home = () => (
     <Container>
       <Row className={styles.section}>
         <Col>
-          <SimilarSection title={'For Design Systems'} subtitle={'Build and maintain a well-developed design system'} extra={'More UX plugins'}/>
+          <SimilarSection title="For Design Systems" subtitle="Build and maintain a well-developed design system" extra="More UX plugins" />
         </Col>
       </Row>
       <Row className={styles.section}>
         <Col>
-          <SimilarSection title={'For Design Systems'} subtitle={'Build and maintain a well-developed design system'} extra={'More UX plugins'}/>
+          <SimilarSection title="For Design Systems" subtitle="Build and maintain a well-developed design system" extra="More UX plugins" />
         </Col>
       </Row>
       <Row className={styles.bundle}>
@@ -46,12 +46,12 @@ const Home = () => (
       </Row>
       <Row className={styles.section}>
         <Col>
-          <SimilarSection title={'For Design Systems'} subtitle={'Build and maintain a well-developed design system'} extra={'More UX plugins'}/>
+          <SimilarSection title="For Design Systems" subtitle="Build and maintain a well-developed design system" extra="More UX plugins" />
         </Col>
       </Row>
       <Row className={styles.section}>
         <Col>
-          <SimilarSection title={'For Design Systems'} subtitle={'Build and maintain a well-developed design system'} extra={'More UX plugins'}/>
+          <SimilarSection title="For Design Systems" subtitle="Build and maintain a well-developed design system" extra="More UX plugins" />
         </Col>
       </Row>
     </Container>
@@ -60,6 +60,6 @@ const Home = () => (
         <Newsletter />
       </Col>
     </Row>
-  </React.Fragment>
+  </>
 );
 export default Home;

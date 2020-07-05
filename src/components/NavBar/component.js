@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'react-grid-system';
 import classNames from 'classnames';
-
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import menuIcon from '@assets/icons/menu-icon.svg';
 import logo from '@assets/logo.svg';
 import styles from './styles.module.less';
@@ -11,20 +10,23 @@ import SearchBox from '../SearchBox';
 import MegaMenu from '../MegaMenu';
 
 
-
-
 const NavBar = ({ megaStructure, bundleNav }) => {
-  let [menu, setMenu] = React.useState(false);
+  const [menu, setMenu] = useState(false);
+  const [query, setQuery] = useState('');
+  const history = useHistory();
+
+  const handleSearch = useCallback(searchQuery => setQuery(searchQuery), [setQuery]);
+  const handleSubmit = useCallback(() => history.push(`/search/${query}`), [query]);
 
   let navReact = (
     <Row className={classNames([styles.navContainer, styles[bundleNav]])} key={1}>
       <Col>
         <Container>
           <div className={styles.middle}>
-              <img src={logo} alt="Pluginverse Logo" />
+            <img src={logo} alt="Pluginverse Logo" />
           </div>
           <Row>
-            <Col xs={12} md={6} className={styles.left}>
+            <Col xs={12} md={7} className={styles.left}>
               <a role="button" onClick={() => setMenu(!menu)}>
                 <img src={menuIcon} alt="Menu icon" className={styles.left} />
               </a>
@@ -35,8 +37,8 @@ const NavBar = ({ megaStructure, bundleNav }) => {
                 <span className={styles.element}>Categories</span>
               </Link>
             </Col>
-            <Col xs={12} md={6} align="right" className={styles.right}>
-              <SearchBox />
+            <Col xs={12} md={5} align="right" className={styles.right}>
+              <SearchBox onChange={handleSearch} onSubmit={handleSubmit} />
               <Link to="/suggest">
                 <span>Suggest a plugin</span>
               </Link>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Row, Col } from 'react-grid-system';
 import HorizontalCard from '../../components/HorizontalCard';
 import HorizontalList from '../../components/HorizontalList';
+import BaseCard from '../../components/BaseCard';
 
 import styles from './styles.module.less';
 
@@ -45,6 +46,11 @@ const BundleDetails = ({ params }) => {
           <div className={styles.bundleIcon}>
             <img src={require('@assets/icons/bundle.svg')} alt="" />
           </div>
+        </Row>
+        <Row>
+          <Col xs={4}>
+          <BaseCard />
+          </Col>
         </Row>
         <HorizontalList base={HorizontalCard} data={[]} />
       </Col>
