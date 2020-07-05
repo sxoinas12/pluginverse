@@ -10,6 +10,9 @@ import styles from './styles.module.less';
 import SearchBox from '../SearchBox';
 import MegaMenu from '../MegaMenu';
 
+
+
+
 const NavBar = ({ megaStructure, bundleNav }) => {
   let [menu, setMenu] = React.useState(false);
 
