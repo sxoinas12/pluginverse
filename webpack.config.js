@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   resolve: {
@@ -21,6 +22,11 @@ module.exports = {
     filename: 'index_bundle.js'
   },
   plugins: [
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'src/assets', to: 'assets' }
+      ]
+    }),
     new MiniCssExtractPlugin({
       filename: 'styles.[hash].css',
       chunkFilename: '[id].hash.css'
