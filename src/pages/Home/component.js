@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row, Col } from 'react-grid-system';
 import BundleBanner from '@components/BundleBanner';
 import Frame from '@components/Frame';
+import Filters from '@components/Filters';
 import SimilarSection from '@components/SimilarSection';
 import Newsletter from '@components/Newsletter';
 import Dropdown from '@components/Dropdown';
@@ -29,6 +30,11 @@ const Home = () => (
           </div>
           <img src={require('@assets/images/homeview-ball.svg')} alt="Moon" className={styles.moon} />
         </Frame>
+      </Col>
+    </Row>
+    <Row className={styles.filters}>
+      <Col>
+        <Filters />
       </Col>
     </Row>
     <Container>
