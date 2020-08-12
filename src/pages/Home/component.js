@@ -22,8 +22,11 @@ const Home = () => (
     <Row className={styles.frame}>
       <Col>
         <Frame title={'Find the best fit among hundreds of design tool plugins'} subtitle={''} styling={styles.homeFrame}>
-          <Dropdown placeholder={'Choose design tool'} options={designTools} onSelect={(selected) => null} />
-          <Dropdown placeholder={'Choose a category'} options={designTools} onSelect={(selected) => null} />
+          <div className={styles.categorySelect}>
+            <Dropdown placeholder={'Choose design tool'} options={designTools} onSelect={(selected) => null} />
+            <Dropdown placeholder={'Choose a category'} options={designTools} onSelect={(selected) => null} />
+            <a className={styles.goButton}>Go</a>
+          </div>
           <img src={require('@assets/images/homeview-ball.svg')} alt="Moon" className={styles.moon} />
         </Frame>
       </Col>

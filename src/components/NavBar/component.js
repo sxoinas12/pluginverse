@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Row, Col } from 'react-grid-system';
+import { Container, Row, Col, Visible } from 'react-grid-system';
 import classNames from 'classnames';
 import { Link, useHistory } from 'react-router-dom';
 import menuIcon from '@assets/icons/menu-icon.svg';
@@ -22,11 +22,8 @@ const NavBar = ({ megaStructure, bundleNav }) => {
     <Row className={classNames([styles.navContainer, styles[bundleNav]])} key={1}>
       <Col>
         <Container>
-          <div className={styles.middle}>
-            <img src={logo} alt="Pluginverse Logo" />
-          </div>
           <Row>
-            <Col xs={12} md={7} className={styles.left}>
+            <Col xs={12} md={6} lg={5} className={styles.left}>
               <a role="button" onClick={() => setMenu(!menu)}>
                 <img src={menuIcon} alt="Menu icon" className={styles.left} />
               </a>
@@ -37,11 +34,18 @@ const NavBar = ({ megaStructure, bundleNav }) => {
                 <span className={styles.element}>Categories</span>
               </Link>
             </Col>
-            <Col xs={12} md={5} align="right" className={styles.right}>
+            <Col xs={12} md={6} lg={3} align="center" className={styles.center}>
+              <Row><Col xs={12} lg={8}>
+                <img src={logo} alt="Pluginverse Logo" />
+              </Col><Col xs={0} lg={4}></Col></Row>
+            </Col>
+            <Col xs={12} lg={4} align="right" className={styles.right}>
               <SearchBox onChange={handleSearch} onSubmit={handleSubmit} />
-              <Link to="/suggest">
-                <span>Suggest a plugin</span>
-              </Link>
+              <div>
+                <Link to="/suggest">
+                  <span>Suggest a plugin</span>
+                </Link>
+              </div>
             </Col>
           </Row>
         </Container>

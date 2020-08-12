@@ -9,21 +9,21 @@ const FeatureBar = ({ plugin }) =>
 {
   return (
     <Row className={styles.container}>
-      <Col s={6} l={3}>
+      <Col xs={6} md={3}>
         <span>Pricing</span>
         <p>{plugin.pricing}</p>
       </Col>
-      <Col s={6} l={3}>
+      <Col xs={6} md={3}>
         <span>Status</span>
         <p className={styles.success}>{plugin.status}</p>
       </Col>
-      <Col s={6} l={3}>
+      <Col xs={6} md={3}>
         <span>Downloads</span>
         <p>
           {plugin.downloads > 1000 ? (plugin.downloads / 1000 + 'k') : plugin.downloads}
         </p>
       </Col>
-      <Col s={6} l={3}>
+      <Col xs={6} md={3}>
         <span>Trending</span>
         <p>
           {plugin.trending < 0 ? '-' : '+'}

@@ -98,13 +98,13 @@ export default withRouter((props) => {
       <Col>
         <div className={styles.container}>
           <Row>
-            <Col s={6}>
+            <Col xs={12} md={6}>
               <Breadcrumb>
                 <Link to="/">Home</Link>
                 <span>{plugin.name || 'Test Plugin'}</span>
               </Breadcrumb>
             </Col>
-            <Col s={6}>
+            <Col xs={12} md={6}>
               <div className={styles.availableTools}>
                 <span>Available in:</span>
                 <span>
@@ -125,10 +125,9 @@ export default withRouter((props) => {
               <Chip />
             </div>
             <div className={styles.author}>
-              <img src={global.API_URL + (plugin.author.icon && plugin.author.icon.url)} alt="" />
+              {plugin.author.icon && <img src={global.API_URL + plugin.author.icon.url} alt="" />}
               <span>
-                by
-                {plugin.author.name}
+                by {plugin.author.name}
               </span>
             </div>
             <div className={styles.description}>

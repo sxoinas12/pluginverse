@@ -2,12 +2,14 @@
 	color: @green-2 !important;
 }
 .container {
-	padding: 40px;
-	height: 56px;
+	padding-top: 40px;
+	padding-bottom: 24px;
+	min-height: 56px;
 
 	background: @white;
 
 	& > * {
+		margin-bottom: 16px;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -15,6 +17,12 @@
 
 		&:last-child {
 			border-right: 0;
+		}
+		
+		@media(max-width: 768px) {
+			&:nth-child(2) {
+				border-right:0;
+			}
 		}
 
 		span {

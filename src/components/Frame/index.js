@@ -17,7 +17,7 @@ const Frame = (props) => {
   return (
     <Row className={styling} style={{overflow: 'hidden'}}>
       <Col xs={12} className={styles.container} style={{ minHeight: height }}>
-        <Container>
+        <Container style={{zIndex:2}}>
           <h3>
             {title}
           </h3>
