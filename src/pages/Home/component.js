@@ -11,21 +11,28 @@ import styles from './styles.module.less';
 
 // query design Tools
 const designTools = [
-  { key: "Figma", value: 1 },
-  { key: "AdobeXD", value: 2 },
-  { key: "Sketch", value: 3 }
+  { key: 'Figma', value: 1 },
+  { key: 'AdobeXD', value: 2 },
+  { key: 'Sketch', value: 3 }
 ];
-// get categories 
+// get categories
+const categories = [
+  { key: 'User Experience', value: 1 },
+  { key: 'User Interface', value: 2 },
+  { key: 'Assets', value: 3 },
+  { key: 'Collaboration', value: 4 },
+  { key: 'Utility', value: 5 }
+];
 
 
 const Home = () => (
   <>
     <Row className={styles.frame}>
       <Col>
-        <Frame title={'Find the best fit among hundreds of design tool plugins'} subtitle={''} styling={styles.homeFrame}>
+        <Frame title="Find the best fit among hundreds of design tool plugins" subtitle="" styling={styles.homeFrame}>
           <div className={styles.categorySelect}>
-            <Dropdown placeholder={'Choose design tool'} options={designTools} onSelect={(selected) => null} />
-            <Dropdown placeholder={'Choose a category'} options={designTools} onSelect={(selected) => null} />
+            <Dropdown placeholder="Choose design tool" options={designTools} onSelect={(selected) => null} />
+            <Dropdown placeholder="Choose a category" options={categories} onSelect={(selected) => null} />
             <a className={styles.goButton}>Go</a>
           </div>
           <img src={require('@assets/images/homeview-ball.svg')} alt="Moon" className={styles.moon} />
@@ -40,12 +47,20 @@ const Home = () => (
     <Container>
       <Row className={styles.section}>
         <Col>
-          <SimilarSection title="For Design Systems" subtitle="Build and maintain a well-developed design system" extra="More UX plugins" />
+          <SimilarSection
+            title="For Design Systems"
+            subtitle="Build and maintain a well-developed design system"
+            extra="More UX plugins"
+          />
         </Col>
       </Row>
       <Row className={styles.section}>
         <Col>
-          <SimilarSection title="For Design Systems" subtitle="Build and maintain a well-developed design system" extra="More UX plugins" />
+          <SimilarSection
+            title="For Design Systems"
+            subtitle="Build and maintain a well-developed design system"
+            extra="More UX plugins"
+          />
         </Col>
       </Row>
       <Row className={styles.bundle}>
@@ -55,12 +70,20 @@ const Home = () => (
       </Row>
       <Row className={styles.section}>
         <Col>
-          <SimilarSection title="For Design Systems" subtitle="Build and maintain a well-developed design system" extra="More UX plugins" />
+          <SimilarSection
+            title="For Design Systems"
+            subtitle="Build and maintain a well-developed design system"
+            extra="More UX plugins"
+          />
         </Col>
       </Row>
       <Row className={styles.section}>
         <Col>
-          <SimilarSection title="For Design Systems" subtitle="Build and maintain a well-developed design system" extra="More UX plugins" />
+          <SimilarSection
+            title="For Design Systems"
+            subtitle="Build and maintain a well-developed design system"
+            extra="More UX plugins"
+          />
         </Col>
       </Row>
     </Container>
