@@ -23,29 +23,16 @@ const NavBar = ({ megaStructure, bundleNav }) => {
       <Col>
         <Container>
           <Row>
-            <Col xs={12} md={6} lg={5} className={styles.left}>
+            <Col xs={12} md={6} lg={4} className={styles.left}>
               <a role="button" onClick={() => setMenu(!menu)}>
                 <img src={menuIcon} alt="Menu icon" className={styles.left} />
               </a>
-              <Link to="/explore">
-                <span className={styles.active}>Explore</span>
-              </Link>
-              <Link to="/categories">
-                <span className={styles.element}>Categories</span>
-              </Link>
             </Col>
-            <Col xs={12} md={6} lg={3} align="center" className={styles.center}>
-              <Row><Col xs={12} lg={8}>
-                <img src={logo} alt="Pluginverse Logo" />
-              </Col><Col xs={0} lg={4}></Col></Row>
+            <Col xs={12} md={6} lg={4} align="center" className={styles.center}>
+              <img src={logo} alt="Pluginverse Logo" />
             </Col>
             <Col xs={12} lg={4} align="right" className={styles.right}>
               <SearchBox onChange={handleSearch} onSubmit={handleSubmit} />
-              <div>
-                <Link to="/suggest">
-                  <span>Suggest a plugin</span>
-                </Link>
-              </div>
             </Col>
           </Row>
         </Container>
