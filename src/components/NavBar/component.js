@@ -1,8 +1,12 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Row, Col, Visible } from 'react-grid-system';
+import {
+  Container,
+  Row,
+  Col
+} from 'react-grid-system';
 import classNames from 'classnames';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import menuIcon from '@assets/icons/menu-icon.svg';
 import logo from '@assets/logo.svg';
 import styles from './styles.module.less';

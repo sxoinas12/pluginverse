@@ -4,6 +4,7 @@ import BundleBanner from '@components/BundleBanner';
 import Frame from '@components/Frame';
 import Filters from '@components/Filters';
 import SimilarSection from '@components/SimilarSection';
+import SubcategorySection from '@components/SubcategorySection';
 import Newsletter from '@components/Newsletter';
 import Dropdown from '@components/Dropdown';
 
@@ -41,17 +42,13 @@ const Home = () => (
     </Row>
     <Row className={styles.filters}>
       <Col>
-        <Filters />
+        <Filters onSelect={(filter) => console.log(filter)} />
       </Col>
     </Row>
     <Container>
       <Row className={styles.section}>
         <Col>
-          <SimilarSection
-            title="For Design Systems"
-            subtitle="Build and maintain a well-developed design system"
-            extra="More UX plugins"
-          />
+          <SubcategorySection category={10} />
         </Col>
       </Row>
       <Row className={styles.section}>
