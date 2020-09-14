@@ -1,58 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'react-grid-system';
 import styles from './styles.module.less';
-
-const defaultAvatar = require('../../assets/icons/avatar.svg');
 
 const BaseCard = ({
   header,
   description,
-  author,
-  avatar,
-  tools,
-  image
+  tools
 }) => {
   return (
-    <Row>
-      <Col xs={12}>
-        <div className={styles.cardContainer}>
-          <Row>
-            <Col>
-              <div
-                className={styles.divider}
-                style={{
-                  background: `url(${image.url})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center'
-                }}
-              >
-                <div className={styles.tools}>
-                  {tools.figma && <img src={require('@assets/icons/figma.svg')} alt="Figma" />}
-                  {tools.adobe && <img src={require('@assets/icons/adobe.svg')} alt="AdobeXD" />}
-                  {tools.sketch && <img src={require('@assets/icons/sketch.svg')} alt="Sketch" />}
-                </div>
-                <div className={styles.icon}>
-                  <img src={avatar || defaultAvatar} alt="" />
-                </div>
+    <div>
+      <div className={styles.cardContainer}>
+        <div className={styles.headerContainer}>
+          <div>
+            <div className={styles.icon}>
+              <img src={require('@assets/images/visual-eyes.svg')} alt="" />
+            </div>
+          </div>
+          <div>
+            <div className={styles.upvotes} onClick={() => null}>
+              <div>
+                <img src={require('@assets/icons/arrow-up.svg')} alt="" />
               </div>
-            </Col>
-          </Row>
-          <Row className={styles.descriptionContainer}>
-            <Col xs={12}>
-              <Row className={styles.author}>{author}</Row>
-              <Row className={styles.header}>{header}</Row>
-              <Row className={styles.description}>{description}</Row>
-            </Col>
-          </Row>
+              <div className={styles.upvotesNumber}>236</div>
+            </div>
+          </div>
         </div>
-      </Col>
-    </Row>
+        <div className={styles.descriptionContainer}>
+          <div>
+            <div className={styles.header}>{header}</div>
+            <div className={styles.tools}>
+              {tools.figma && <img src={require('@assets/icons/figma.svg')} alt="Figma" />}
+              {tools.adobe && <img src={require('@assets/icons/adobe.svg')} alt="AdobeXD" />}
+              {tools.sketch && <img src={require('@assets/icons/sketch.svg')} alt="Sketch" />}
+            </div>
+            <div className={styles.description}>{description}</div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
 BaseCard.propTypes = {
-  author: PropTypes.string,
   header: PropTypes.string,
   description: PropTypes.string,
   tools: PropTypes.shape({
@@ -60,7 +49,6 @@ BaseCard.propTypes = {
     adobe: PropTypes.any,
     sketch: PropTypes.any
   }),
-  avatar: PropTypes.string,
   image: PropTypes.shape({
     url: PropTypes.string
   })

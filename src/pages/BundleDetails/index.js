@@ -49,7 +49,7 @@ const BundleDetails = ({ params }) => {
         </Row>
         <Row>
           <Col xs={4}>
-          <BaseCard />
+            <BaseCard />
           </Col>
         </Row>
         <HorizontalList base={HorizontalCard} data={[]} />

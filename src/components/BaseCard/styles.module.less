@@ -4,30 +4,15 @@
     box-sizing: border-box;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04);
     border-radius: 4px;
-    .divider {
-        border-bottom: 1px solid;
-        border-bottom: 1px solid @gray-5;
-        min-height: 90px;
-        position: relative;
-        .tools {
-            background: @white;
-            border-radius: 24px;
-            padding: 4px 8px;
-            position: absolute;
-            left: 70%;
-            bottom: -14%;
-            display: flex;
-            justify-content: flex-end;
-            img {
-                margin-left: 2px;
-                margin-right: 2px;
-            }
-        }
-
+    width: 240;
+    height: 240px;
+    padding: 24px;
+    
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         .icon {
-            position: absolute;
-            left: 10%;
-            bottom: -30%;
             width: 56px;
             height: 56px;
             img {
@@ -35,23 +20,29 @@
                 width: 100%;
             }
         }
+        .upvotes {
+            width: 67px;
+            height: 29px;
+            border: 1px solid #C9EADC;
+            box-sizing: border-box;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            .upvotes-number {
+                color: linear-gradient(94.74deg, #443E56 4.3%, #363044 109.83%);
+                font-family: Inter;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 21px;
+            }
+        }
     }
     
-    .description-container {
-        padding-top: 44px;
-        padding-left: 24px;
-        padding-right: 24px;
-        padding-bottom: 24px;
-        .author {
-            font-family: Inter;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 16px;
-            line-height: 21px;
-            letter-spacing: -0.02em;
-            color: @gray-3;
     
-        }
+    
+    .description-container {
         .header {
             font-family: Inter;
             font-style: normal;
@@ -70,6 +61,24 @@
             line-height: 16px;
             letter-spacing: -0.01em;
             color: @off-black;
+            height: 90px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+
+        }
+        .tools {
+            background: @white;
+            border-radius: 24px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            display: flex;
+            justify-content: flex-start;
+            img {
+                margin-left: 2px;
+                margin-right: 2px;
+            }
         }
     }
     
