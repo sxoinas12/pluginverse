@@ -17,7 +17,7 @@ const BaseCard = ({
             </div>
           </div>
           <div>
-            <div className={styles.upvotes} onClick={() => null}>
+            <div className={styles.upvotes}>
               <div>
                 <img src={require('@assets/icons/arrow-up.svg')} alt="" />
               </div>
@@ -51,13 +51,12 @@ BaseCard.propTypes = {
   }),
   image: PropTypes.shape({
     url: PropTypes.string
-  })
+  }),
 };
 
 BaseCard.defaultProps = {
   description: 'This is a description of one sentence for the plugin',
   header: 'VisualEyes',
-  author: 'makerName',
   tools: {
     figma: {},
     adobe: {},

@@ -20,9 +20,5 @@ export default {
   PluginDetails,
   Search,
   Home,
-
-
-
-
-  NikTest
+  NikTest,
 };

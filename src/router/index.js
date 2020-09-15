@@ -29,7 +29,6 @@ const LayoutRoute = (props) => {
               </>
             ) : (
               <Container>
-                {console.log('this is fine', rest, match)}
                 { children }
                 { component && React.createElement(component, match)}
               </Container>
@@ -48,7 +47,7 @@ const AppRouter = () => (
     <LayoutRoute path="/test" exact component={Pages.NikTest} header={Layouts.Header} footer={Layouts.Footer} />
     <Route path="/author/:id" exact component={Pages.AuthorDetails} />
     <Route path="/authors" exact component={Pages.AuthorList} />
-    <LayoutRoute path="/bundle/:id" exact component={Pages.BundleDetails} header={Layouts.Header} bundleNav="bundleNav" footer={Layouts.Footer} />
+    <Route path="/bundle/:id" exact component={Pages.BundleDetails} />
     <Route path="/bundles" exact component={Pages.BundleList} />
     <LayoutRoute path="/category/:id" exact component={Pages.CategoryDetails} header={Layouts.Header} footer={Layouts.Footer} />
     <Route path="/categories" exact component={Pages.CategoryList} />

@@ -2,11 +2,7 @@ import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'react-grid-system';
 import styles from './styles.module.less';
-/* Usage
-<BaseDropdown
-  renderTrigger = { open => <button onClick={open} />}
-/>
-*/
+
 
 const BaseDropdown = ({
   data,

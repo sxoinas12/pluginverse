@@ -19,7 +19,6 @@ const BundleBanner = ({ bundle }) => {
               {Object.keys(bundle.tools)[0].toUpperCase()}
             </div>
           </Col>
-
         </Row>
         <Row>
           <Col xs={12}><div className={styles.designBundle}>UX Design Bundle</div></Col>
@@ -30,7 +29,7 @@ const BundleBanner = ({ bundle }) => {
               <a href={`/bundle/${bundle.bundleId}`}>Go to bundle</a>
             </div>
             <div className={styles.viewAll}>
-              <a href="/bundle">Viewl all bundle</a>
+              <a href="/bundle">View all bundle</a>
             </div>
           </Col>
         </Row>
