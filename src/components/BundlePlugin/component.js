@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.module.less';
 
-const BundlePlugin = ({ description, author, tools }) => {
+const BundlePlugin = ({ description, author, tools, id }) => {
   return (
     <div className={styles.bundlePluginContainer}>
       <div>
@@ -39,8 +39,8 @@ const BundlePlugin = ({ description, author, tools }) => {
         <div className={styles.descriptionText}>{description}</div>
       </div>
       <div className={styles.buttonContainer}>
-        <div role="button" className={styles.pluginButton} onClick={() => console.log('go to plugin')}>
-          <a>Go to Plugin page</a>
+        <div role="button" className={styles.pluginButton}>
+          <a href={`/plugin/${id}`}>Go to Plugin page</a>
         </div>
       </div>
     </div>
