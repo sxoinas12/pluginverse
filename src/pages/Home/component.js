@@ -7,7 +7,8 @@ import SimilarSection from '@components/SimilarSection';
 import SubcategorySection from '@components/SubcategorySection';
 import Newsletter from '@components/Newsletter';
 import Dropdown from '@components/Dropdown';
-
+import { useQuery } from '@apollo/react-hooks';
+import GET_BUNDLE from '../../graphql/bundles/getBundle';
 import styles from './styles.module.less';
 
 // query design Tools
@@ -26,69 +27,74 @@ const categories = [
 ];
 
 
-const Home = () => (
-  <>
-    <Row className={styles.frame}>
-      <Col>
-        <Frame title="Find the best fit among hundreds of design tool plugins" subtitle="" styling={styles.homeFrame}>
-          <div className={styles.categorySelect}>
-            <Dropdown placeholder="Choose design tool" options={designTools} onSelect={(selected) => null} />
-            <Dropdown placeholder="Choose a category" options={categories} onSelect={(selected) => null} />
-            <a className={styles.goButton}>Go</a>
-          </div>
-          <img src={require('@assets/images/homeview-ball.svg')} alt="Moon" className={styles.moon} />
-        </Frame>
-      </Col>
-    </Row>
-    <Row className={styles.filters}>
-      <Col>
-        <Filters onSelect={(filter) => console.log(filter)} />
-      </Col>
-    </Row>
-    <Container>
-      <Row className={styles.section}>
+const Home = () => {
+  const { data } = useQuery(GET_BUNDLE(1));
+  return (
+    <>
+      <Row className={styles.frame}>
         <Col>
-          <SubcategorySection category={10} />
+          <Frame title="Find the best fit among hundreds of design tool plugins" subtitle="" styling={styles.homeFrame}>
+            <div className={styles.categorySelect}>
+              <Dropdown placeholder="Choose design tool" options={designTools} onSelect={selected => null} />
+              <Dropdown placeholder="Choose a category" options={categories} onSelect={selected => null} />
+              <a href="" className={styles.goButton}>Go</a>
+            </div>
+            <img src={require('@assets/images/homeview-ball.svg')} alt="Moon" className={styles.moon} />
+          </Frame>
         </Col>
       </Row>
-      <Row className={styles.section}>
+      <Row className={styles.filters}>
         <Col>
-          <SimilarSection
-            title="For Design Systems"
-            subtitle="Build and maintain a well-developed design system"
-            extra="More UX plugins"
-          />
+          <Filters onSelect={(filter) => console.log(filter)} />
         </Col>
       </Row>
-      <Row className={styles.bundle}>
+      <Container>
+        <Row className={styles.section}>
+          <Col>
+            <SubcategorySection category={10} />
+          </Col>
+        </Row>
+        <Row className={styles.section}>
+          <Col>
+            <SimilarSection
+              title="For Design Systems"
+              subtitle="Build and maintain a well-developed design system"
+              extra="More UX plugins"
+            />
+          </Col>
+        </Row>
+        <Row className={styles.bundle}>
+          <Col>
+            {
+              data && data.bundles ? <BundleBanner bundle={data.bundles[0]} /> : null
+            }
+          </Col>
+        </Row>
+        <Row className={styles.section}>
+          <Col>
+            <SimilarSection
+              title="For Design Systems"
+              subtitle="Build and maintain a well-developed design system"
+              extra="More UX plugins"
+            />
+          </Col>
+        </Row>
+        <Row className={styles.section}>
+          <Col>
+            <SimilarSection
+              title="For Design Systems"
+              subtitle="Build and maintain a well-developed design system"
+              extra="More UX plugins"
+            />
+          </Col>
+        </Row>
+      </Container>
+      <Row className={styles.frame}>
         <Col>
-          <BundleBanner />
+          <Newsletter />
         </Col>
       </Row>
-      <Row className={styles.section}>
-        <Col>
-          <SimilarSection
-            title="For Design Systems"
-            subtitle="Build and maintain a well-developed design system"
-            extra="More UX plugins"
-          />
-        </Col>
-      </Row>
-      <Row className={styles.section}>
-        <Col>
-          <SimilarSection
-            title="For Design Systems"
-            subtitle="Build and maintain a well-developed design system"
-            extra="More UX plugins"
-          />
-        </Col>
-      </Row>
-    </Container>
-    <Row className={styles.frame}>
-      <Col>
-        <Newsletter />
-      </Col>
-    </Row>
-  </>
-);
+    </>
+  );
+};
 export default Home;

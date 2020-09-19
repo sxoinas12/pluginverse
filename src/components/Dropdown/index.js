@@ -22,10 +22,7 @@ const Dropdown = ({
 
 Dropdown.propTypes = {
   placeholder: PropTypes.string,
-  options: PropTypes.arrayOf(PropTypes.shape({
-    key: PropTypes.string,
-    value: PropTypes.string
-  })),
+  options: PropTypes.any,
   onSelect: PropTypes.func
 };
 

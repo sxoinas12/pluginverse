@@ -10,23 +10,32 @@ const BundleBanner = ({ bundle }) => {
         <Row>
           <Col className={styles.toolContainer}>
             <div>
-              {bundle.tools.figma && <img src={require('@assets/icons/figma.svg')} alt="Figma" />}
-              {bundle.tools.adobe && <img src={require('@assets/icons/adobe.svg')} alt="AdobeXD" />}
-              {bundle.tools.sketch && <img src={require('@assets/icons/sketch.svg')} alt="Sketch" />}
+              {bundle.tools.map((tool, index) => {
+                switch (tool.name) {
+                  case 'Figma':
+                    return <img key={index} src={require('@assets/icons/figma.svg')} alt="Figma" />
+                  case 'Adobe':
+                    return <img key={index} src={require('@assets/icons/adobe.svg')} alt="AdobeXD" />
+                  case 'Sketch':
+                    return <img key={index} src={require('@assets/icons/sketch.svg')} alt="Sketch" />
+                  default:
+                    return '';
+                }
+              })}
             </div>
             <div className={styles.toolTitle}>
               FOR&nbsp;
-              {Object.keys(bundle.tools)[0].toUpperCase()}
+              {bundle.tools[0].name.toUpperCase()}
             </div>
           </Col>
         </Row>
         <Row>
-          <Col xs={12}><div className={styles.designBundle}>UX Design Bundle</div></Col>
+          <Col xs={12}><div className={styles.designBundle}>{bundle.name}</div></Col>
         </Row>
         <Row>
           <Col xs={6} className={styles.actionsContainer}>
             <div className={styles.bundleButton}>
-              <a href={`/bundle/${bundle.bundleId}`}>Go to bundle</a>
+              <a href={`/bundle/${bundle.id}`}>Go to bundle</a>
             </div>
             <div className={styles.viewAll}>
               <a href="/bundle">View all bundle</a>
@@ -43,22 +52,10 @@ const BundleBanner = ({ bundle }) => {
 
 BundleBanner.propTypes = {
   bundle: PropTypes.shape({
-    tools: PropTypes.shape({
-      figma: PropTypes.shape({}),
-      adobe: PropTypes.shape({}),
-      sketch: PropTypes.shape({})
-    }),
-    bundleId: PropTypes.any
-  })
-};
-
-BundleBanner.defaultProps = {
-  bundle: {
-    tools: {
-      figma: {}
-    },
-    bundleId: 1
-  }
+    tools: PropTypes.array,
+    id: PropTypes.any
+  }),
+  name: PropTypes.string,
 };
 
 export default BundleBanner;
