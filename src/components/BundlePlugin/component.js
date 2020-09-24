@@ -14,7 +14,7 @@ const BundlePlugin = ({ description, author, tools, id }) => {
         <div className={styles.availableContainer}>
           <div className={styles.availableText}>Avialable in</div>
           <div className={styles.availableTools}>
-            {tools.map((tool, index) => {
+            {tools && tools.map((tool, index) => {
               switch (tool.name) {
                 case 'Figma':
                   return <img key={index} src={require('@assets/icons/figma.svg')} alt="Figma" />;

@@ -12,7 +12,7 @@ const BundleDetails = ({ match }) => {
   const { data } = useQuery(GET_BUNDLE(match.params.id));
   useEffect(() => {
     if (data) {
-      setBundle(data.bundles[0]);
+      setBundle(data.bundle);
     }
   }, [data]);
 

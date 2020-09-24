@@ -63,7 +63,7 @@ const Home = ({ history }) => {
   subcategories = category ? subcategories.filter((item) => item.parent.id === category) : subcategories;
   subcategories = subcategories.map(toOptions);
   const sections = findRandom(5, subcategories.length);
-
+  
   return (
     <>
       <Row className={styles.frame}>
@@ -107,7 +107,7 @@ const Home = ({ history }) => {
         <Row className={styles.bundle}>
           <Col>
             {
-              bundleQ.data && bundleQ.data.bundles ? <BundleBanner bundle={bundleQ.data.bundles[0]} /> : null
+              bundleQ.data && bundleQ.data.bundle ? <BundleBanner bundle={bundleQ.data.bundle} /> : null
             }
           </Col>
         </Row>
