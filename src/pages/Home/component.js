@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom'
 import { Container, Row, Col } from 'react-grid-system';
 import BundleBanner from '@components/BundleBanner';
 import Frame from '@components/Frame';
@@ -8,7 +9,9 @@ import SubcategorySection from '@components/SubcategorySection';
 import Newsletter from '@components/Newsletter';
 import Dropdown from '@components/Dropdown';
 import { useQuery } from '@apollo/react-hooks';
-import GET_BUNDLE from '../../graphql/bundles/getBundle';
+import GET_BUNDLE from '@graphql/bundles/getBundle';
+import GET_CATEGORIES from '@graphql/categories/getCategories';
+import GET_SUBCATEGORIES from '@graphql/categories/getCategoriesNested';
 import styles from './styles.module.less';
 
 // query design Tools
@@ -18,74 +21,94 @@ const designTools = [
   { key: 'Sketch', value: 3 }
 ];
 // get categories
-const categories = [
-  { key: 'User Experience', value: 1 },
-  { key: 'User Interface', value: 2 },
-  { key: 'Assets', value: 3 },
-  { key: 'Collaboration', value: 4 },
-  { key: 'Utility', value: 5 }
-];
+// const categories = [
+//   { key: 'User Experience', value: 1 },
+//   { key: 'User Interface', value: 2 },
+//   { key: 'Assets', value: 3 },
+//   { key: 'Collaboration', value: 4 },
+//   { key: 'Utility', value: 5 }
+// ];
+const toOptions = (item) => {
+  return {
+    key: item.name,
+    value: item.id
+  };
+};
 
+const findRandom = (size, max) => {
+  const arr = [];
+  for (let i = size - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * max);
+    arr[i] = j;
+  }
+  return arr;
+};
 
-const Home = () => {
-  const { data } = useQuery(GET_BUNDLE(1));
+const Home = ({ history }) => {
+  const [tool, setTool] = useState(undefined);
+  const [category, setCategory] = useState(undefined);
+  const [subcategory, setSubCategory] = useState(undefined);
+
+  const bundleQ = useQuery(GET_BUNDLE(1));
+  const catQ = useQuery(GET_CATEGORIES);
+  const subcatQ = useQuery(GET_SUBCATEGORIES);
+
+  if (bundleQ.loading || catQ.loading || subcatQ.loading) {
+    return '';
+  }
+
+  let categories = catQ.error ? [] : catQ.data.categories;
+  categories = categories.map(toOptions);
+  let subcategories = subcatQ.error ? [] : subcatQ.data.categories;
+  subcategories = category ? subcategories.filter((item) => item.parent.id === category) : subcategories;
+  subcategories = subcategories.map(toOptions);
+  const sections = findRandom(5, subcategories.length);
+
   return (
     <>
       <Row className={styles.frame}>
         <Col>
           <Frame title="Find the best fit among hundreds of design tool plugins" subtitle="" styling={styles.homeFrame}>
             <div className={styles.categorySelect}>
-              <Dropdown placeholder="Choose design tool" options={designTools} onSelect={selected => null} />
-              <Dropdown placeholder="Choose a category" options={categories} onSelect={selected => null} />
-              <a href="" className={styles.goButton}>Go</a>
+              <Dropdown
+                placeholder="Choose design tool"
+                options={designTools}
+                onSelect={selected => setTool(selected)}
+              />
+              <Dropdown
+                placeholder="Choose a category"
+                options={categories}
+                onSelect={selected => setCategory(selected)}
+              />
+              <Dropdown
+                placeholder="Choose a subcategory"
+                options={subcategories}
+                onSelect={(selected) => setSubCategory(selected)}
+              />
+              <button type="button" className={styles.goButton} onClick={() => history.push('/category/' + subcategory)}>
+                Go
+              </button>
             </div>
-            <img src={require('@assets/images/homeview-ball.svg')} alt="Moon" className={styles.moon} />
+            <img src={require('@assets/images/circle_1.svg')} alt="Moon" className={styles.moon} />
+            <img src={require('@assets/images/circle_2.svg')} alt="Earth" className={styles.earth} />
           </Frame>
         </Col>
       </Row>
-      <Row className={styles.filters}>
-        <Col>
-          <Filters onSelect={(filter) => console.log(filter)} />
-        </Col>
-      </Row>
       <Container>
-        <Row className={styles.section}>
-          <Col>
-            <SubcategorySection category={10} />
-          </Col>
-        </Row>
-        <Row className={styles.section}>
-          <Col>
-            <SimilarSection
-              title="For Design Systems"
-              subtitle="Build and maintain a well-developed design system"
-              extra="More UX plugins"
-            />
-          </Col>
-        </Row>
+        {sections.map((item, index) => {
+          return (
+            <Row className={styles.section} key={index}>
+              <Col>
+                <SubcategorySection category={item} />
+              </Col>
+            </Row>
+          );
+        })}
         <Row className={styles.bundle}>
           <Col>
             {
-              data && data.bundles ? <BundleBanner bundle={data.bundles[0]} /> : null
+              bundleQ.data && bundleQ.data.bundles ? <BundleBanner bundle={bundleQ.data.bundles[0]} /> : null
             }
-          </Col>
-        </Row>
-        <Row className={styles.section}>
-          <Col>
-            <SimilarSection
-              title="For Design Systems"
-              subtitle="Build and maintain a well-developed design system"
-              extra="More UX plugins"
-            />
-          </Col>
-        </Row>
-        <Row className={styles.section}>
-          <Col>
-            <SimilarSection
-              title="For Design Systems"
-              subtitle="Build and maintain a well-developed design system"
-              extra="More UX plugins"
-            />
           </Col>
         </Row>
       </Container>
@@ -97,4 +120,4 @@ const Home = () => {
     </>
   );
 };
-export default Home;
+export default withRouter(Home);

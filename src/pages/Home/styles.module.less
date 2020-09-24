@@ -17,13 +17,18 @@
 }
 .moon {    
 	position: absolute; 
-    right: -140px;
-    top: 10px;
+    right: 100px;
+    top: 0px;
     z-index: 1 !important;
+}
+.earth {    
+	position: absolute; 
+    left: 0px;
+    bottom: 0px;
+    z-index: 2 !important;
 }
 
 .go-button {
-	padding: 12px 24px;
 	width: 72px;
 	height: 32px;
 
@@ -32,10 +37,13 @@
 
 	.button;
 	color: @white;
+	border: 0;
 }
 
 .homeFrame {
 	h3 {
 		.heading-1;
 	}
+	height: 440px;
+	position:relative;
 }

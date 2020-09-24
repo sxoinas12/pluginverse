@@ -8,8 +8,9 @@ const Dropdown = ({
   options,
   onSelect
 }) => {
+
   return (
-    <select className={styles.selectBox} required onSelect={(item) => onSelect(item)}>
+    <select className={styles.selectBox} required onChange={(e) => onSelect(e.target.value)}>
       <option value="" disabled selected hidden>{placeholder}</option>
       {options.map((option) => (
         <option value={option.value} key={option.key}>

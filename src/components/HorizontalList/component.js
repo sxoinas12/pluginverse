@@ -23,9 +23,15 @@ const HorizontalList = (props) => {
   );
 };
 HorizontalList.propTypes = {
-  data: PropTypes.any,
-  base: PropTypes.func,
-}
+  data: PropTypes.arrayOf(PropTypes.shape({
+    author: PropTypes.string,
+    header: PropTypes.string,
+    description: PropTypes.string,
+    tools: PropTypes.shape({}),
+    avatar: PropTypes.string
+  })),
+  base: PropTypes.func
+};
 
 HorizontalList.defaultProps = {
   base: HorizontalCard,

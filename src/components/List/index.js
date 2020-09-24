@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { Row, Col } from 'react-grid-system';
@@ -8,15 +8,20 @@ import styles from './styles.module.less';
 
 const List = (props) => {
   const {
+    scrollable,
+    size,
     base,
     data,
     linkPrefix
   } = props;
   const Base = base;
 
+  const [start, setStart] = useState(0);
+  const array = scrollable ? data.slice(start, start + size) : data;
+
   return (
     <Row className={styles.row}>
-      {data.map((card, i) => (
+      {array.map((card, i) => (
         <Col xs={12} sm={6} md={4} lg={4} xl={4} className={styles.col} key={card._key || i}>
           {linkPrefix
             ? (
@@ -33,6 +38,8 @@ const List = (props) => {
             )}
         </Col>
       ))}
+      {scrollable && (data.length - size > start) && <img  src={require('@assets/icons/right.svg')} className={styles.next} onClick={() => setStart(start + size)} />}
+      {scrollable && (start > 0) && <img  src={require('@assets/icons/left.svg')} className={styles.prev} onClick={() => setStart(start - size < 0 ? 0 : start - size)} />}
     </Row>
   );
 };
@@ -40,6 +47,8 @@ const List = (props) => {
 
 List.propTypes = {
   base: PropTypes.func,
+  scrollable: PropTypes.bool,
+  size: PropTypes.number,
   linkPrefix: PropTypes.func,
   data: PropTypes.arrayOf(PropTypes.shape({
     author: PropTypes.string,
@@ -52,6 +61,8 @@ List.propTypes = {
 
 List.defaultProps = {
   base: BaseCard,
+  scrollable: false,
+  size: 3,
   linkPrefix: undefined,
   data: [
     {

@@ -8,8 +8,9 @@ import styles from './styles.module.less';
 
 const SimilarSection = ({ title, subtitle, data }) => (
   <div className={styles.section}>
-    <Section title={title} subtitle={subtitle}>
+    <Section title={title} subtitle={subtitle} extra={'More ' + title.toLowerCase() + ' >'}>
       <List
+        scrollable
         linkPrefix={(c) => '/plugin/' + c.id}
         data={data.map((item) => {
           const tools = {};
