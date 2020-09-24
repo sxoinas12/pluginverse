@@ -13,11 +13,11 @@ const BundleBanner = ({ bundle }) => {
               {bundle.tools.map((tool, index) => {
                 switch (tool.name) {
                   case 'Figma':
-                    return <img key={index} src={require('@assets/icons/figma.svg')} alt="Figma" />
+                    return <img key={index} src={require('@assets/icons/figma.svg')} alt="Figma" />;
                   case 'Adobe':
-                    return <img key={index} src={require('@assets/icons/adobe.svg')} alt="AdobeXD" />
+                    return <img key={index} src={require('@assets/icons/adobe.svg')} alt="AdobeXD" />;
                   case 'Sketch':
-                    return <img key={index} src={require('@assets/icons/sketch.svg')} alt="Sketch" />
+                    return <img key={index} src={require('@assets/icons/sketch.svg')} alt="Sketch" />;
                   default:
                     return '';
                 }
@@ -38,7 +38,7 @@ const BundleBanner = ({ bundle }) => {
               <a href={`/bundle/${bundle.id}`}>Go to bundle</a>
             </div>
             <div className={styles.viewAll}>
-              <a href="/bundle">View all bundle</a>
+              <a href="/bundles">View all bundle</a>
             </div>
           </Col>
         </Row>
