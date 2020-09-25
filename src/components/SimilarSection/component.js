@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 
 import Section from '@components/Section';
 import List from '@components/List';
-
+import BaseCard from '../BaseCard';
 import styles from './styles.module.less';
 
 const SimilarSection = ({ title, subtitle, data }) => (
   <div className={styles.section}>
-    <Section title={title} subtitle={subtitle} extra={'More ' + title.toLowerCase() + ' >'}>
+    <Section title={title} subtitle={subtitle} extra={`More ${title.toLowerCase()} >`}>
       <List
+        base={BaseCard}
         scrollable
-        linkPrefix={(c) => '/plugin/' + c.id}
+        linkPrefix={(c) => `/plugin/${c.id}`}
         data={data.map((item) => {
           const tools = {};
           if (item.tools) {
@@ -25,7 +26,7 @@ const SimilarSection = ({ title, subtitle, data }) => (
             description: item.description,
             avatar: item.icon && item.icon.length > 0 ? (item.icon && global.API_URL + item.icon.url) : null,
             tools,
-            id: 1314,
+            id: item.id,
             image: { // need to pass images[0] when we fix graphQL bug
               url: 'https://strapi.bappy.tech/uploads/ca54d9bd4b0c48de91fd06ef9fb74690.png?294960.89500000014'
             }

@@ -3,8 +3,6 @@ import { withRouter } from 'react-router-dom'
 import { Container, Row, Col } from 'react-grid-system';
 import BundleBanner from '@components/BundleBanner';
 import Frame from '@components/Frame';
-import Filters from '@components/Filters';
-import SimilarSection from '@components/SimilarSection';
 import SubcategorySection from '@components/SubcategorySection';
 import Newsletter from '@components/Newsletter';
 import Dropdown from '@components/Dropdown';
@@ -20,14 +18,6 @@ const designTools = [
   { key: 'AdobeXD', value: 2 },
   { key: 'Sketch', value: 3 }
 ];
-// get categories
-// const categories = [
-//   { key: 'User Experience', value: 1 },
-//   { key: 'User Interface', value: 2 },
-//   { key: 'Assets', value: 3 },
-//   { key: 'Collaboration', value: 4 },
-//   { key: 'Utility', value: 5 }
-// ];
 const toOptions = (item) => {
   return {
     key: item.name,

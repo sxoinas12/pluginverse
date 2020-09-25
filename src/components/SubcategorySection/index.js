@@ -5,8 +5,6 @@ import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
 import SimilarSection from '@components/SimilarSection';
-import List from '@components/List';
-
 import styles from './styles.module.less';
 
 const catQuery = (id) => gql`{
@@ -23,17 +21,21 @@ const catQuery = (id) => gql`{
 }`;
 
 const SubcategorySection = ({ category }) => {
+  // console.log("whats is up", category)
   const { loading, error, data } = useQuery(catQuery(category || 1));
+  // console.log(data)
   if (loading) return '';
   if (error) return <p>{JSON.stringify(error)}</p>;
   if (data.length == 0) return '';
-  return <div className={styles.section}>
-    <SimilarSection
-      title={'For ' + data.category.name}
-      subtitle={data.category.description}
-      data={data.category.plugins}
-    />
-  </div>
+  return (
+    <div className={styles.section}>
+      <SimilarSection
+        title={`For ${data.category.name}`}
+        subtitle={data.category.description}
+        data={data.category.plugins}
+      />
+    </div>
+  );
 };
 
 

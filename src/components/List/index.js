@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
 import { Row, Col } from 'react-grid-system';
-
 import BaseCard from '../BaseCard';
 import styles from './styles.module.less';
 
@@ -15,7 +13,6 @@ const List = (props) => {
     linkPrefix
   } = props;
   const Base = base;
-
   const [start, setStart] = useState(0);
   const array = scrollable ? data.slice(start, start + size) : data;
 
@@ -38,8 +35,8 @@ const List = (props) => {
             )}
         </Col>
       ))}
-      {scrollable && (data.length - size > start) && <img  src={require('@assets/icons/right.svg')} className={styles.next} onClick={() => setStart(start + size)} />}
-      {scrollable && (start > 0) && <img  src={require('@assets/icons/left.svg')} className={styles.prev} onClick={() => setStart(start - size < 0 ? 0 : start - size)} />}
+      {scrollable && (data.length - size > start) && <img src={require('@assets/icons/right.svg')} className={styles.next} onClick={() => setStart(start + size)} />}
+      {scrollable && (start > 0) && <img src={require('@assets/icons/left.svg')} className={styles.prev} onClick={() => setStart(start - size < 0 ? 0 : start - size)} />}
     </Row>
   );
 };

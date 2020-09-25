@@ -8,14 +8,15 @@ const Download = (props) => {
   const {
     link
   } = props;
-
-  let clearlink = 'https://' + link.link.replace(/^http(s?):\/\//i, "");
+  const clearlink = `https://${link.link.replace(/^http(s?):\/\//i, '')}`;
   return (
     <div className={styles.link}>
       <a href={clearlink} target="_new">
         <div className={styles.button}>
-          <img src={global.API_URL + link.tool.icon.url} alt={'Download for ' + link.tool.name} />
-          Download for {link.tool.name}
+          <img src={link.tool.icon ? `${global.API_URL}${link.tool.icon.url}` : ''} alt={`Download for ${link.tool.name}`} />
+          Download for
+          {' '}
+          {link.tool.name}
         </div>
       </a>
     </div>
@@ -31,10 +32,10 @@ Download.propTypes = {
 Download.defaultProps = {
   link: {
     tool: {
-      name : "TEST TOOL",
+      name: 'TEST TOOL',
       icon: { url: null }
     },
-    link: "#"
+    link: '#'
   }
 };
 

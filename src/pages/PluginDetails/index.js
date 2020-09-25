@@ -84,13 +84,12 @@ const GET_DOCS = (id) => gql`query{
 export default withRouter((props) => {
   const id = parseInt(props.match.params.id || '1');
   const { loading, error, data } = useQuery(GET_DOCS(id));
-
+ 
   if (loading) return 'Loading...';
 
   // console.log(id, loading, error, data);
   const { plugin } = data;
-
-  console.log('PluginDetails:', plugin);
+  console.log('Whats the ', plugin);
   if (!plugin) return 'No plugin';
 
   return (
@@ -108,33 +107,49 @@ export default withRouter((props) => {
               <div className={styles.availableTools}>
                 <span>Available in:</span>
                 <span>
-                  {plugin.tools.map((tool) => <img src={global.API_URL + tool.icon.url} alt="Figma" />)}
+                  {plugin.tools.map((tool, index) => {
+                    <div key={index}>
+                      <img src={tool.icon ? `${global.API_URL}${tool.icon.url}` : ''} alt="Figma" />
+                    </div>;
+                  })}
                 </span>
               </div>
             </Col>
           </Row>
           <div className={styles.box}>
+            <div className={styles.headerStyle}>
+              <div>
+                <img alt=""/>
+                </div>
+              <div>{plugin.name}</div>
+            </div>
             <div className={styles.starsCounter}>
               <img src={require('@assets/icons/stars-arrow-top.svg')} alt="" />
               <span>{plugin.stars || '0'}</span>
             </div>
-            <div className={styles.headerStyle}>
-              {plugin.name}
-            </div>
+            
             <div className={styles.chips}>
               <Chip />
             </div>
             <div className={styles.author}>
               {plugin.author.icon && <img src={global.API_URL + plugin.author.icon.url} alt="" />}
               <span>
-                by {plugin.author.name}
+                by
+                {' '}
+                {plugin.author ? plugin.author.name : ''}
               </span>
             </div>
             <div className={styles.description}>
               <p>{plugin.description}</p>
             </div>
             <div className={styles.links}>
-              {plugin.links.map((item, index) => <Download key={index} link={item} />)}
+              {plugin.links.map((item, index) => {
+                return (
+                  <React.Fragment key={index}>
+                    <Download link={item} />
+                  </React.Fragment>
+                );
+              })}
             </div>
           </div>
 

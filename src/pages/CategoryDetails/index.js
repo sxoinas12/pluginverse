@@ -40,7 +40,7 @@ export default withRouter((props) => {
   const id = parseInt(props.match.params.id || '1');
   const { loading, error, data } = useQuery(GET_DOCS(id));
 
-  if (loading) return "Loading...";
+  if (loading) return 'Loading...';
 
   const { category } = data;
 
@@ -55,10 +55,10 @@ export default withRouter((props) => {
         <div className={styles.container}>
           <Breadcrumb>
             <Link to="/">Home</Link>
-            <span>{category.name || "Test Category"}</span>
+            <span>{category.name || 'Test Category'}</span>
           </Breadcrumb>
-          <Frame title={category.name} subtitle={category.plugins && (category.plugins.length+'')} height={250} styling={styles.titleStyle}/>
-          <List data={category.plugins} linkPrefix={(c) => '/plugin/' + c.id}/>
+          <Frame title={category.name} subtitle={category.plugins && (`${category.plugins.length}`)} height={250} styling={styles.titleStyle} />
+          <List data={category.plugins} linkPrefix={(c) => `/plugin/${c.id}`} />
         </div>
       </Col>
     </Row>
