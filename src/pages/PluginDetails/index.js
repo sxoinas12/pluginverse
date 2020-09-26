@@ -7,10 +7,10 @@ import { Row, Col } from 'react-grid-system';
 import { Link, withRouter } from 'react-router-dom';
 import Breadcrumb from '@components/Breadcrumb';
 import Chip from '@components/Chip';
-import Download from '@components/Download';
 import FeatureBar from '@components/FeatureBar';
 import List from '@components/List';
-import Upvote from './components/Upvote'
+import Upvote from './components/Upvote';
+import DownloadButtons from './components/DownloadButtons';
 import styles from './styles.module.less';
 
 const GET_DOCS = (id) => gql`query{
@@ -102,7 +102,7 @@ export default withRouter((props) => {
   }
 
   const { plugin } = data;
-  console.log(plugin);
+
   if (!plugin) return 'No plugin';
 
   return (
@@ -117,40 +117,51 @@ export default withRouter((props) => {
               </Breadcrumb>
             </Col>
           </Row>
-          <div className={styles.box}>
-            <div className={styles.headerStyle}>
-              <div>
-                <img src={require('@assets/images/visual-eyes.svg')} alt="" />
-              </div>
-              <div>{plugin.name}</div>
-            </div>
-            <div>
-              {(plugin.categories || []).map((category, _) => {
-                return (
-                  <div key={category.id}>{category.name}</div>
-                );
-              })}
-            </div>
-            <div>
-              <span>
-                by
-                {' '}
-                {plugin.author ? plugin.author.name : ''}
-              </span>
-            </div>
-
-            <Upvote stars={plugin.stars} />
-            <div>
-              Tolls will go here
-            </div>
-
-            <div>
-              Description will go here
-            </div>
-
-            <div>Similar PLugin section bottom</div>
-          </div>
-
+          <Row className={styles.box}>
+            <Col xs={6}>
+              <Row>
+                <Col xs={12} className={styles.headerStyle}>
+                  <div>
+                    <img src={require('@assets/images/visual-eyes.svg')} alt="" />
+                  </div>
+                  <div>{plugin.name}</div>
+                </Col>
+              </Row>
+              <Row>
+                <Col className={styles.chipsContainer}>
+                  {(plugin.categories || []).map((category, _) => {
+                    return (
+                      <div className={styles.categoryChip} key={category.id}>{category.name}</div>
+                    );
+                  })}
+                </Col>
+              </Row>
+              <Row>
+                <Col className={styles.author}>
+                  <span>
+                    by
+                    {' '}
+                    {plugin.author ? plugin.author.name : ''}
+                  </span>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Upvote stars={plugin.stars} />
+                </Col>
+              </Row>
+              <DownloadButtons tools={plugin.tools} links={plugin.links} />
+              <Row>
+                <Col>
+                  <div className={styles.description}>
+                    <p>
+                      {plugin.description}
+                    </p>
+                  </div>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
 
           <List data={plugin.similars.map((item) => {
             const tools = {};

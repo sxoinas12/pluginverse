@@ -1,10 +1,9 @@
 import React from 'react';
 
-import Navbar from '../../components/NavBar';
-
 
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
+import Navbar from '../../components/NavBar';
 
 const GET_DOCS = () => gql`
 query{
@@ -18,25 +17,27 @@ query{
   }
 }`;
 export default () => {
-  const { loading, error, data } = useQuery(GET_DOCS());
-
-  if (loading) return 'Loading...';
-  if (error) return 'Error...';
-
-  const { categories } = data;
-  const megaStructure = {};
-  categories.forEach((cat) => {
-    if (!cat.parent) {
-      megaStructure[cat.name] = {};
+  const { loading, data } = useQuery(GET_DOCS());
+  const [megaStructure, setMegaStructure] = React.useState({});
+  React.useEffect(() => {
+    const tempStructure = {};
+    if (data && data.categories) {
+      (data.categories).forEach((cat) => {
+        if (!cat.parent) {
+          tempStructure[cat.name] = {};
+        }
+      });
+      (data.categories).forEach((cat) => {
+        if (cat.parent) {
+          tempStructure[cat.parent.name][cat.name] = `/category/${cat.id}`;
+        }
+      });
+      setMegaStructure(tempStructure);
     }
-  });
-  categories.forEach((cat) => {
-    if (cat.parent) {
-      megaStructure[cat.parent.name][cat.name] = '/category/' + cat.id;
-    }
-  });
+  }, [data]);
 
-  return (
+
+  return !loading && (
     <div>
       <Navbar megaStructure={megaStructure} />
     </div>
