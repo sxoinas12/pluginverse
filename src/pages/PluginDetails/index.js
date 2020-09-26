@@ -1,18 +1,16 @@
 import React from 'react';
-
+import { css } from '@emotion/core';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
-
+import { DotLoader } from 'react-spinners';
 import { Row, Col } from 'react-grid-system';
-
 import { Link, withRouter } from 'react-router-dom';
-
 import Breadcrumb from '@components/Breadcrumb';
 import Chip from '@components/Chip';
 import Download from '@components/Download';
 import FeatureBar from '@components/FeatureBar';
 import List from '@components/List';
-
+import Upvote from './components/Upvote'
 import styles from './styles.module.less';
 
 const GET_DOCS = (id) => gql`query{
@@ -83,13 +81,28 @@ const GET_DOCS = (id) => gql`query{
 
 export default withRouter((props) => {
   const id = parseInt(props.match.params.id || '1');
-  const { loading, error, data } = useQuery(GET_DOCS(id));
- 
-  if (loading) return 'Loading...';
+  const { loading, data } = useQuery(GET_DOCS(id));
+  const override = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  border-color: red;
+`;
 
-  // console.log(id, loading, error, data);
+  if (loading) {
+    return (
+      <DotLoader
+        css={override}
+        size={150}
+        color="#9285B8"
+        loading={loading}
+      />
+    );
+  }
+
   const { plugin } = data;
-  console.log('Whats the ', plugin);
+  console.log(plugin);
   if (!plugin) return 'No plugin';
 
   return (
@@ -103,57 +116,41 @@ export default withRouter((props) => {
                 <span>{plugin.name || 'Test Plugin'}</span>
               </Breadcrumb>
             </Col>
-            <Col xs={12} md={6}>
-              <div className={styles.availableTools}>
-                <span>Available in:</span>
-                <span>
-                  {plugin.tools.map((tool, index) => {
-                    <div key={index}>
-                      <img src={tool.icon ? `${global.API_URL}${tool.icon.url}` : ''} alt="Figma" />
-                    </div>;
-                  })}
-                </span>
-              </div>
-            </Col>
           </Row>
           <div className={styles.box}>
             <div className={styles.headerStyle}>
               <div>
-                <img alt=""/>
-                </div>
+                <img src={require('@assets/images/visual-eyes.svg')} alt="" />
+              </div>
               <div>{plugin.name}</div>
             </div>
-            <div className={styles.starsCounter}>
-              <img src={require('@assets/icons/stars-arrow-top.svg')} alt="" />
-              <span>{plugin.stars || '0'}</span>
+            <div>
+              {(plugin.categories || []).map((category, _) => {
+                return (
+                  <div key={category.id}>{category.name}</div>
+                );
+              })}
             </div>
-            
-            <div className={styles.chips}>
-              <Chip />
-            </div>
-            <div className={styles.author}>
-              {plugin.author.icon && <img src={global.API_URL + plugin.author.icon.url} alt="" />}
+            <div>
               <span>
                 by
                 {' '}
                 {plugin.author ? plugin.author.name : ''}
               </span>
             </div>
-            <div className={styles.description}>
-              <p>{plugin.description}</p>
+
+            <Upvote stars={plugin.stars} />
+            <div>
+              Tolls will go here
             </div>
-            <div className={styles.links}>
-              {plugin.links.map((item, index) => {
-                return (
-                  <React.Fragment key={index}>
-                    <Download link={item} />
-                  </React.Fragment>
-                );
-              })}
+
+            <div>
+              Description will go here
             </div>
+
+            <div>Similar PLugin section bottom</div>
           </div>
 
-          <FeatureBar />
 
           <List data={plugin.similars.map((item) => {
             const tools = {};
