@@ -3,7 +3,6 @@ import { Row, Col } from 'react-grid-system';
 import styles from './styles.module.less';
 
 const DownloadButtons = ({ links }) => {
-  console.log(links)
   return (
     <Row>
       <Col>

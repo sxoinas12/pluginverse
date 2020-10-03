@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import styles from './styles.module.less';
 
 const Dropdown = ({
@@ -8,7 +7,6 @@ const Dropdown = ({
   options,
   onSelect
 }) => {
-
   return (
     <select className={styles.selectBox} required onChange={(e) => onSelect(e.target.value)}>
       <option value="" disabled selected hidden>{placeholder}</option>

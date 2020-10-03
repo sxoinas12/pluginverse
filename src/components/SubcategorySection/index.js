@@ -21,9 +21,8 @@ const catQuery = (id) => gql`{
 }`;
 
 const SubcategorySection = ({ category }) => {
-  // console.log("whats is up", category)
   const { loading, error, data } = useQuery(catQuery(category || 1));
-  // console.log(data)
+
   if (loading) return '';
   if (error) return <p>{JSON.stringify(error)}</p>;
   if (data.length == 0) return '';

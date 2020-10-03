@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 import { Container, Row, Col } from 'react-grid-system';
 import BundleBanner from '@components/BundleBanner';
 import Frame from '@components/Frame';
@@ -10,6 +10,7 @@ import { useQuery } from '@apollo/react-hooks';
 import GET_BUNDLE from '@graphql/bundles/getBundle';
 import GET_CATEGORIES from '@graphql/categories/getCategories';
 import GET_SUBCATEGORIES from '@graphql/categories/getCategoriesNested';
+import CategoriesBar from './components/CategoriesBar';
 import styles from './styles.module.less';
 
 // query design Tools
@@ -53,7 +54,7 @@ const Home = ({ history }) => {
   subcategories = category ? subcategories.filter((item) => item.parent.id === category) : subcategories;
   subcategories = subcategories.map(toOptions);
   const sections = findRandom(5, subcategories.length);
-  
+
   return (
     <>
       <Row className={styles.frame}>
@@ -75,7 +76,7 @@ const Home = ({ history }) => {
                 options={subcategories}
                 onSelect={(selected) => setSubCategory(selected)}
               />
-              <button type="button" className={styles.goButton} onClick={() => history.push('/category/' + subcategory)}>
+              <button type="button" className={styles.goButton} onClick={() => history.push(`/category/${subcategory}`)}>
                 Go
               </button>
             </div>
@@ -84,6 +85,7 @@ const Home = ({ history }) => {
           </Frame>
         </Col>
       </Row>
+      <CategoriesBar />
       <Container>
         {sections.map((item, index) => {
           return (
