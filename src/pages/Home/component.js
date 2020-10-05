@@ -11,6 +11,7 @@ import GET_BUNDLE from '@graphql/bundles/getBundle';
 import GET_CATEGORIES from '@graphql/categories/getCategories';
 import GET_SUBCATEGORIES from '@graphql/categories/getCategoriesNested';
 import CategoriesBar from './components/CategoriesBar';
+import DiscoverCategories from  './components/DiscoverCategories';
 import styles from './styles.module.less';
 
 // query design Tools
@@ -80,6 +81,7 @@ const Home = ({ history }) => {
                 Go
               </button>
             </div>
+            <DiscoverCategories />
             <img src={require('@assets/images/circle_1.svg')} alt="Moon" className={styles.moon} />
             <img src={require('@assets/images/circle_2.svg')} alt="Earth" className={styles.earth} />
           </Frame>
