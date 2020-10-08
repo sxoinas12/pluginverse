@@ -1,26 +1,17 @@
 import React from 'react';
 
+import usePagingQuery from '@hooks/usePagingQuery';
+import GET_ALLCATEGORIES from '@graphql/categories/getAllCategories';
 
-import gql from 'graphql-tag';
-import { useQuery } from '@apollo/react-hooks';
 import Navbar from '../../components/NavBar';
 
-const GET_DOCS = () => gql`
-query{
-  categories {
-    id,
-    name,
-    parent {
-      id,
-      name
-    }
-  }
-}`;
 export default () => {
-  const { loading, data } = useQuery(GET_DOCS());
+  const { loading, data } = usePagingQuery(GET_ALLCATEGORIES, 'categories');
   const [megaStructure, setMegaStructure] = React.useState({});
+
   React.useEffect(() => {
     const tempStructure = {};
+
     if (data && data.categories) {
       (data.categories).forEach((cat) => {
         if (!cat.parent) {
@@ -32,6 +23,7 @@ export default () => {
           tempStructure[cat.parent.name][cat.name] = `/category/${cat.id}`;
         }
       });
+      console.log(tempStructure)
       setMegaStructure(tempStructure);
     }
   }, [data]);

@@ -9,7 +9,7 @@ const MegaMenu = (props) => {
     title,
     structure
   } = props;
-
+  console.log("S",structure)
   const keys = Object.keys(structure);
   const columns = 12 / keys.length;
   return (

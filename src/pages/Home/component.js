@@ -44,8 +44,8 @@ const Home = ({ history }) => {
   const [subcategory, setSubCategory] = useState(undefined);
 
   const bundleQ = useQuery(GET_BUNDLE(1));
-  const catQ = usePagingQuery(GET_CATEGORIES, "categories");
-  const subcatQ = usePagingQuery(GET_SUBCATEGORIES, "categories");
+  const catQ = usePagingQuery(GET_CATEGORIES, 'categories');
+  const subcatQ = usePagingQuery(GET_SUBCATEGORIES, 'categories');
 
   if (bundleQ.loading || catQ.loading || subcatQ.loading) {
     return '';

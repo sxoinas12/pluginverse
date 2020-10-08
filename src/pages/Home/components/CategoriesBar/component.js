@@ -7,9 +7,9 @@ const CategoriesBar = ({ categories }) => {
   return (
     <Row>
       <Col className={styles.barContainer}>
-        {categories.map(category => {
+        {categories.map((category, index) => {
           return (
-            <div className={styles.barItem}>
+            <div className={styles.barItem} key={index}>
               <span>{category.name}</span>
             </div>
           );
@@ -20,7 +20,11 @@ const CategoriesBar = ({ categories }) => {
 };
 
 CategoriesBar.propTypes = {
-  categories: PropTypes.shape([])
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string
+    })
+  )
 };
 
 CategoriesBar.defaultProps = {

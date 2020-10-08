@@ -21,7 +21,7 @@ export default function usePagingQuery(fn, arrayName) {
       data: array,
       error: false,
       loading: false,
-      page 
+      page
     };
   }
   if (error) {

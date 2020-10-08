@@ -25,12 +25,12 @@ const BundleBanner = ({ bundle }) => {
             </div>
             <div className={styles.toolTitle}>
               FOR&nbsp;
-              {bundle.tools[0].name.toUpperCase()}
+              {bundle.tools && bundle.tools[0] && bundle.tools[0].name.toUpperCase()}
             </div>
           </Col>
         </Row>
         <Row>
-          <Col xs={12}><div className={styles.designBundle}>{bundle.name}</div></Col>
+          <Col xs={12}><div className={styles.designBundle}>{bundle && bundle.name}</div></Col>
         </Row>
         <Row>
           <Col xs={6} className={styles.actionsContainer}>

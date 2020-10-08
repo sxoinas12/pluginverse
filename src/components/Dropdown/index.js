@@ -5,10 +5,11 @@ import styles from './styles.module.less';
 const Dropdown = ({
   placeholder,
   options,
-  onSelect
+  onSelect,
+  value
 }) => {
   return (
-    <select className={styles.selectBox} required onChange={(e) => onSelect(e.target.value)}>
+    <select className={styles.selectBox} required defaultValue={value} onChange={(e) => onSelect(e.target.value)}>
       <option value="" disabled selected hidden>{placeholder}</option>
       {options.map((option) => (
         <option value={option.value} key={option.key}>
@@ -21,8 +22,14 @@ const Dropdown = ({
 
 Dropdown.propTypes = {
   placeholder: PropTypes.string,
-  options: PropTypes.any,
-  onSelect: PropTypes.func
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    })
+  ),
+  onSelect: PropTypes.func,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 Dropdown.defaultProps = {
@@ -41,7 +48,8 @@ Dropdown.defaultProps = {
       value: 'Value 3'
     }
   ],
-  onSelect: null
+  onSelect: null,
+  value: 'Value 1'
 };
 
 export default Dropdown;
