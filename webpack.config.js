@@ -10,7 +10,8 @@ module.exports = {
       CSSGlobal: path.join(__dirname, 'src/styles'),
       '@assets': path.join(__dirname, 'src/assets'),
       '@components': path.join(__dirname, 'src/components'),
-      '@graphql': path.join(__dirname, 'src/graphql')
+      '@graphql': path.join(__dirname, 'src/graphql'),
+      '@hooks': path.join(__dirname, 'src/hooks')
     }
   },
   devServer: {

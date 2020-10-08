@@ -7,11 +7,13 @@ import SubcategorySection from '@components/SubcategorySection';
 import Newsletter from '@components/Newsletter';
 import Dropdown from '@components/Dropdown';
 import { useQuery } from '@apollo/react-hooks';
+import usePagingQuery from '@hooks/usePagingQuery';
+
 import GET_BUNDLE from '@graphql/bundles/getBundle';
 import GET_CATEGORIES from '@graphql/categories/getCategories';
 import GET_SUBCATEGORIES from '@graphql/categories/getCategoriesNested';
 import CategoriesBar from './components/CategoriesBar';
-import DiscoverCategories from  './components/DiscoverCategories';
+import DiscoverCategories from './components/DiscoverCategories';
 import styles from './styles.module.less';
 
 // query design Tools
@@ -42,8 +44,8 @@ const Home = ({ history }) => {
   const [subcategory, setSubCategory] = useState(undefined);
 
   const bundleQ = useQuery(GET_BUNDLE(1));
-  const catQ = useQuery(GET_CATEGORIES);
-  const subcatQ = useQuery(GET_SUBCATEGORIES);
+  const catQ = usePagingQuery(GET_CATEGORIES, "categories");
+  const subcatQ = usePagingQuery(GET_SUBCATEGORIES, "categories");
 
   if (bundleQ.loading || catQ.loading || subcatQ.loading) {
     return '';
