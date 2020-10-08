@@ -7,7 +7,7 @@ import { Row, Col } from 'react-grid-system';
 import { Link, withRouter } from 'react-router-dom';
 import Breadcrumb from '@components/Breadcrumb';
 import List from '@components/List';
-import Upvote from './components/Upvote/component';
+import Upvote from './components/upvote/component';
 import DownloadButtons from './components/DownloadButtons';
 import styles from './styles.module.less';
 
