@@ -45,7 +45,7 @@ export default withRouter((props) => {
   const { category } = data;
 
   category.plugins = category.plugins.map((i) => {
-    i.author = i.author.name;
+    i.author = i.author && i.author.name;
     i.header = i.name;
     return i;
   });
