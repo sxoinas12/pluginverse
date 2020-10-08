@@ -43,7 +43,7 @@ const BundleDetails = ({ match }) => {
                   </div>
                   <div className={styles.toolTitle}>
                     FOR&nbsp;
-                    {bundle.tools[0].name.toUpperCase()}
+                    {bundle.tools && bundle.tools[0] && bundle.tools[0].name.toUpperCase()}
                   </div>
                 </Col>
               </Row>
