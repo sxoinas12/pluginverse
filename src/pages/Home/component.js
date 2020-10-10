@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Container, Row, Col } from 'react-grid-system';
 import BundleBanner from '@components/BundleBanner';
@@ -14,6 +14,7 @@ import GET_CATEGORIES from '@graphql/categories/getCategories';
 import GET_SUBCATEGORIES from '@graphql/categories/getCategoriesNested';
 import CategoriesBar from './components/CategoriesBar';
 import DiscoverCategories from './components/DiscoverCategories';
+import { setLoading } from '../../router/reducer';
 import styles from './styles.module.less';
 
 // query design Tools
@@ -38,7 +39,7 @@ const findRandom = (size, max) => {
   return arr;
 };
 
-const Home = ({ history }) => {
+const Home = ({ history, dispatch }) => {
   const [tool, setTool] = useState(undefined);
   const [category, setCategory] = useState(undefined);
   const [subcategory, setSubCategory] = useState(undefined);
@@ -46,16 +47,22 @@ const Home = ({ history }) => {
   const bundleQ = useQuery(GET_BUNDLE(1));
   const catQ = usePagingQuery(GET_CATEGORIES, 'categories');
   const subcatQ = usePagingQuery(GET_SUBCATEGORIES, 'categories');
+  useEffect(() => {
+    if (dispatch) {
+      if (bundleQ.loading || catQ.loading || subcatQ.loading) {
+        dispatch(setLoading(bundleQ.loading || catQ.loading || subcatQ.loading));
+      } else {
+        dispatch(setLoading(false));
+      }
+    }
+  }, [dispatch, bundleQ.loading, catQ.loading, subcatQ.loading]);
 
-  if (bundleQ.loading || catQ.loading || subcatQ.loading) {
-    return '';
-  }
 
-  let categories = catQ.error ? [] : catQ.data.categories;
-  categories = categories.map(toOptions);
-  let subcategories = subcatQ.error ? [] : subcatQ.data.categories;
+  let categories = catQ.error ? [] : (catQ.data && catQ.data.categories);
+  categories = (categories || []).map(toOptions);
+  let subcategories = subcatQ.error ? [] : (subcatQ.data && subcatQ.data.categories);
   subcategories = category ? subcategories.filter((item) => item.parent.id === category) : subcategories;
-  subcategories = subcategories.map(toOptions);
+  subcategories = (subcategories || []).map(toOptions);
   const sections = findRandom(5, subcategories.length);
 
   return (
@@ -91,7 +98,7 @@ const Home = ({ history }) => {
       </Row>
       <CategoriesBar />
       <Container>
-        {sections.map((item, index) => {
+        {(sections || []).map((item, index) => {
           return (
             <Row className={styles.section} key={index}>
               <Col>
