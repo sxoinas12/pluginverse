@@ -6,7 +6,7 @@ import { Link, withRouter } from 'react-router-dom';
 import Breadcrumb from '@components/Breadcrumb';
 import List from '@components/List';
 import SimilarSection from '@components/SimilarSection';
-import BaseLoader from '@components/Baseloader';
+import BaseLoader from '@components/BaseLoader';
 import Upvote from './components/upvote/component';
 import DownloadButtons from './components/DownloadButtons';
 import styles from './styles.module.less';
