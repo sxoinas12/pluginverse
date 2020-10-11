@@ -29,9 +29,9 @@ const BaseCard = ({
           <div>
             <div className={styles.header}>{header}</div>
             <div className={styles.tools}>
-              {tools.figma && <img src={require('@assets/icons/figma.svg')} alt="Figma" />}
-              {tools.adobe && <img src={require('@assets/icons/adobe.svg')} alt="AdobeXD" />}
-              {tools.sketch && <img src={require('@assets/icons/sketch.svg')} alt="Sketch" />}
+              <img src={require('@assets/icons/figma.svg')} alt="Figma" className={tools.figma ? styles.hasTool : null} />
+              <img src={require('@assets/icons/adobe.svg')} alt="AdobeXD" className={tools.adobe ? styles.hasTool : null} />
+              <img src={require('@assets/icons/sketch.svg')} alt="Sketch" className={tools.sketch ? styles.hasTool : null} />
             </div>
             <div className={styles.description}>{description}</div>
           </div>
@@ -51,7 +51,7 @@ BaseCard.propTypes = {
   }),
   image: PropTypes.shape({
     url: PropTypes.string
-  }),
+  })
 };
 
 BaseCard.defaultProps = {

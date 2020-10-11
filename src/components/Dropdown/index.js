@@ -10,7 +10,7 @@ const Dropdown = ({
 }) => {
   return (
     <select className={styles.selectBox} required defaultValue={value} onChange={(e) => onSelect(e.target.value)}>
-      <option value="" disabled selected hidden>{placeholder}</option>
+      <option value="" disabled hidden>{placeholder}</option>
       {options.map((option) => (
         <option value={option.value} key={option.key}>
           {option.key}

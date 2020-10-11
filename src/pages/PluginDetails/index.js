@@ -1,12 +1,12 @@
 import React from 'react';
-import { css } from '@emotion/core';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
-import { DotLoader } from 'react-spinners';
 import { Row, Col } from 'react-grid-system';
 import { Link, withRouter } from 'react-router-dom';
 import Breadcrumb from '@components/Breadcrumb';
 import List from '@components/List';
+import SimilarSection from '@components/SimilarSection';
+import BaseLoader from '@components/Baseloader';
 import Upvote from './components/upvote/component';
 import DownloadButtons from './components/DownloadButtons';
 import styles from './styles.module.less';
@@ -80,22 +80,10 @@ const GET_DOCS = (id) => gql`query{
 export default withRouter((props) => {
   const id = parseInt(props.match.params.id || '1');
   const { loading, data } = useQuery(GET_DOCS(id));
-  const override = css`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  border-color: red;
-`;
 
   if (loading) {
     return (
-      <DotLoader
-        css={override}
-        size={150}
-        color="#9285B8"
-        loading={loading}
-      />
+      <BaseLoader isLoading={loading} />
     );
   }
 
@@ -160,7 +148,11 @@ export default withRouter((props) => {
               </Row>
             </Col>
           </Row>
-
+          <Row className={styles.similarSectionContainer}>
+            <Col xs={12}>
+              <SimilarSection />
+            </Col>
+          </Row>
           <List data={plugin.similars.map((item) => {
             const tools = {};
             if (item.tools) {

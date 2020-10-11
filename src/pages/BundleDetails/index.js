@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import { Row, Col, Container } from 'react-grid-system';
 import BundlePlugin from '@components/BundlePlugin';
 import { useQuery } from '@apollo/react-hooks';
+import Breadcrumb from '@components/Breadcrumb';
+
+import { Link, withRouter } from 'react-router-dom';
 import GET_BUNDLE from '../../graphql/bundles/getBundle';
 import styles from './styles.module.less';
 
@@ -17,11 +20,21 @@ const BundleDetails = ({ match }) => {
   }, [data]);
 
   return bundle ? (
-    <Container>
-      <Row className={styles.bundleDetailsContainer}>
-        <Col xs={12}>
-          <Row className={styles.bundleHeader}>
-            <Col xs={12}>
+    <Row className={styles.bundleDetailsContainer}>
+      <Col xs={12}>
+        <Row className={styles.bundleHeader}>
+          <Col xs={12}>
+            <Container>
+              <Row>
+                <Col xs={12} md={6}>
+                  <Breadcrumb theme="dark">
+                    <Link to="/">
+                      <div style={{ color: 'white'}}>Home</div>
+                    </Link>
+                    <span className={styles.navBarLink}>{bundle.name || 'Test Plugin'}</span>
+                  </Breadcrumb>
+                </Col>
+              </Row>
               <Row>
                 <Col xs={12}><div className={styles.designBundle}>{bundle.name}</div></Col>
               </Row>
@@ -46,11 +59,13 @@ const BundleDetails = ({ match }) => {
                   </div>
                 </Col>
               </Row>
-            </Col>
-            <div className={styles.bundleIcon}>
-              <img src={require('@assets/icons/bundle.svg')} alt="" />
-            </div>
-          </Row>
+            </Container>
+          </Col>
+          <div className={styles.bundleIcon}>
+            <img src={require('@assets/icons/bundle.svg')} alt="" />
+          </div>
+        </Row>
+        <Container>
           <Row>
             <Col xs={12}>
               {bundle.plugins.map((plugin, index) => {
@@ -62,9 +77,9 @@ const BundleDetails = ({ match }) => {
               })}
             </Col>
           </Row>
-        </Col>
-      </Row>
-    </Container>
+        </Container>
+      </Col>
+    </Row>
   ) : null;
 };
 
@@ -74,4 +89,4 @@ BundleDetails.propTypes = {
   })
 };
 
-export default BundleDetails;
+export default withRouter(BundleDetails);

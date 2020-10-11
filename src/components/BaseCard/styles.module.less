@@ -51,6 +51,7 @@
             line-height: 34px;
             letter-spacing: -0.03em;
             color: @off-black;
+            overflow-wrap: break-word;
         }
     
         .description {
@@ -75,9 +76,14 @@
             padding-bottom: 6px;
             display: flex;
             justify-content: flex-start;
+            
             img {
+                opacity: 0.2;
                 margin-left: 2px;
                 margin-right: 2px;
+                &.has-tool {
+                    opacity: 1;
+                }
             }
         }
     }

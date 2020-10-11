@@ -8,6 +8,8 @@ export default function usePagingQuery(fn, arrayName) {
   const [page, setPage] = useState(0);
 
   const { data, error, loading } = useQuery(fn(page));
+
+
   if (loading) {
     return { data: null, error: false, loading: true };
   }

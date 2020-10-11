@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Container } from 'react-grid-system';
-import { DotLoader } from 'react-spinners';
-import { css } from '@emotion/core';
+import BaseLoader from '@components/BaseLoader';
 import Pages from '../pages';
 import Layouts from '../layouts';
 import { useGetCategories } from './useGetCategories.js';
@@ -20,6 +20,7 @@ const LayoutRoute = (props) => {
     dispatch,
     state,
     fluid,
+    theme,
     ...rest
   } = props;
 
@@ -31,29 +32,17 @@ const LayoutRoute = (props) => {
       {...rest}
       render={({ match }) => {
         if (state && state.isLoading) {
-          const override = css`
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin: 0 auto;
-          border-color: red;
-        `;
           return (
-            <DotLoader
-              css={override}
-              size={150}
-              color="#9285B8"
-              loading={state.isLoading}
-            />
+            <BaseLoader isLoading={state.isLoading} />
           );
         }
         return state && !state.isLoading && (
           <Container fluid>
-            { header && React.createElement(header, megaStructure)}
+            { header && React.createElement(header, { megaStructure, theme })}
             {fluid ? (
               <>
                 { children }
-                { component && React.createElement(component, dispatch)}
+                { component && React.createElement(component, { dispatch, match })}
               </>
             ) : (
               <Container>
@@ -84,7 +73,7 @@ const AppRouter = () => {
       <LayoutRoute path="/test" exact component={Pages.NikTest} header={Layouts.Header} footer={Layouts.Footer} {...rest} />
       <Route path="/author/:id" exact component={Pages.AuthorDetails} />
       <Route path="/authors" exact component={Pages.AuthorList} />
-      <Route path="/bundle/:id" exact component={Pages.BundleDetails} />
+      <LayoutRoute path="/bundle/:id" exact component={Pages.BundleDetails}  header={Layouts.Header} fluid  footer={Layouts.Footer} {...rest} theme="dark" />
       <Route path="/bundles" exact component={Pages.BundleList} />
       <LayoutRoute path="/category/:id" exact component={Pages.CategoryDetails} header={Layouts.Header} footer={Layouts.Footer} {...rest} />
       <Route path="/categories" exact component={Pages.CategoryList} />

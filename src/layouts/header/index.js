@@ -2,10 +2,10 @@ import React from 'react';
 
 import Navbar from '../../components/NavBar';
 
-export default ({ megaStructure }) => {
+export default ({ megaStructure, theme }) => {
   return (
     <div>
-      <Navbar megaStructure={megaStructure} />
+      <Navbar theme={theme} megaStructure={megaStructure} />
     </div>
 
   );

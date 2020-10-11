@@ -40,23 +40,14 @@ const findRandom = (size, max) => {
 };
 
 const Home = ({ history, dispatch }) => {
+
   const [tool, setTool] = useState(undefined);
   const [category, setCategory] = useState(undefined);
   const [subcategory, setSubCategory] = useState(undefined);
 
-  const bundleQ = useQuery(GET_BUNDLE(1));
+  const bundleQ = useQuery(GET_BUNDLE(2));
   const catQ = usePagingQuery(GET_CATEGORIES, 'categories');
   const subcatQ = usePagingQuery(GET_SUBCATEGORIES, 'categories');
-  useEffect(() => {
-    if (dispatch) {
-      if (bundleQ.loading || catQ.loading || subcatQ.loading) {
-        dispatch(setLoading(bundleQ.loading || catQ.loading || subcatQ.loading));
-      } else {
-        dispatch(setLoading(false));
-      }
-    }
-  }, [dispatch, bundleQ.loading, catQ.loading, subcatQ.loading]);
-
 
   let categories = catQ.error ? [] : (catQ.data && catQ.data.categories);
   categories = (categories || []).map(toOptions);

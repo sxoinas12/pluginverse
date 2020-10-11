@@ -1,18 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {
+  Row,
+  Col
+} from 'react-grid-system';
 import styles from './styles.module.less';
 
-const BundlePlugin = ({ description, author, tools, id }) => {
+const BundlePlugin = ({
+  name, description, author, tools, id
+}) => {
   return (
-    <div className={styles.bundlePluginContainer}>
-      <div>
+    <Row className={styles.bundlePluginContainer}>
+      <Col xs={2}>
         <div className={styles.icon}>
           <img src={require('@assets/images/visual-eyes.svg')} alt="" />
         </div>
-      </div>
-      <div>
+      </Col>
+      <Col xs={3} className={styles.dataSection}>
         <div className={styles.availableContainer}>
-          <div className={styles.availableText}>Avialable in</div>
+          <div className={styles.availableText}>Available in</div>
           <div className={styles.availableTools}>
             {tools && tools.map((tool, index) => {
               switch (tool.name) {
@@ -28,22 +34,23 @@ const BundlePlugin = ({ description, author, tools, id }) => {
             })}
           </div>
         </div>
-        <div className={styles.headerTitle}>Clean Document</div>
+        <div className={styles.headerTitle}>{name}</div>
         <div className={styles.authorText}>
           By&nbsp;
-          {author.name}
+          {author && author.name}
         </div>
-      </div>
-      <div className={styles.descriptionContainer}>
+      </Col>
+      <Col xs={4} className={styles.descriptionContainer}>
         <div className={styles.bestForText}>Best of</div>
         <div className={styles.descriptionText}>{description}</div>
-      </div>
-      <div className={styles.buttonContainer}>
+      </Col>
+      <Col xs={3} className={styles.buttonContainer}>
         <div role="button" className={styles.pluginButton}>
           <a href={`/plugin/${id}`}>Go to Plugin page</a>
         </div>
-      </div>
-    </div>
+      </Col>
+    </Row>
+
   );
 };
 
@@ -51,7 +58,6 @@ const BundlePlugin = ({ description, author, tools, id }) => {
 BundlePlugin.propTypes = {
   plugin: PropTypes.shape({})
 };
-
 
 
 export default BundlePlugin;

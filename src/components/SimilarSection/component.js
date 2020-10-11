@@ -6,10 +6,11 @@ import List from '@components/List';
 import BaseCard from '../BaseCard';
 import styles from './styles.module.less';
 
-const SimilarSection = ({ title, subtitle, data }) => (
+const SimilarSection = ({ title, subtitle, data, size }) => (
   <div className={styles.section}>
     <Section title={title} subtitle={subtitle} extra={`More ${title.toLowerCase()} >`}>
       <List
+        size={size}
         base={BaseCard}
         scrollable
         linkPrefix={(c) => `/plugin/${c.id}`}
@@ -39,12 +40,14 @@ const SimilarSection = ({ title, subtitle, data }) => (
 
 
 SimilarSection.propTypes = {
+  size: PropTypes.number,
   title: PropTypes.string,
   subtitle: PropTypes.string,
   data: PropTypes.arrayOf(PropTypes.shape({}))
 };
 
 SimilarSection.defaultProps = {
+  size: 4,
   title: 'Similar Section',
   subtitle: 'Subtitle',
   data: [

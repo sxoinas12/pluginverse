@@ -4,6 +4,7 @@ import { Row, Col } from 'react-grid-system';
 import styles from './styles.module.less';
 
 const BundleBanner = ({ bundle }) => {
+  console.log('@@@@',bundle)
   return (
     <Row className={styles.bundleContainer}>
       <Col xs={12}>
@@ -25,7 +26,6 @@ const BundleBanner = ({ bundle }) => {
             </div>
             <div className={styles.toolTitle}>
               FOR&nbsp;
-              
             </div>
           </Col>
         </Row>

@@ -14,10 +14,8 @@ export const useGetCategories = ({ dispatch }) => {
     }
   }, [loading, dispatch]);
 
-
   React.useEffect(() => {
     const tempStructure = {};
-
     if (data && data.categories) {
       data.categories.forEach((cat) => {
         if (!cat.parent) {
