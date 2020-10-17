@@ -1,6 +1,6 @@
 import AuthorDetails from './AuthorDetails';
 import BundleDetails from './BundleDetails';
-import BundleList from './BundleList';
+import BundlesList from './BundlesList';
 import CategoryDetails from './CategoryDetails';
 import CategoryList from './CategoryList';
 import Contact from './Contact';
@@ -13,7 +13,7 @@ import NikTest from './NikTestPage';
 export default {
   AuthorDetails,
   BundleDetails,
-  BundleList,
+  BundlesList,
   CategoryDetails,
   CategoryList,
   Contact,

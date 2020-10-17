@@ -65,7 +65,7 @@ const BundleDetails = ({ match }) => {
             <img src={require('@assets/icons/bundle.svg')} alt="" />
           </div>
         </Row>
-        <Container>
+        <Container style={{ maxWidth: '1440px'}}>
           <Row>
             <Col xs={12}>
               {bundle.plugins.map((plugin, index) => {

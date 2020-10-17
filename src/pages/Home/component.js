@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Container, Row, Col } from 'react-grid-system';
+import { Container, Row, Col, setConfiguration } from 'react-grid-system';
 import BundleBanner from '@components/BundleBanner';
 import Frame from '@components/Frame';
 import SubcategorySection from '@components/SubcategorySection';
@@ -40,7 +40,6 @@ const findRandom = (size, max) => {
 };
 
 const Home = ({ history, dispatch }) => {
-
   const [tool, setTool] = useState(undefined);
   const [category, setCategory] = useState(undefined);
   const [subcategory, setSubCategory] = useState(undefined);
@@ -88,7 +87,7 @@ const Home = ({ history, dispatch }) => {
         </Col>
       </Row>
       <CategoriesBar />
-      <Container>
+      <Container style={{ maxWidth: '1440px'}}>
         {(sections || []).map((item, index) => {
           return (
             <Row className={styles.section} key={index}>
