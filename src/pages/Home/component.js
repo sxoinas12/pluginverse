@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Container, Row, Col, setConfiguration } from 'react-grid-system';
+import { Container, Row, Col } from 'react-grid-system';
 import BundleBanner from '@components/BundleBanner';
 import Frame from '@components/Frame';
 import SubcategorySection from '@components/SubcategorySection';
@@ -14,7 +14,6 @@ import GET_CATEGORIES from '@graphql/categories/getCategories';
 import GET_SUBCATEGORIES from '@graphql/categories/getCategoriesNested';
 import CategoriesBar from './components/CategoriesBar';
 import DiscoverCategories from './components/DiscoverCategories';
-import { setLoading } from '../../router/reducer';
 import styles from './styles.module.less';
 
 // query design Tools
