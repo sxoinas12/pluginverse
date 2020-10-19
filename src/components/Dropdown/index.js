@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.module.less';
 
@@ -8,6 +8,13 @@ const Dropdown = ({
   onSelect,
   value
 }) => {
+
+  useEffect(() => {
+    if (options && options[0] && options[0].value && onSelect) {
+      onSelect(options[0].value);
+    }
+  }, [options.length]);
+
   return (
     <select className={styles.selectBox} required defaultValue={value} onChange={(e) => onSelect(e.target.value)}>
       <option value="" disabled hidden>{placeholder}</option>

@@ -31,7 +31,7 @@ const toOptions = (item) => {
 
 const findRandom = (size, max) => {
   const arr = [];
-  for (let i = size - 1; i > 0; i -= 1) {
+  for (let i = size - 1; i >= 0; i -= 1) {
     const j = Math.floor(Math.random() * max);
     arr[i] = j;
   }
@@ -49,11 +49,12 @@ const Home = ({ history, dispatch }) => {
 
   let categories = catQ.error ? [] : (catQ.data && catQ.data.categories);
   categories = (categories || []).map(toOptions);
-  let subcategories = subcatQ.error ? [] : (subcatQ.data && subcatQ.data.categories);
+  let subcategories = subcatQ.error ? [] : (subcatQ.data && subcatQ.data.categories) || [];
   subcategories = category ? subcategories.filter((item) => item.parent.id === category) : subcategories;
   subcategories = (subcategories || []).map(toOptions);
-  const sections = findRandom(5, subcategories.length);
+  const sections = findRandom(3, subcategories.length);
 
+  console.log(categories, subcategories)
   return (
     <>
       <Row className={styles.frame}>
@@ -86,12 +87,12 @@ const Home = ({ history, dispatch }) => {
         </Col>
       </Row>
       <CategoriesBar />
-      <Container style={{ maxWidth: '1440px'}}>
-        {(sections || []).map((item, index) => {
+      <Container style={{ maxWidth: '1440px' }}>
+        {(sections || []).slice(0,1).map((item, index) => {
           return (
             <Row className={styles.section} key={index}>
               <Col>
-                <SubcategorySection category={item} />
+                <SubcategorySection category={subcategories[item] && subcategories[item].value} />
               </Col>
             </Row>
           );
@@ -103,6 +104,15 @@ const Home = ({ history, dispatch }) => {
             }
           </Col>
         </Row>
+        {(sections || []).slice(1).map((item, index) => {
+          return (
+            <Row className={styles.section} key={index}>
+              <Col>
+                <SubcategorySection category={subcategories[item] && subcategories[item].value} />
+              </Col>
+            </Row>
+          );
+        })}
       </Container>
       <Row className={styles.frame}>
         <Col>
