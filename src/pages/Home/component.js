@@ -52,9 +52,8 @@ const Home = ({ history, dispatch }) => {
   let subcategories = subcatQ.error ? [] : (subcatQ.data && subcatQ.data.categories) || [];
   subcategories = category ? subcategories.filter((item) => item.parent.id === category) : subcategories;
   subcategories = (subcategories || []).map(toOptions);
-  const sections = findRandom(3, subcategories.length);
+  const sections = findRandom(5, subcategories.length);
 
-  console.log(categories, subcategories)
   return (
     <>
       <Row className={styles.frame}>
@@ -88,7 +87,7 @@ const Home = ({ history, dispatch }) => {
       </Row>
       <CategoriesBar />
       <Container style={{ maxWidth: '1440px' }}>
-        {(sections || []).slice(0,1).map((item, index) => {
+        {(sections || []).slice(0, 1).map((item, index) => {
           return (
             <Row className={styles.section} key={index}>
               <Col>
@@ -104,7 +103,7 @@ const Home = ({ history, dispatch }) => {
             }
           </Col>
         </Row>
-        {(sections || []).slice(1).map((item, index) => {
+        {(sections || []).slice(1, 3).map((item, index) => {
           return (
             <Row className={styles.section} key={index}>
               <Col>
@@ -114,11 +113,22 @@ const Home = ({ history, dispatch }) => {
           );
         })}
       </Container>
-      <Row className={styles.frame}>
+      <Row className={styles.newsletter}>
         <Col>
           <Newsletter />
         </Col>
       </Row>
+      <Container style={{ maxWidth: '1440px' }}>
+        {(sections || []).slice(3).map((item, index) => {
+          return (
+            <Row className={styles.section} key={index}>
+              <Col>
+                <SubcategorySection category={subcategories[item] && subcategories[item].value} />
+              </Col>
+            </Row>
+          );
+        })}
+      </Container>
     </>
   );
 };
