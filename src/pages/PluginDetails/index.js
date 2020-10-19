@@ -150,28 +150,9 @@ export default withRouter((props) => {
           </Row>
           <Row className={styles.similarSectionContainer}>
             <Col xs={12}>
-              <SimilarSection />
+              <SimilarSection title="Similar plugins" subtitle="" data={plugin.similars} size={3} />
             </Col>
           </Row>
-          <List data={plugin.similars.map((item) => {
-            const tools = {};
-            if (item.tools) {
-              for (let i = 0; i < item.tools.length; i += 1) {
-                tools[item.tools[i].name] = 1;
-              }
-            }
-            return {
-              author: (item.author && item.author.name),
-              header: item.name,
-              description: item.description,
-              avatar: (item.icon && global.API_URL + item.icon.url),
-              tools,
-              image: { // need to pass images[0] when we fix graphQL bug
-                url: 'https://strapi.bappy.tech/uploads/ca54d9bd4b0c48de91fd06ef9fb74690.png?294960.89500000014'
-              }
-            };
-          })}
-          />
         </div>
       </Col>
     </Row>

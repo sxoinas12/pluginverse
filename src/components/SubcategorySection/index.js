@@ -25,7 +25,7 @@ const SubcategorySection = ({ category }) => {
 
   if (loading) return '';
   if (error) return <p>{JSON.stringify(error)}</p>;
-  if (data.length == 0) return '';
+  if (data.length === 0) return '';
   return (
     <div className={styles.section}>
       <SimilarSection

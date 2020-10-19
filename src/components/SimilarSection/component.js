@@ -8,7 +8,7 @@ import styles from './styles.module.less';
 
 const SimilarSection = ({ title, subtitle, data, size }) => (
   <div className={styles.section}>
-    <Section title={title} subtitle={subtitle} extra={`More ${title.toLowerCase()} >`}>
+    <Section title={title} subtitle={subtitle} extra="">
       <List
         size={size}
         base={BaseCard}
