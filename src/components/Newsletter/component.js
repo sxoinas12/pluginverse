@@ -20,8 +20,9 @@ const Newsletter = () => {
     let url = global.API_URL + "/newsletters";
     fetch(url, {
       method: "POST",
+      headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify({ email })
-    }).then(() => setSent(-1)).catch(() => setSent(true));
+    }).then(() => setSent(true)).catch(() => setSent(-1));
   }
 
   return (
