@@ -5,7 +5,8 @@ import styles from './styles.module.less';
 const BaseCard = ({
   header,
   description,
-  tools
+  tools,
+  stars
 }) => {
   return (
     <div>
@@ -21,7 +22,7 @@ const BaseCard = ({
               <div>
                 <img src={require('@assets/icons/arrow-up.svg')} alt="" />
               </div>
-              <div className={styles.upvotesNumber}>236</div>
+              <div className={styles.upvotesNumber}>{stars || 0}</div>
             </div>
           </div>
         </div>
@@ -51,7 +52,8 @@ BaseCard.propTypes = {
   }),
   image: PropTypes.shape({
     url: PropTypes.string
-  })
+  }),
+  stars: PropTypes.number
 };
 
 BaseCard.defaultProps = {
@@ -65,7 +67,8 @@ BaseCard.defaultProps = {
   avatar: require('../../assets/icons/avatar.svg'),
   image: {
     url: 'https://strapi.bappy.tech/uploads/ca54d9bd4b0c48de91fd06ef9fb74690.png?294960.89500000014'
-  }
+  },
+  stars: 0
 };
 
 

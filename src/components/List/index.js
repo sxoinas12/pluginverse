@@ -52,7 +52,8 @@ List.propTypes = {
     header: PropTypes.string,
     description: PropTypes.string,
     tools: PropTypes.shape({}),
-    avatar: PropTypes.string
+    avatar: PropTypes.string,
+    stars: PropTypes.number
   }))
 };
 

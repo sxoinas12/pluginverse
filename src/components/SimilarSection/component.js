@@ -32,7 +32,8 @@ const SimilarSection = ({ title, subtitle, data, size }) => {
               id: item.id,
               image: { // need to pass images[0] when we fix graphQL bug
                 url: 'https://strapi.bappy.tech/uploads/ca54d9bd4b0c48de91fd06ef9fb74690.png?294960.89500000014'
-              }
+              },
+              stars: item.stars || 0
             };
           })}
         />

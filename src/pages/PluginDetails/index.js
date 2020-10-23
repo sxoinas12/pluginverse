@@ -133,7 +133,7 @@ export default withRouter((props) => {
               </Row>
               <Row>
                 <Col>
-                  <Upvote stars={plugin.stars} />
+                  <Upvote stars={plugin.stars} id={plugin.id} />
                 </Col>
               </Row>
               <DownloadButtons tools={plugin.tools} links={plugin.links} />

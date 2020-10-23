@@ -15,7 +15,8 @@ const catQuery = (id) => gql`{
     plugins{
       id,
       name,
-      description
+      description,
+      stars
     }
   }
 }`;

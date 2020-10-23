@@ -12,7 +12,8 @@ query{
       description,
       author {
         name,
-      }
+      },
+      stars
     },
     tools {
       id,
