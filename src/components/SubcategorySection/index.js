@@ -16,7 +16,11 @@ const catQuery = (id) => gql`{
       id,
       name,
       description,
-      stars
+      stars,
+      tools {
+        name,
+        id,
+        }
     }
   }
 }`;
@@ -28,7 +32,7 @@ const SubcategorySection = ({ category }) => {
   if (loading) return '';
   if (error) return <p>{JSON.stringify(error)}</p>;
   if (data.length === 0) return '';
-
+  console.log('sdadadadadasdas', data.category)
   return (
     <div className={styles.section}>
       <SimilarSection

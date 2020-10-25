@@ -30,9 +30,9 @@ const BaseCard = ({
           <div>
             <div className={styles.header}>{header}</div>
             <div className={styles.tools}>
-              <img src={require('@assets/icons/figma.svg')} alt="Figma" className={tools.figma ? styles.hasTool : null} />
-              <img src={require('@assets/icons/adobe.svg')} alt="AdobeXD" className={tools.adobe ? styles.hasTool : null} />
-              <img src={require('@assets/icons/sketch.svg')} alt="Sketch" className={tools.sketch ? styles.hasTool : null} />
+              <img src={require('@assets/icons/figma.svg')} alt="Figma" className={tools.Figma ? styles.hasTool : null} />
+              <img src={require('@assets/icons/adobe.svg')} alt="AdobeXD" className={tools.Adobe ? styles.hasTool : null} />
+              <img src={require('@assets/icons/sketch.svg')} alt="Sketch" className={tools.Sketch ? styles.hasTool : null} />
             </div>
             <div className={styles.description}>{description}</div>
           </div>
@@ -60,11 +60,10 @@ BaseCard.defaultProps = {
   description: 'This is a description of one sentence for the plugin',
   header: 'VisualEyes',
   tools: {
-    figma: {},
-    adobe: {},
-    sketch: {}
+    Figma: {},
+    Adobe: {},
+    Sketch: {}
   },
-  avatar: require('../../assets/icons/avatar.svg'),
   image: {
     url: 'https://strapi.bappy.tech/uploads/ca54d9bd4b0c48de91fd06ef9fb74690.png?294960.89500000014'
   },
