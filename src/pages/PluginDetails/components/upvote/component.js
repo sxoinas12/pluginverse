@@ -7,11 +7,11 @@ const Upvote = ({ stars, id }) => {
 		return;
 	}
   return (
-    <div className={styles.upvoteWrapper}>
+    <div className={styles.upvoteWrapper} onClick={() => sendRequest(id)}>
       <div className={styles.upvoteIcon}>
         <img src={require('@assets/icons/arrow-top.svg')} alt="" />
       </div>
-      <div className={styles.upvoteText} onClick={ () => sendRequest(id) }>Upvote</div>
+      <div className={styles.upvoteText}>Upvote</div>
       <div className={styles.starsText}>{stars || 0}</div>
     </div>
   );
