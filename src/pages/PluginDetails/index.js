@@ -138,7 +138,7 @@ export default withRouter((props) => {
             <Col>
               <div className={styles.description}>
                 <p>
-                  {plugin.description.replace(/<[^>]*>?/gm, '')}
+                  {plugin.description ? plugin.description.replace(/<[^>]*>?/gm, '') : ''}
                 </p>
               </div>
             </Col>
