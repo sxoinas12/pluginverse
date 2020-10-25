@@ -27,16 +27,14 @@ const Newsletter = () => {
 
   return (
     <Frame>
-      <div className={styles.newsletterInput}>
-        {sent === true ? <span>You stay informed!</span>
-          : (
-            <>
-              <input type="text" value={email} placeholder="Your email" onChange={(e) => setEmail(e.target.value)} />
-              <button type="submit" onClick={() => sendMail()}>Join our newsletter</button>
-              {sent === -1 && <span>Type a valid email and try again!</span>}
-            </>
-          )}
-      </div>
+      {sent === true ? <span className={styles.success}>You stay informed!</span>
+        : (
+        <div className={styles.newsletterInput}>
+            <input type="text" value={email} placeholder="Your email" onChange={(e) => setEmail(e.target.value)} />
+            <button type="submit" onClick={() => sendMail()}>Join our newsletter</button>
+        </div>
+        )}
+      {sent === -1 && <span className={styles.error}>Type a valid email and try again!</span>}
     </Frame>
   );
 };
