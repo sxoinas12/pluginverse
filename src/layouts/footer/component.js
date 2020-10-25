@@ -63,15 +63,7 @@ const Footer = ({ routes, pluginCategories, latestBundles }) => {
         </Col>
       </Row>
     );
-  } catch(error) {
-    console.log('sdasdad')
-    console.log(error)
- 
-  }
-  
-  
-  
- 
+  } catch(error) {}
 };
 
 Footer.defaultProps = {

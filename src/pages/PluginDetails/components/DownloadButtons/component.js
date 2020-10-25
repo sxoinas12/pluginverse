@@ -24,7 +24,7 @@ const DownloadButtons = ({ links }) => {
                   </a>
                 );
               }
-              case 'Adobe': {
+              case 'AdobeXD': {
                 return (
                   <a href={clearlink} target="_new" key={index}>
                     <div className={styles.toolContainer}>

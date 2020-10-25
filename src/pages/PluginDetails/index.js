@@ -90,7 +90,6 @@ export default withRouter((props) => {
   const { plugin } = data;
 
   if (!plugin) return 'No plugin';
-
   return (
     <Row>
       <Col>
