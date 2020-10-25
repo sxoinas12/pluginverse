@@ -45,7 +45,7 @@ const LayoutRoute = (props) => {
                 { component && React.createElement(component, { dispatch, match })}
               </>
             ) : (
-              <Container className={styles.mainContainer}>
+              <Container style={{ maxWidth: '1440px' }}>
                 { children }
                 { component && React.createElement(component, { dispatch, match })}
               </Container>

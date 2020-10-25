@@ -24,7 +24,7 @@ const BundleDetails = ({ match }) => {
       <Col xs={12}>
         <Row className={styles.bundleHeader}>
           <Col xs={12}>
-            <Container>
+            <Container style={{ maxWidth: '1440px' }}>
               <Row>
                 <Col xs={12} md={6}>
                   <Breadcrumb theme="dark">
