@@ -17,6 +17,9 @@ const GET_DOCS = (id) => gql`query{
       name,
       description,
       stars,
+      images {
+        url
+      },
       icon {
         url
       },
@@ -88,7 +91,6 @@ export default withRouter((props) => {
   }
 
   const { plugin } = data;
-
   if (!plugin) return 'No plugin';
   return (
     <Container style={{ maxWidth: '1440px' }} className={styles.container}>
@@ -143,6 +145,9 @@ export default withRouter((props) => {
               </div>
             </Col>
           </Row>
+        </Col>
+        <Col xs={6}>
+          {plugin.images.length && <img src={global.API_URL + plugin.images[0].url} className={styles.featureImage}/>}
         </Col>
       </Row>
       <Row className={styles.similarSectionContainer}>
