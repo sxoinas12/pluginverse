@@ -4,8 +4,11 @@ import PropTypes from 'prop-types';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
+import rightIcon from '@assets/icons/arrow-right.svg';
 import SimilarSection from '@components/SimilarSection';
+
 import styles from './styles.module.less';
+
 
 const catQuery = (id) => gql`{
   category(id:${id}){
@@ -29,11 +32,20 @@ const SubcategorySection = ({ category }) => {
   if (error) return <p>{JSON.stringify(error)}</p>;
   if (data.length === 0) return '';
 
+  const extra = (
+    <a href={"/category/" + category}>
+      <span>
+        More {data.category.name} plugins
+      </span>
+      <img src={rightIcon} className={styles.icon} />
+    </a>
+  );
   return (
     <div className={styles.section}>
       <SimilarSection
         title={`For ${data.category.name}`}
         subtitle={data.category.description}
+        extra={extra}
         data={data.category.plugins}
       />
     </div>
