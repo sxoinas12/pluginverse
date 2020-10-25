@@ -15,11 +15,10 @@ const List = (props) => {
   const Base = base;
   const [start, setStart] = useState(0);
   const array = scrollable ? data.slice(start, start + size) : data;
-
   return (
     <Row className={styles.row}>
       {array.map((card, i) => (
-        <Col xs={12} sm={6} md={4} lg={12 / size} xl={12 / size} className={styles.col} key={card._key || i}>
+        <Col xs={12} sm={6} md={3} lg={12 / size} xl={12 / size} className={styles.col} key={card._key || i}>
           {linkPrefix
             ? (
               <a className={styles.link} href={linkPrefix(card)}>

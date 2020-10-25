@@ -40,7 +40,7 @@ const HorizontalCard = ({
             </Row>
             <Row>
               <Col className={styles.description}>
-                {description}
+                {description.replace(/<[^>]*>?/gm, '')}
               </Col>
             </Row>
             <Row>

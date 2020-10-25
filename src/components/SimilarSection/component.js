@@ -51,7 +51,7 @@ SimilarSection.propTypes = {
 };
 
 SimilarSection.defaultProps = {
-  size: 4,
+  size: 3,
   title: 'Similar Section',
   subtitle: 'Subtitle',
   data: [
