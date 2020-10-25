@@ -11,7 +11,7 @@ import styles from './styles.module.less';
 const BundlesList = () => {
   const { bundles } = useBundlesList();
   return (
-    <Container>
+    <Container style={{ maxWidth: '1440px' }}>
       <Row className={styles.bundlesListContainer}>
         <Col xs={12}>
           <Row>
@@ -58,7 +58,7 @@ const BundlesList = () => {
               <Row className={styles.bundlesContainer}>
                 {bundles.map((bundle, index) => (
                   <React.Fragment key={index}>
-                    <Col xs={5} lassName={styles.bundleCard}>
+                    <Col xs={5} className={styles.bundleCard}>
                       <BundleCard bundle={bundle} />
                     </Col>
                   </React.Fragment>

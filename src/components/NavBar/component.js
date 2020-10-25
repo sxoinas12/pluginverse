@@ -29,7 +29,7 @@ const NavBar = ({ megaStructure, theme }) => {
   let navReact = (
     <Row className={classNames([styles.navContainer, styles[theme]])} key={1}>
       <Col>
-        <Container>
+        <Container style={{ maxWidth: '1440px' }}>
           <Row>
             <Col xs={12} md={6} lg={4} className={styles.left}>
               <a role="button" onClick={() => setMenu(!menu)}>

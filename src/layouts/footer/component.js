@@ -13,49 +13,53 @@ const Footer = ({ routes, pluginCategories, latestBundles }) => {
 
       <Row className={styles.footerContainer}>
         <Col>
-          <Container>
+          <Container style={{ maxWidth: '1440px' }}>
             <Row>
-              <Col xs={2}>
-                <Row><h4 className={styles.sectionHeader}>Menu</h4></Row>
-                {routes.map((route, index) => (
-                  <Row key={index}>
-                    <div className={styles.sectionItem}>
-                      {route.name}
-                    </div>
-                  </Row>
-                ))}
-              </Col>
-              <Col xs={2}>
-                <Row><h4 className={styles.sectionHeader}>Plguin Categories</h4></Row>
-                {pluginCategories.map((category, index) => (
-                  <Row key={index}>
-                    <div className={styles.sectionItem}>
-                      {category.name}
-                    </div>
-                  </Row>
-                ))}
-              </Col>
-              <Col xs={2}>
-                <Row><h4 className={styles.sectionHeader}>Latest Bundles</h4></Row>
-                {latestBundles.map((bundle, index) => (
-                  <Row key={index}>
-                    <div className={styles.sectionItem}>
-                      {bundle.name}
-                    </div>
-                  </Row>
-                ))}
-              </Col>
-              <Col xs={6}>
-                <Row><h3 className={styles.sectionHeader}>Subscribe to our newsletter</h3></Row>
+              <Col xs={12}>
                 <Row>
-                  <div className={styles.inputContainer}>
-                    <input placeholder="Enter your email" onChange={hadnleChange} className={styles.emailInput} value={query} />
-                  </div>
-                </Row>
-                <Row>
-                  <div role="button" onClick={() => console.log('subscribe')} type="submit" className={styles.submitButton}>
-                    Join our newsletter
-                  </div>
+                  <Col xs={2}>
+                    <div><h4 className={styles.sectionHeader}>Menu</h4></div>
+                    {routes.map((route, index) => (
+                      <div key={index}>
+                        <div className={styles.sectionItem}>
+                          {route.name}
+                        </div>
+                      </div>
+                    ))}
+                  </Col>
+                  <Col xs={2}>
+                    <div><h4 className={styles.sectionHeader}>Plguin Categories</h4></div>
+                    {pluginCategories.map((category, index) => (
+                      <div key={index}>
+                        <div className={styles.sectionItem}>
+                          {category.name}
+                        </div>
+                      </div>
+                    ))}
+                  </Col>
+                  <Col xs={2}>
+                    <div><h4 className={styles.sectionHeader}>Latest Bundles</h4></div>
+                    {latestBundles.map((bundle, index) => (
+                      <div key={index}>
+                        <div className={styles.sectionItem}>
+                          {bundle.name}
+                        </div>
+                      </div>
+                    ))}
+                  </Col>
+                  <Col xs={6}>
+                    <div><h3 className={styles.sectionHeader}>Subscribe to our newsletter</h3></div>
+                    <div>
+                      <div className={styles.inputContainer}>
+                        <input placeholder="Enter your email" onChange={hadnleChange} className={styles.emailInput} value={query} />
+                      </div>
+                    </div>
+                    <div>
+                      <div role="button" onClick={() => console.log('subscribe')} type="submit" className={styles.submitButton}>
+                        Join our newsletter
+                      </div>
+                    </div>
+                  </Col>
                 </Row>
               </Col>
             </Row>
@@ -63,15 +67,7 @@ const Footer = ({ routes, pluginCategories, latestBundles }) => {
         </Col>
       </Row>
     );
-  } catch(error) {
-    console.log('sdasdad')
-    console.log(error)
- 
-  }
-  
-  
-  
- 
+  } catch (error) {}
 };
 
 Footer.defaultProps = {

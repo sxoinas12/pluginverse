@@ -6,11 +6,11 @@ import List from '@components/List';
 import BaseCard from '../BaseCard';
 import styles from './styles.module.less';
 
-const SimilarSection = ({ title, subtitle, data, size, extra }) => {
+const SimilarSection = ({ title, subtitle, data, size }) => {
   if(!data || data.length == 0) return '';
   return (
     <div className={styles.section}>
-      <Section title={title} subtitle={subtitle} extra={extra}>
+      <Section title={title} subtitle={subtitle} extra="">
         <List
           size={size}
           base={BaseCard}
@@ -47,7 +47,6 @@ SimilarSection.propTypes = {
   size: PropTypes.number,
   title: PropTypes.string,
   subtitle: PropTypes.string,
-  extra: PropTypes.string,
   data: PropTypes.arrayOf(PropTypes.shape({}))
 };
 
@@ -55,7 +54,6 @@ SimilarSection.defaultProps = {
   size: 4,
   title: 'Similar Section',
   subtitle: 'Subtitle',
-  extra: 'More',
   data: [
     {
       author: { name: 'Author 1' },

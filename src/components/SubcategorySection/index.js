@@ -37,9 +37,13 @@ const SubcategorySection = ({ category }) => {
   if (data.length === 0) return '';
 
   const extra = (
-    <a href={"/category/" + category}>
+    <a href={`/category/${category}`}>
       <span>
-        More {data.category.name} plugins
+        More
+        {' '}
+        {data.category.name}
+        {' '}
+        plugins
       </span>
       <img src={rightIcon} className={styles.icon} />
     </a>
@@ -58,7 +62,7 @@ const SubcategorySection = ({ category }) => {
 
 
 SubcategorySection.propTypes = {
-  category: PropTypes.number
+  category: PropTypes.string,
 };
 
 SubcategorySection.defaultProps = {

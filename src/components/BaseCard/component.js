@@ -8,6 +8,11 @@ const BaseCard = ({
   tools,
   stars
 }) => {
+  const firstSentence = new RegExp('^.{10}.*?[\.!\?]')
+
+  const stripped = description.replace(/<[^>]*>?/gm, '')
+  const matched = stripped.match(firstSentence)
+
   return (
     <div>
       <div className={styles.cardContainer}>
@@ -31,10 +36,10 @@ const BaseCard = ({
             <div className={styles.header}>{header}</div>
             <div className={styles.tools}>
               <img src={require('@assets/icons/figma.svg')} alt="Figma" className={tools.Figma ? styles.hasTool : null} />
-              <img src={require('@assets/icons/adobe.svg')} alt="AdobeXD" className={tools.Adobe ? styles.hasTool : null} />
+              <img src={require('@assets/icons/adobe.svg')} alt="AdobeXD" className={tools.AdobeXD ? styles.hasTool : null} />
               <img src={require('@assets/icons/sketch.svg')} alt="Sketch" className={tools.Sketch ? styles.hasTool : null} />
             </div>
-            <div className={styles.description}>{description}</div>
+            <div className={styles.description}>{matched || `${stripped}`}</div>
           </div>
         </div>
       </div>
