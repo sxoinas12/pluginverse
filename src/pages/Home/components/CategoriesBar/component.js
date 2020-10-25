@@ -1,16 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'react-grid-system';
+import classNames from 'classnames';
 import styles from './styles.module.less';
 
-const CategoriesBar = ({ categories }) => {
+const CategoriesBar = ({ categories, onSelect, selected }) => {
   return (
     <Row>
       <Col className={styles.barContainer}>
         {categories.map((category, index) => {
           return (
-            <div className={styles.barItem} key={index}>
-              <span>{category.name}</span>
+            <div
+              role="button"
+              tabIndex={0}
+              className={selected === category.value ? classNames(styles.selectedItem, styles.barItem) : styles.barItem}
+              key={index}
+              onClick={(c) => onSelect && onSelect(category.value)}
+              onKeyDown={() => null}
+            >
+              <span>{category.key}</span>
             </div>
           );
         })}
@@ -22,27 +30,33 @@ const CategoriesBar = ({ categories }) => {
 CategoriesBar.propTypes = {
   categories: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.string
+      key: PropTypes.string,
+      value: PropTypes.string
     })
-  )
+  ),
+  selected: PropTypes.string,
+  onSelect: PropTypes.func
 };
 
 CategoriesBar.defaultProps = {
   categories: [
     {
-      name: 'UX'
+      key: 'Featured'
     },
     {
-      name: 'UI'
+      key: 'UX'
     },
     {
-      name: 'Collaboration'
+      key: 'UI'
     },
     {
-      name: 'Utility'
+      key: 'Collaboration'
     },
     {
-      name: 'Assets'
+      key: 'Utility'
+    },
+    {
+      key: 'Assets'
     }
   ]
 };

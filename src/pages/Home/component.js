@@ -31,8 +31,11 @@ const toOptions = (item) => {
 
 const findRandom = (size, max) => {
   const arr = [];
-  for (let i = size - 1; i >= 0; i -= 1) {
-    const j = Math.floor(Math.random() * max);
+  let j;
+  for (let i = 0; i < size && i < max; i++) {
+    do {
+      j = Math.floor(Math.random() * max);
+    } while (arr.includes(j));
     arr[i] = j;
   }
   return arr;
@@ -68,11 +71,13 @@ const Home = ({ history, dispatch }) => {
               <Dropdown
                 placeholder="Choose a category"
                 options={categories}
+                value={category}
                 onSelect={selected => setCategory(selected)}
               />
               <Dropdown
                 placeholder="Choose a subcategory"
                 options={subcategories}
+                value={subcategory}
                 onSelect={(selected) => setSubCategory(selected)}
               />
               <button type="button" className={styles.goButton} onClick={() => history.push(`/category/${subcategory}`)}>
@@ -85,7 +90,7 @@ const Home = ({ history, dispatch }) => {
           </Frame>
         </Col>
       </Row>
-      <CategoriesBar />
+      <CategoriesBar onSelect={(c) => setCategory(c)} categories={categories} selected={category} />
       <Container style={{ maxWidth: '1440px' }}>
         {(sections || []).slice(0, 1).map((item, index) => {
           return (
