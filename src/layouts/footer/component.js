@@ -29,7 +29,7 @@ const Footer = ({ routes, pluginCategories, latestBundles }) => {
                       </div>
                     ))}
                   </Col>
-                  <Col xs={4}md={4} lg={2}>
+                  <Col xs={4} md={4} lg={2}>
                     <div><h4 className={styles.sectionHeader}>Plguin Categories</h4></div>
                     {pluginCategories.map((category, index) => (
                       <div key={index}>
