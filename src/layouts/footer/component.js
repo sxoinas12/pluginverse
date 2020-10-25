@@ -1,5 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { Row, Col, Container } from 'react-grid-system';
+
+import { NewsletterInput } from '@components/Newsletter';
 import styles from './styles.module.less';
 
 const Footer = ({ routes, pluginCategories, latestBundles }) => {
@@ -17,7 +19,7 @@ const Footer = ({ routes, pluginCategories, latestBundles }) => {
             <Row>
               <Col xs={12}>
                 <Row>
-                  <Col xs={2}>
+                  <Col xs={4} md={4} lg={2}>
                     <div><h4 className={styles.sectionHeader}>Menu</h4></div>
                     {routes.map((route, index) => (
                       <div key={index}>
@@ -27,7 +29,7 @@ const Footer = ({ routes, pluginCategories, latestBundles }) => {
                       </div>
                     ))}
                   </Col>
-                  <Col xs={2}>
+                  <Col xs={4}md={4} lg={2}>
                     <div><h4 className={styles.sectionHeader}>Plguin Categories</h4></div>
                     {pluginCategories.map((category, index) => (
                       <div key={index}>
@@ -37,7 +39,7 @@ const Footer = ({ routes, pluginCategories, latestBundles }) => {
                       </div>
                     ))}
                   </Col>
-                  <Col xs={2}>
+                  <Col xs={4} md={4} lg={2}>
                     <div><h4 className={styles.sectionHeader}>Latest Bundles</h4></div>
                     {latestBundles.map((bundle, index) => (
                       <div key={index}>
@@ -47,17 +49,10 @@ const Footer = ({ routes, pluginCategories, latestBundles }) => {
                       </div>
                     ))}
                   </Col>
-                  <Col xs={6}>
+                  <Col xs={12} md={9} lg={6}>
                     <div><h3 className={styles.sectionHeader}>Subscribe to our newsletter</h3></div>
                     <div>
-                      <div className={styles.inputContainer}>
-                        <input placeholder="Enter your email" onChange={hadnleChange} className={styles.emailInput} value={query} />
-                      </div>
-                    </div>
-                    <div>
-                      <div role="button" onClick={() => console.log('subscribe')} type="submit" className={styles.submitButton}>
-                        Join our newsletter
-                      </div>
+                      <NewsletterInput />
                     </div>
                   </Col>
                 </Row>

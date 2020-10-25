@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './styles.module.less';
 import Frame from '../Frame';
 
-const Newsletter = () => {
+export const NewsletterInput = () => {
   const [email, setEmail] = React.useState('');
   const [sent, setSent] = React.useState(false);
   
@@ -26,7 +26,7 @@ const Newsletter = () => {
   }
 
   return (
-    <Frame>
+    <React.Fragment>
       {sent === true ? <span className={styles.success}>You stay informed!</span>
         : (
         <div className={styles.newsletterInput}>
@@ -35,6 +35,15 @@ const Newsletter = () => {
         </div>
         )}
       {sent === -1 && <span className={styles.error}>Type a valid email and try again!</span>}
+    </React.Fragment>
+  );
+};
+
+const Newsletter = () => {
+
+  return (
+    <Frame>
+      <NewsletterInput />
     </Frame>
   );
 };
