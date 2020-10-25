@@ -55,6 +55,7 @@ const SubcategorySection = ({ category }) => {
         subtitle={data.category.description}
         extra={extra}
         data={data.category.plugins}
+        size={4}
       />
     </div>
   );

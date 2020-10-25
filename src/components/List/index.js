@@ -18,7 +18,7 @@ const List = (props) => {
   return (
     <Row className={styles.row}>
       {array.map((card, i) => (
-        <Col xs={12} sm={6} md={3} lg={12 / size} xl={12 / size} className={styles.col} key={card._key || i}>
+        <Col xs={12} sm={6} md={4} lg={12 / size} xl={12 / size} className={styles.col} key={card._key || i}>
           {linkPrefix
             ? (
               <a className={styles.link} href={linkPrefix(card)}>
