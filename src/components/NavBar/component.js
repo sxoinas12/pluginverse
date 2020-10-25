@@ -37,7 +37,9 @@ const NavBar = ({ megaStructure, theme }) => {
               </a>
             </Col>
             <Col xs={12} md={6} lg={4} align="center" className={styles.center}>
-              <img src={theme === 'dark' ? darkLogo : logo} alt="Pluginverse Logo" />
+              <a href="/">
+                <img src={theme === 'dark' ? darkLogo : logo} alt="Pluginverse Logo" />
+              </a>
             </Col>
             <Col xs={12} lg={4} align="right" className={styles.right}>
               <SearchBox onChange={handleSearch} onSubmit={handleSubmit} />

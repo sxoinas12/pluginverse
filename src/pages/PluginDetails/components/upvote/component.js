@@ -4,20 +4,20 @@ import classnames from 'classnames';
 import styles from './styles.module.less';
 
 const Upvote = ({ stars, id }) => {
-    const [upvotes, setUpvotes] = useLocalStorage('upvotes', []);
-    const [bias, setBias] = useState(0);
-    const sendRequest = () => {
-        window.fetch(global.API_URL + '/plugins/upvote/' + id).then((r) => {
-            if (r.status === 204) {
-                setUpvotes(upvotes.filter(i => i !== id));
-                setBias(bias-1);
-            } else if (r.status === 200) {
-                setUpvotes([...upvotes, id]);
-                setBias(bias+1);
-            }
-        });
-        return;
-    };
+  const [upvotes, setUpvotes] = useLocalStorage('upvotes', []);
+  const [bias, setBias] = useState(0);
+  const sendRequest = () => {
+    window.fetch(global.API_URL + '/plugins/upvote/' + id).then((r) => {
+      if (r.status === 204) {
+        setUpvotes(upvotes.filter(i => i !== id));
+        setBias(bias - 1);
+      } else if (r.status === 200) {
+        setUpvotes([...upvotes, id]);
+        setBias(bias + 1);
+      }
+    });
+    return;
+  };
 
   return (
     <div className={styles.upvoteWrapper} onClick={() => sendRequest(id)}>
