@@ -147,7 +147,7 @@ export default withRouter((props) => {
       </Row>
       <Row className={styles.similarSectionContainer}>
         <Col xs={12}>
-          <SimilarSection title="Similar plugins" subtitle="" data={plugin.similars} size={3} />
+          <SimilarSection title="Similar plugins" subtitle="" data={plugin.similars} size={4} />
         </Col>
       </Row>
     </Container>
