@@ -149,6 +149,7 @@ export default withRouter((props) => {
         <Col xs={6}>
           {plugin.images.length ? <img src={global.API_URL + plugin.images[0].url} className={styles.featureImage}/> : ''}
         </Col>
+        <div className={styles.backgroundCircle} />
       </Row>
       <Row className={styles.similarSectionContainer}>
         <Col xs={12}>

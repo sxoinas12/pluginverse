@@ -1,12 +1,40 @@
 .container {
-	padding-top: 40px;
+  padding-top: 40px;
+  .title-style {
+    padding-top: 40px;
+    .heading-1();
+  }
+  
+  .category-plugin-count {
+    .paragraph-normal();
+    padding-top: 16px;
+    color: @primary;
+    padding-bottom: 16px;
+  }
+  
+  .description {
+    .paragraph-normal();
+    color: @off-black;
+    padding-bottom: 64px;
+  }
+  .divider-style {
+    margin-bottom: 40px;
+  }
+  .tools-container {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 24px;
+    .tool-wrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-right: 32px;
+      .tool-header {
+        .paragraph-normal();
+        text-transform: capitalize;
+        margin-left: 8px;
+      }
+    }
+  }
 }
 
-.titleStyle {
-	h3 {
-		.heading-0
-	}
-	p {
-		.heading-4
-	}
-}

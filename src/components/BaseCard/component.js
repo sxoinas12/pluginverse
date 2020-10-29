@@ -10,7 +10,7 @@ const BaseCard = ({
 }) => {
   const firstSentence = new RegExp('^.{10}.*?[\.!\?]')
 
-  const stripped = description.replace(/<[^>]*>?/gm, '')
+  const stripped = description && description.replace(/<[^>]*>?/gm, '')
   const matched = stripped.match(firstSentence)
 
   return (
