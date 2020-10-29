@@ -4,8 +4,10 @@
 
 	/* Grey / Off Black */
 	border: 0;
-	border-bottom: 1px solid @off-black;
-
+	border-bottom: 1px solid @white;
+  &:hover {
+    cursor: pointer;
+  }
 	.paragraph-normal;
 
 	&:invalid {
@@ -18,16 +20,19 @@
     appearance:none;
   
     background-image: url('/assets/icons/arrow-down.svg');
-	background-position: calc(100% - 16px) 50%;
-	background-size: 24px 24px;
-	background-repeat: no-repeat;
-	background-color: transparent;
-	outline: none;
-
+    background-position: calc(100% - 16px) 50%;
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    outline: none;
+  .placeholder {
+    color: @white;
+  }
 
 	/*options*/
 	& > option {
-		color: @off-black;
-	}
+		color: @white;
+  }
+  color: @gray-3;
 	margin: 0 8px;
 }

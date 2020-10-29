@@ -4,7 +4,6 @@ import { useQuery } from '@apollo/react-hooks';
 import { Row, Col, Container } from 'react-grid-system';
 import { Link, withRouter } from 'react-router-dom';
 import Breadcrumb from '@components/Breadcrumb';
-import List from '@components/List';
 import SimilarSection from '@components/SimilarSection';
 import BaseLoader from '@components/BaseLoader';
 import Upvote from './components/upvote/component';
@@ -147,7 +146,7 @@ export default withRouter((props) => {
           </Row>
         </Col>
         <Col xs={6}>
-          {plugin.images.length ? <img src={global.API_URL + plugin.images[0].url} className={styles.featureImage}/> : ''}
+          {plugin.images.length ? <img alt="" src={global.API_URL + plugin.images[0].url} className={styles.featureImage} /> : ''}
         </Col>
         <div className={styles.backgroundCircle} />
       </Row>

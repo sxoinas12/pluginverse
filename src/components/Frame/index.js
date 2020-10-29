@@ -11,14 +11,14 @@ const Frame = (props) => {
     subtitle,
     height,
     children,
-    styling
+    styling,
   } = props;
 
   return (
     <Row className={styling} style={{overflow: 'hidden'}}>
       <Col xs={12} className={styles.container} style={{ minHeight: height }}>
         <Container style={{zIndex:2}}>
-          <h3>
+          <h3 className={styles.frameTitle}>
             {title}
           </h3>
           <p>
@@ -40,7 +40,8 @@ Frame.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ])
+  ]),
+  styling: PropTypes.shape({})
 };
 
 Frame.defaultProps = {
