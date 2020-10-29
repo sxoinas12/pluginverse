@@ -11,7 +11,7 @@ import styles from './styles.module.less';
 const BundlesList = () => {
   const { bundles } = useBundlesList();
   return (
-    <Container style={{ maxWidth: '1440px' }}>
+    <Container>
       <Row className={styles.bundlesListContainer}>
         <Col xs={12}>
           <Row>

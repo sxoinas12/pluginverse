@@ -5,7 +5,6 @@ import { Row, Col, Container } from 'react-grid-system';
 import BundlePlugin from '@components/BundlePlugin';
 import { useQuery } from '@apollo/react-hooks';
 import Breadcrumb from '@components/Breadcrumb';
-
 import { Link, withRouter } from 'react-router-dom';
 import GET_BUNDLE from '../../graphql/bundles/getBundle';
 import styles from './styles.module.less';
@@ -24,7 +23,7 @@ const BundleDetails = ({ match }) => {
       <Col xs={12}>
         <Row className={styles.bundleHeader}>
           <Col xs={12}>
-            <Container style={{ maxWidth: '1440px' }}>
+            <Container>
               <Row>
                 <Col xs={12} md={6}>
                   <Breadcrumb theme="dark">
@@ -65,7 +64,7 @@ const BundleDetails = ({ match }) => {
             <img src={require('@assets/icons/bundle.svg')} alt="" />
           </div>
         </Row>
-        <Container style={{ maxWidth: '1440px'}}>
+        <Container>
           <Row>
             <Col xs={12}>
               {bundle.plugins.map((plugin, index) => {

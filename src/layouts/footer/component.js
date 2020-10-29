@@ -15,7 +15,7 @@ const Footer = ({ routes, pluginCategories, latestBundles }) => {
 
       <Row className={styles.footerContainer}>
         <Col>
-          <Container style={{ maxWidth: '1440px' }}>
+          <Container>
             <Row>
               <Col xs={12}>
                 <Row>

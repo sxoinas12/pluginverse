@@ -23,7 +23,6 @@ const LayoutRoute = (props) => {
     theme,
     ...rest
   } = props;
-
   const { megaStructure } = useGetCategories({ dispatch });
 
   return (
@@ -45,7 +44,7 @@ const LayoutRoute = (props) => {
                 { component && React.createElement(component, { dispatch, match })}
               </>
             ) : (
-              <Container style={{ maxWidth: '1440px' }}>
+              <Container>
                 { children }
                 { component && React.createElement(component, { dispatch, match })}
               </Container>

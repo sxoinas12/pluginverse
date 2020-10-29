@@ -93,7 +93,7 @@ export default withRouter((props) => {
   const { plugin } = data;
   if (!plugin) return 'No plugin';
   return (
-    <Container style={{ maxWidth: '1440px' }} className={styles.container}>
+    <Container className={styles.container}>
       <Row>
         <Col xs={12} md={6}>
           <Breadcrumb>

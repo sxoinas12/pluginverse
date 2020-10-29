@@ -5,31 +5,29 @@ import classNames from 'classnames';
 import {
   Container,
   Row,
-  Col
+  Col,
 } from 'react-grid-system';
 import { useHistory } from 'react-router-dom';
 import menuIcon from '@assets/icons/menu-icon.svg';
-import whiteMenu  from '@assets/icons/menu-white.svg';
+import whiteMenu from '@assets/icons/menu-white.svg';
 import logo from '@assets/logo.svg';
-import darkLogo from '@assets/dark-logo.svg'
+import darkLogo from '@assets/dark-logo.svg';
 import styles from './styles.module.less';
 import SearchBox from '../SearchBox';
 import MegaMenu from '../MegaMenu';
 
 
 const NavBar = ({ megaStructure, theme }) => {
-
   const [menu, setMenu] = useState(false);
   const [query, setQuery] = useState('');
   const history = useHistory();
 
   const handleSearch = useCallback(searchQuery => setQuery(searchQuery), [setQuery]);
   const handleSubmit = useCallback(() => history.push(`/search/${query}`), [query]);
-
   let navReact = (
-    <Row className={classNames([styles.navContainer, styles[theme]])} key={1}>
+    <Row className={styles.navContainer}>
       <Col>
-        <Container style={{ maxWidth: '1440px' }}>
+        <Container className={classNames([styles[theme]])} key={1}>
           <Row>
             <Col xs={12} md={6} lg={4} className={styles.left}>
               <a role="button" onClick={() => setMenu(!menu)}>

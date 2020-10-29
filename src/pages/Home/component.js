@@ -91,7 +91,7 @@ const Home = ({ history, dispatch }) => {
         </Col>
       </Row>
       <CategoriesBar onSelect={(c) => setCategory(c)} categories={categories} selected={category} />
-      <Container style={{ maxWidth: '1440px' }}>
+      <Container>
         {(sections || []).slice(0, 1).map((item, index) => {
           return (
             <Row className={styles.section} key={index}>
@@ -123,7 +123,7 @@ const Home = ({ history, dispatch }) => {
           <Newsletter />
         </Col>
       </Row>
-      <Container style={{ maxWidth: '1440px' }}>
+      <Container>
         {(sections || []).slice(3).map((item, index) => {
           return (
             <Row className={styles.section} key={index}>
