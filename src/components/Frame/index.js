@@ -41,7 +41,7 @@ Frame.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]),
-  styling: PropTypes.shape({})
+  styling: PropTypes.string,
 };
 
 Frame.defaultProps = {

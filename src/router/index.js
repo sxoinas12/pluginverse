@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Container } from 'react-grid-system';
 import BaseLoader from '@components/BaseLoader';
@@ -7,7 +6,6 @@ import Pages from '../pages';
 import Layouts from '../layouts';
 import { useGetCategories } from './useGetCategories.js';
 import reducer from './reducer';
-import styles from './styles.module.less';
 // Layout example may be useful for header and footer
 
 const LayoutRoute = (props) => {
@@ -26,7 +24,8 @@ const LayoutRoute = (props) => {
   const { megaStructure } = useGetCategories({ dispatch });
 
   return (
-    // eslint-disable jsx-props-no-spreading
+  // eslint-disable jsx-props-no-spreading
+
     <Route
       {...rest}
       render={({ match }) => {
@@ -41,12 +40,12 @@ const LayoutRoute = (props) => {
             {fluid ? (
               <>
                 { children }
-                { component && React.createElement(component, { dispatch, match })}
+                { component && React.createElement(component, { state, dispatch, match })}
               </>
             ) : (
               <Container>
                 { children }
-                { component && React.createElement(component, { dispatch, match })}
+                { component && React.createElement(component, { state, dispatch, match })}
               </Container>
             )}
             { footer && React.createElement(footer)}
@@ -54,18 +53,25 @@ const LayoutRoute = (props) => {
         );
       }}
     />
+
   );
 };
 
 const AppRouter = () => {
   const initialState = {
-    isLoading: false
+    isLoading: false,
+    designTools : [
+      { key: 'Figma', value: 1 },
+      { key: 'AdobeXD', value: 2 },
+      { key: 'Sketch', value: 3 }
+    ],
   };
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const rest = {
     state,
     dispatch
   };
+
   return (
     <Router>
       <LayoutRoute path="/" exact component={Pages.Home} header={Layouts.Header} footer={Layouts.Footer} {...rest} fluid />
@@ -80,6 +86,7 @@ const AppRouter = () => {
       <LayoutRoute path="/search/:query" exact component={Pages.Search} />
       <Route path="/contact" exact component={Pages.Contact} />
     </Router>
+
   );
 };
 

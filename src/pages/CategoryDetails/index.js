@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Divider from '@components/Divider';
 import BaseCheckbox from '@components/BaseCheckbox';
 import gql from 'graphql-tag';
@@ -35,7 +35,8 @@ query{
     }
   }
 }`;
-export default withRouter((props) => {
+export default withRouter(({state, ...props}) => {
+  const [filters, setFilters] = useState({}) 
   const id = parseInt(props.match.params.id || '1');
   const { loading, error, data } = useQuery(GET_DOCS(id));
 

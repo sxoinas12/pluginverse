@@ -19,8 +19,8 @@ const override = css`
 
 const BaseLoader = ({ isLoading }) => (
   <Container style={containerStyle}>
-    <Row center>
-      <Col xs={12} center>
+    <Row>
+      <Col xs={12}>
         <DotLoader
           css={override}
           size={150}

@@ -8,7 +8,6 @@ const Dropdown = ({
   onSelect,
   value
 }) => {
-
   useEffect(() => {
     if (options && options[0] && options[0].value && onSelect) {
       onSelect(options[0].value);

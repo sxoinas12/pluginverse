@@ -8,10 +8,10 @@ const BaseCard = ({
   tools,
   stars
 }) => {
-  const firstSentence = new RegExp('^.{10}.*?[\.!\?]')
+  const firstSentence = new RegExp('^.{10}.*?[\.!\?]');
 
-  const stripped = description && description.replace(/<[^>]*>?/gm, '')
-  const matched = stripped.match(firstSentence)
+  const stripped = description && description.replace(/<[^>]*>?/gm, '');
+  const matched = stripped && stripped.match(firstSentence);
 
   return (
     <div>

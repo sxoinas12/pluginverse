@@ -31,7 +31,6 @@ const catQuery = (id) => gql`{
 const SubcategorySection = ({ category }) => {
   const { loading, error, data } = useQuery(catQuery(category || 1));
 
-
   if (loading) return '';
   if (error) return <p>{JSON.stringify(error)}</p>;
   if (data.length === 0) return '';
@@ -41,14 +40,14 @@ const SubcategorySection = ({ category }) => {
       <span>
         More
         {' '}
-        {data.category.name}
+        {data.category && data.category.name}
         {' '}
         plugins
       </span>
       <img src={rightIcon} className={styles.icon} />
     </a>
   );
-  return (
+  return data.category && (
     <div className={styles.section}>
       <SimilarSection
         title={`For ${data.category.name}`}

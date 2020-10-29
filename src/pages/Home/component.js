@@ -1,27 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Container, Row, Col } from 'react-grid-system';
 import BundleBanner from '@components/BundleBanner';
 import Frame from '@components/Frame';
 import SubcategorySection from '@components/SubcategorySection';
 import Newsletter from '@components/Newsletter';
+import classNames from 'classnames';
 import Dropdown from '@components/Dropdown';
 import { useQuery } from '@apollo/react-hooks';
 import usePagingQuery from '@hooks/usePagingQuery';
-
 import GET_BUNDLE from '@graphql/bundles/getBundle';
 import GET_CATEGORIES from '@graphql/categories/getCategories';
 import GET_SUBCATEGORIES from '@graphql/categories/getCategoriesNested';
+import { setSubCategoryData } from '../../router/reducer';
 import CategoriesBar from './components/CategoriesBar';
 import DiscoverCategories from './components/DiscoverCategories';
 import styles from './styles.module.less';
-
 // query design Tools
-const designTools = [
-  { key: 'Figma', value: 1 },
-  { key: 'AdobeXD', value: 2 },
-  { key: 'Sketch', value: 3 }
-];
+
 const toOptions = (item) => {
   return {
     key: item.name,
@@ -41,7 +37,7 @@ const findRandom = (size, max) => {
   return arr;
 };
 
-const Home = ({ history, dispatch }) => {
+const Home = ({ state, history, dispatch }) => {
   const [tool, setTool] = useState(undefined);
   const [category, setCategory] = useState(undefined);
   const [subcategory, setSubCategory] = useState(undefined);
@@ -57,6 +53,17 @@ const Home = ({ history, dispatch }) => {
   subcategories = (subcategories || []).map(toOptions);
   const sections = findRandom(5, subcategories.length);
 
+  const handleGo = useCallback(() => {
+    const payload = {
+      tool,
+      category,
+      subcategory
+    };
+    dispatch(setSubCategoryData(payload));
+    history.push(`/category/${subcategory}`);
+  }, [history, tool, category, subcategory]);
+
+
   return (
     <>
       <Row className={styles.frame}>
@@ -65,7 +72,8 @@ const Home = ({ history, dispatch }) => {
             <div className={styles.categorySelect}>
               <Dropdown
                 placeholder="Choose design tool"
-                options={designTools}
+                options={state.designTools}
+                value={tool}
                 onSelect={selected => setTool(selected)}
               />
               <Dropdown
@@ -80,7 +88,7 @@ const Home = ({ history, dispatch }) => {
                 value={subcategory}
                 onSelect={(selected) => setSubCategory(selected)}
               />
-              <button type="button" className={styles.goButton} onClick={() => history.push(`/category/${subcategory}`)}>
+              <button type="button" className={classNames({ [styles.goButton]: true })} onClick={handleGo}>
                 Go
               </button>
             </div>
