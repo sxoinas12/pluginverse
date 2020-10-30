@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Divider from '@components/Divider';
 import BaseCheckbox from '@components/BaseCheckbox';
 import gql from 'graphql-tag';
@@ -8,7 +8,7 @@ import { Row, Col } from 'react-grid-system';
 import { Link, withRouter } from 'react-router-dom';
 import Breadcrumb from '@components/Breadcrumb';
 import List from '@components/List';
-
+import { useFilters } from './useFilters.hook';
 import styles from './styles.module.less';
 
 const GET_DOCS = (id) => gql`
@@ -35,20 +35,25 @@ query{
     }
   }
 }`;
-export default withRouter(({state, ...props}) => {
-  const [filters, setFilters] = useState({}) 
+export default withRouter(({ state, ...props }) => {
+  const { isLoading, filters, handleCheck } = useFilters({
+    designTools: state.designTools,
+    subCategoryData: state.subCategoryData
+  });
   const id = parseInt(props.match.params.id || '1');
-  const { loading, error, data } = useQuery(GET_DOCS(id));
+  const { loading, data } = useQuery(GET_DOCS(id));
 
   if (loading) return <BaseLoader />;
 
   const { category } = data;
-
+  
   category.plugins = category.plugins.map((i) => {
     i.author = i.author && i.author.name;
     i.header = i.name;
     return i;
   });
+  console.log("@@@")
+  console.log(category && category.plugins)
   return (
     <Row>
       <Col className={styles.container}>
@@ -74,20 +79,33 @@ export default withRouter(({state, ...props}) => {
         <Row>
           <Col xs={12} className={styles.toolsContainer}>
             <div className={styles.toolWrapper}>
-              <BaseCheckbox />
+              <BaseCheckbox
+                isSelected={filters.Figma ? filters.Figma.isSelected : false}
+                handleClick={handleCheck}
+                itemKey={filters.Figma}
+              />
               <div className={styles.toolHeader}>Figma</div>
             </div>
             <div className={styles.toolWrapper}>
-              <BaseCheckbox />
+              <BaseCheckbox
+                isSelected={filters.Sketch ? filters.Sketch.isSelected : false}
+                handleClick={handleCheck}
+                itemKey={filters.Sketch}
+              />
               <div className={styles.toolHeader}>Sketch</div>
             </div>
             <div className={styles.toolWrapper}>
-              <BaseCheckbox />
-              <div className={styles.toolHeader}>Adobe</div>
+              <BaseCheckbox
+                isSelected={filters.AdobeXD ? filters.AdobeXD.isSelected : false}
+                handleClick={handleCheck}
+                itemKey={filters.AdobeXD}
+              />
+              <div className={styles.toolHeader}>AdobeXd</div>
             </div>
           </Col>
         </Row>
         <Divider className={styles.dividerStyle} />
+        { isLoading ? <BaseLoader /> : null}
         <List data={category.plugins} linkPrefix={(c) => `/plugin/${c.id}`} size={4} />
       </Col>
     </Row>

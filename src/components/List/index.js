@@ -61,56 +61,7 @@ List.defaultProps = {
   scrollable: false,
   size: 3,
   linkPrefix: undefined,
-  data: [
-    {
-      author: 'Author 1',
-      header: 'Header 1',
-      description: 'description lorem ipsum 1',
-      tools: {
-        figma: 1
-      }
-    },
-    {
-      author: 'Author 2',
-      header: 'Header 2',
-      description: 'description lorem ipsum 2',
-      tools: {
-        adobexd: 1
-      }
-    },
-    {
-      author: 'Author 3',
-      header: 'Header 3',
-      description: 'description lorem ipsum 3',
-      tools: {
-        sketch: 1
-      }
-    },
-    {
-      author: 'Author 3',
-      header: 'Header 3',
-      description: 'description lorem ipsum 3',
-      tools: {
-        sketch: 1
-      }
-    },
-    {
-      author: 'Author 3',
-      header: 'Header 3',
-      description: 'description lorem ipsum 3',
-      tools: {
-        sketch: 1
-      }
-    },
-    {
-      author: 'Author 3',
-      header: 'Header 3',
-      description: 'description lorem ipsum 3',
-      tools: {
-        sketch: 1
-      }
-    }
-  ]
+  data: []
 };
 
 export default List;

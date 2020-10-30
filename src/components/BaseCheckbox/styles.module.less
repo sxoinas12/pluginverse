@@ -1,14 +1,33 @@
 .checkbox-container {
   width: 24px;
   height: 24px;
-  background: #443E56;
-  border: 1px solid #443E56;
-  border-radius: 2px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
-  .selected-container {
-    border-color: #443E56;
+  background: @primary--2;
+  border: 1px solid @primary;
+  border-radius: 2px;
+  &:hover {
+    border-color: @primary-7;
+    cursor: pointer;
+  }
+  
+  &.selected-container {
+    border-color: @primary-7;
+    background: @primary-7;
+    border: 1px solid @primary-7;
+    &:hover {
+      border-color:@primary;
+      cursor: pointer;
+    }
+  }
+  &.disabled {
+    background: @gray-4;
+    border: 1px solid @gray-3;
+    box-sizing: border-box;
+    &:hover {
+      pointer-events: none;
+    }
   }
 }
