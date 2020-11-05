@@ -50,7 +50,7 @@ List.propTypes = {
     author: PropTypes.string,
     header: PropTypes.string,
     description: PropTypes.string,
-    tools: PropTypes.shape({}),
+    tools: PropTypes.any,
     avatar: PropTypes.string,
     stars: PropTypes.number
   }))
@@ -61,7 +61,6 @@ List.defaultProps = {
   scrollable: false,
   size: 3,
   linkPrefix: undefined,
-  data: []
 };
 
 export default List;

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/interactive-supports-focus */
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import styles from './styles.module.less';
@@ -12,6 +12,9 @@ const BaseCheckbox = ({
   itemKey
 }) => {
   const [checked, setChecked] = useState(isSelected);
+  useEffect(() => {
+    setChecked(isSelected)
+  }, [isSelected])
 
   const handleCheck = useCallback(() => {
     setChecked(!checked);

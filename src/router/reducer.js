@@ -27,7 +27,7 @@ const reducer = (state, action) => {
         isLoading: action.payload
       };
     case 'SET_SUB_CATEGORY_DATA':
-      console.log('Do I come in here', action.payload)
+      console.log('sdadadas', action.payload)
       return {
         ...state,
         subCategoryData: action.payload
