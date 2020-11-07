@@ -4,6 +4,7 @@ import { getListInput } from '../../components/SimilarSection/component';
 // eslint-disable-next-line import/prefer-default-export
 export const useFilters = ({ subCategoryData, designTools, category }) => {
   const [filters, setFilters] = useState({});
+  const [init, setInit] = useState(true)
   const [componentPlugins, setComponentsPlugins] = useState([]);
 
   useEffect(() => {
@@ -34,7 +35,7 @@ export const useFilters = ({ subCategoryData, designTools, category }) => {
           ...item
         };
       });
-      setFilters(initialFilters);
+      setFilters({ ...initialFilters });
     }
   }, [designTools]);
 
@@ -49,17 +50,19 @@ export const useFilters = ({ subCategoryData, designTools, category }) => {
     setFilters({ ...obj });
   }, [filters]);
 
+  useEffect(() => setInit(true), []);
 
   useEffect(() => {
-    if (subCategoryData && subCategoryData.tool && designTools) {
+    if (subCategoryData && subCategoryData.tool && designTools && Object.keys(filters).length !== 0 && init) {
       const selectedToolValue = subCategoryData.tool;
       if (selectedToolValue) {
         // keep 2 == here please or make other places consistent :P
         const [selectedItem] = designTools.filter(tool => tool.value == selectedToolValue);
-        handleCheck(true, selectedItem)
+        handleCheck(true, selectedItem);
+        setInit(false)
       }
     }
-  }, [subCategoryData, designTools]);
+  }, [subCategoryData, designTools, filters, init]);
   return {
     filters,
     handleCheck,

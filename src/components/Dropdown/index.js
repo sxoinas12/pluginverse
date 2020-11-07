@@ -13,7 +13,7 @@ const Dropdown = ({
       onSelect(options[0].value);
     }
   }, [options.length]);
-
+  console.log("bugging ?")
   return (
     <select className={styles.selectBox} required value={value} onChange={(e) => onSelect(e.target.value)}>
       <option value="" className={styles.placeholder} disabled hidden>{placeholder}</option>

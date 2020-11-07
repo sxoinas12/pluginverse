@@ -63,7 +63,6 @@ const Home = ({ state, history, dispatch }) => {
     history.push(`/category/${subcategory}`);
   }, [history, tool, category, subcategory]);
 
-
   return (
     <>
       <Row className={styles.frame}>

@@ -41,21 +41,22 @@ query{
 }`;
 export default withRouter(({ state, ...props }) => {
   const id = parseInt(props.match.params.id || 1);
-  const [category, setCategory] = useState({})
+  const [category, setCategory] = useState({});
   const { loading, data } = useQuery(GET_DOCS(id));
 
   useEffect(() => {
     if (data) {
-      setCategory(data.category)
+      setCategory(data.category);
     }
-  }, [data])
+  }, [data]);
   const {
     isLoading, filters, handleCheck, componentPlugins
   } = useFilters({
     designTools: state.designTools,
     subCategoryData: state.subCategoryData,
-    category,
+    category
   });
+
 
   if (loading) return <BaseLoader />;
   return (
@@ -70,16 +71,25 @@ export default withRouter(({ state, ...props }) => {
             <div className={styles.titleStyle}>{category.name}</div>
           </Col>
         </Row>
-        <Row>
-          <Col xs={12}>
-            <div className={styles.categoryPluginCount}>{category.plugins && (`${category.plugins.length}`)}</div>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={12}>
-            <div className={styles.description}>{category.description || 'No category description has been found or exist'}</div>
-          </Col>
-        </Row>
+        {category.description ? (
+          <>
+            <Row>
+              <Col xs={12}>
+                <div
+                  className={styles.categoryPluginCount}
+                >
+                  {(category.plugins && category.description) ? (`${category.plugins.length} Plugins`) : null}
+                </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={12}>
+                <div className={styles.description}>{category.description ? category.description : null}</div>
+              </Col>
+            </Row>
+          </>
+        ) : (<div className={styles.withoutDescription} />)}
+
         <Row>
           <Col xs={12} className={styles.toolsContainer}>
             <div className={styles.toolWrapper}>
