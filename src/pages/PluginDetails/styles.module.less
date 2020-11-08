@@ -1,20 +1,39 @@
 .container {
 	padding-top: 40px;
 }
+.descriptionTitle {
+	margin-top: 32px;
+	.paragraph-normal;
+	color: @gray-3;
+}
 .description {
+	margin-top: 16px;
 	display: flex;
-	margin-top: 40px;
 	height: 100px;
 	overflow: hidden;
 	text-overflow: ellipsis;
-
-	p{
+    .paragraph {
 		.paragraph-normal;
+		white-space: break-spaces;
+        overflow: hidden;
+		text-overflow: ellipsis;
+		line-height: 24px;
 	}
+}
 
-
-	@media (min-width: @md) {
-		p { max-width: 75%; }
+.read-more {
+	margin-top: 16px;
+	.paragraph-normal();
+	color: @primary-2;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	&:hover {
+		cursor: pointer;
+		text-decoration: underline;
+	}
+	img {
+		margin-left: 8px;
 	}
 }
 .feature-image {
@@ -43,7 +62,7 @@
 
 .chips-container {
 	display: flex;
-	margin-top: 18px;
+	margin-top: 16px;
 	.category-chip {
 		margin-right: 8px;
 		padding: 2px 8px;
@@ -56,19 +75,40 @@
 		line-height: 15px;
 		letter-spacing: 0.06em;
 		color: #6E648B;
+		text-transform: uppercase;
 	}
 }
 
+.download-divider {
+	margin-top: 24px;
+//	width: 620px;
+	border-bottom: 1px solid #DEDEDE;
+}
 
 .headerStyle {
 	display: flex;
 	justify-content: flex-start;
+	flex-direction: column;
+	align-items: flex-start;
 	text-align: left;
-	margin-left: 8px;
+	.iconContainer {
+		margin-bottom: 16px;
+		width: 56px;
+		height: 56px;
+		img {
+			width: 48px;
+			height: 48px;
+		}
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 	.heading-1;
+	line-height: 52px;
+	word-break: break-word;
 }
 .box {
-  padding-top: 16px;
+  padding-top: 40px;
   position: relative;
   .background-circle {
     position: absolute;
@@ -91,8 +131,7 @@
 
 	span {
 		.paragraph-normal;
-		/* Grey / 1 */
-		color: @off-black;
+		color: @gray-3;
 	}
 	img {
 
@@ -115,6 +154,6 @@
 
 
 .similar-section-container {
-	margin-top: 80px;
+	margin-top: 160px;
 	margin-bottom: 40px;
 }

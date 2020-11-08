@@ -30,8 +30,7 @@ const DownloadButtons = ({ links }) => {
                     <div className={styles.toolContainer}>
                       <img src={require('@assets/icons/adobe.svg')} alt="" />
                       <span className={styles.toolText}>
-                        Download for&nbsp;
-                        {link.tool.name}
+                        Download for XD
                       </span>
                     </div>
                   </a>
@@ -43,7 +42,7 @@ const DownloadButtons = ({ links }) => {
                     <div className={styles.toolContainer}>
                       <img src={require('@assets/icons/figma.svg')} alt="" />
                       <span className={styles.toolText}>
-                        Donwload for&nbsp;
+                        Download for&nbsp;
                         {link.tool.name}
                       </span>
                     </div>

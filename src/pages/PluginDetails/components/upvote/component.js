@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 
 import classnames from 'classnames';
@@ -7,7 +8,7 @@ const Upvote = ({ stars, id }) => {
   const [upvotes, setUpvotes] = useLocalStorage('upvotes', []);
   const [bias, setBias] = useState(0);
   const sendRequest = () => {
-    window.fetch(global.API_URL + '/plugins/upvote/' + id).then((r) => {
+    window.fetch(`${global.API_URL}/plugins/upvote/${id}`).then((r) => {
       if (r.status === 204) {
         setUpvotes(upvotes.filter(i => i !== id));
         setBias(bias - 1);
@@ -16,16 +17,30 @@ const Upvote = ({ stars, id }) => {
         setBias(bias + 1);
       }
     });
-    return;
   };
-
+  const isSelected = upvotes.includes(id);
   return (
-    <div className={styles.upvoteWrapper} onClick={() => sendRequest(id)}>
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+    <div
+      className={classnames({
+        [styles.upvoteWrapper]: true,
+        [styles.wrapperSelected]: isSelected
+      })}
+      onClick={() => sendRequest(id)}
+    >
       <div className={styles.upvoteIcon}>
-        <img src={require('@assets/icons/arrow-top.svg')} alt="" />
+        <img src={isSelected ? require('@assets/icons/upvote-tick.svg') : require('@assets/icons/arrow-top.svg')} alt="" />
       </div>
-      <div className={styles.upvoteText}>Upvote</div>
-      <div className={classnames(upvotes.includes(id) ? [styles.selected, styles.starsText] : styles.starsText)}>{(stars || 0) + bias}</div>
+      <div className={styles.upvoteText}>
+        {isSelected ? 'Upvoted' : 'Upvote'}
+      </div>
+      <div className={classnames({
+        [styles.selected]: isSelected,
+        [styles.starsText]: true
+      })}
+      >
+        {(stars || 0) + bias}
+      </div>
     </div>
   );
 };
@@ -53,8 +68,7 @@ function useLocalStorage(key, initialValue) {
   const setValue = value => {
     try {
       // Allow value to be a function so we have same API as useState
-      const valueToStore =
-        value instanceof Function ? value(storedValue) : value;
+      const valueToStore = value instanceof Function ? value(storedValue) : value;
       // Save state
       setStoredValue(valueToStore);
       // Save to local storage
