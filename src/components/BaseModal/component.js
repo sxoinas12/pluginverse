@@ -11,7 +11,6 @@ const BaseModal = ({
   const [isOpen, setOpen] = useState(false);
 
   const open = useCallback(() => setOpen(true));
-
   const close = useCallback(() => {
     if (beforeClose) {
       beforeClose();
@@ -19,19 +18,20 @@ const BaseModal = ({
     setOpen(false);
   }, [beforeClose]);
 
-  const ref = useOutsideClick(close);
-
+  const ref = useOutsideClick(isOpen, close);
   const Modal = (
-    <div ref={ref}>
-      {children && children(close)}
+    <div className={styles.baseModal}>
+      <div ref={ref} className={styles.modalBody}>
+        {children && children({ ...rest, close })}
+      </div>
     </div>
   );
 
   return (
-    <div className={styles.baseModal}>
+    <>
       {renderTrigger(open)}
-      {isOpen ? React.cloneElement(Modal, { close, ...rest }) : null}
-    </div>
+      {isOpen ? Modal : null}
+    </>
   );
 };
 

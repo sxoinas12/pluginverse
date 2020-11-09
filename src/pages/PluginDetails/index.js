@@ -7,6 +7,7 @@ import Breadcrumb from '@components/Breadcrumb';
 import SimilarSection from '@components/SimilarSection';
 import BaseLoader from '@components/BaseLoader';
 import Divider from '@components/Divider';
+import BaseModal from '@components/BaseModal'
 import Upvote from './components/upvote/component';
 import DownloadButtons from './components/DownloadButtons';
 import styles from './styles.module.less';
@@ -158,10 +159,24 @@ export default withRouter((props) => {
           </Row>
           <Row>
             <Col>
-              <div className={styles.readMore}>
-                Read More
-                <img src={require('@assets/icons/arrow-down-purple.svg')} alt="" />
-              </div>
+              <BaseModal
+                renderTrigger={open =>  (
+                  <div onClick={e => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    open()
+                  }} className={styles.readMore}>
+                    Read More
+                    <img src={require('@assets/icons/arrow-down-purple.svg')} alt="" />
+                  </div>
+                )}
+              >
+                { close => (
+                  <div>
+                    {plugin.description}dasdadadada
+                  </div>
+                )}
+              </BaseModal>
             </Col>
           </Row>
         </Col>
