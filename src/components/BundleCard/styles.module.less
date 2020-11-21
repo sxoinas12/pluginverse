@@ -1,11 +1,31 @@
-.bundle-card-container {
+.bundle-card {
   background: linear-gradient(94.74deg, #443E56 4.3%, #363044 109.83%);
   border-radius: 8px;
-  padding-top: 72px;
-  padding-left: 32px;
-  padding-bottom: 72px;
-  overflow: hidden;
+  
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
   position: relative;
+  overflow: hidden;
+
+  padding-top: 40%; 
+  margin-bottom: 32px;
+  margin-top: 32px;
+
+  .bundle-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 32px;
+  }
+
+
   .bundle-icon {
     position: absolute;
     top: 5%;

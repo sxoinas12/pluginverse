@@ -8,7 +8,7 @@ import BundleCard from '@components/BundleCard';
 import { useBundlesList } from './hooks/useBundlesList.js';
 import styles from './styles.module.less';
 
-const BundlesList = () => {
+const BundlesList = ({ history }) => {
   const { bundles } = useBundlesList();
   return (
     <Container>
@@ -24,47 +24,37 @@ const BundlesList = () => {
           </Row>
           <Row>
             <Col xs={12}>
-              <Row>
-                <Col xs={6}>
                   <div className={styles.header}>
                     Plugin Bundles
                   </div>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={6}>
                   <div className={styles.description}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget turpis nisl, a eu quis. Interdum scelerisque sollicitudin donec elementum lorem eu.
                   </div>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={12} className={styles.toolsContainer}>
-                  <div className={styles.toolWrapper}>
-                    <BaseCheckbox />
-                    <div className={styles.toolHeader}>Figma</div>
-                  </div>
-                  <div className={styles.toolWrapper}>
-                    <BaseCheckbox />
-                    <div className={styles.toolHeader}>Sketch</div>
-                  </div>
-                  <div className={styles.toolWrapper}>
-                    <BaseCheckbox />
-                    <div className={styles.toolHeader}>Adobe</div>
-                  </div>
-                </Col>
-              </Row>
-              <Divider />
-              <Row className={styles.bundlesContainer}>
-                {bundles.map((bundle, index) => (
-                  <React.Fragment key={index}>
-                    <Col xs={5} className={styles.bundleCard}>
-                      <BundleCard bundle={bundle} />
-                    </Col>
-                  </React.Fragment>
-                ))}
-              </Row>
             </Col>
+          </Row>
+          <Row>
+            <Col xs={12} className={styles.toolsContainer}>
+              <div className={styles.toolWrapper}>
+                <BaseCheckbox />
+                <div className={styles.toolHeader}>Figma</div>
+              </div>
+              <div className={styles.toolWrapper}>
+                <BaseCheckbox />
+                <div className={styles.toolHeader}>Sketch</div>
+              </div>
+              <div className={styles.toolWrapper}>
+                <BaseCheckbox />
+                <div className={styles.toolHeader}>Adobe</div>
+              </div>
+            </Col>
+          </Row>
+          <Divider />
+          <Row className={styles.bundlesContainer}>
+            {bundles.map((bundle, index) => (
+              <Col xs={6} className={styles.bundleCard} key={index}>
+                <BundleCard bundle={bundle} onClick={() => history.push(`/bundle/${bundle.id}`)}/>
+              </Col>
+            ))}
           </Row>
         </Col>
       </Row>
