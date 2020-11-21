@@ -14,6 +14,7 @@ import logo from '@assets/logo.svg';
 import darkLogo from '@assets/dark-logo.svg';
 import styles from './styles.module.less';
 import SearchBox from '../SearchBox';
+import SearchModal from '../SearchModal'
 import MegaMenu from '../MegaMenu';
 
 
@@ -40,7 +41,8 @@ const NavBar = ({ megaStructure, theme }) => {
               </a>
             </Col>
             <Col xs={12} lg={4} align="right" className={styles.right}>
-              <SearchBox onChange={handleSearch} onSubmit={handleSubmit} />
+              {/* <SearchBox onChange={handleSearch} onSubmit={handleSubmit} /> */}
+              <SearchModal />
             </Col>
           </Row>
         </Container>

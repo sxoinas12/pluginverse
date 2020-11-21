@@ -6,6 +6,8 @@ const BaseModal = ({
   beforeClose,
   children,
   renderTrigger,
+  style,
+  modalBody,
   ...rest
 }) => {
   const [isOpen, setOpen] = useState(false);
@@ -20,8 +22,8 @@ const BaseModal = ({
 
   const ref = useOutsideClick(isOpen, close);
   const Modal = (
-    <div className={styles.baseModal}>
-      <div ref={ref} className={styles.modalBody}>
+    <div style={style} className={styles.baseModal}>
+      <div ref={ref} style={modalBody} className={styles.modalBody}>
         {children && children({ ...rest, close })}
       </div>
     </div>
