@@ -18,7 +18,7 @@ const BaseCheckbox = ({
 
   const handleCheck = useCallback(() => {
     setChecked(!checked);
-    handleClick(!checked, itemKey);
+    handleClick && handleClick(!checked, itemKey);
   }, [checked, handleClick]);
 
   return (
