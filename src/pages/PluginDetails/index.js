@@ -95,7 +95,7 @@ export default withRouter((props) => {
   if (!plugin) return 'No plugin';
   // TODO set max Characters for description
   const firstSentence = new RegExp('^.{1000}.*?[\.!\?]');
-  const stripped = plugin && plugin.description && plugin.description.replace(/<[^>]*>?/gm, '');
+  const stripped = plugin && plugin.description;// && plugin.description.replace(/<[^>]*>?/gm, '');
   const matched = stripped && stripped.match(firstSentence);
   return (
     <Container className={styles.container}>
@@ -151,8 +151,8 @@ export default withRouter((props) => {
             <Col>
               <div className={styles.descriptionTitle}>Description</div>
               <div className={styles.description}>
-                <div className={styles.paragraph}>
-                {matched || `${stripped}`}}
+                <div className={styles.paragraph} dangerouslySetInnerHTML={{__html:matched}}>
+                
                 </div>
               </div>
             </Col>
