@@ -101,6 +101,14 @@ const SearchModal = () => {
                     )}
                   </Col>
                 </Row>
+                {data && data.plugins && data.plugins.length === 0 && catData && catData.categories && catData.categories.length === 0 ? (
+                  <Row justify="start">
+                    <Col xs={8} className={styles.noResults}>
+                      <div className={styles.noResultTitle}>No results were found</div>
+                      <div className={styles.noResultDescription}>Please try searching for something else.</div>
+                    </Col>
+                  </Row>
+                ) : null}
               </Container>
             )
         }

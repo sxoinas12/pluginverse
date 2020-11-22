@@ -6,17 +6,22 @@ import {
 import styles from './styles.module.less';
 
 const CategoryPlaceholder = () => (
-  <Row>
-    <Col xs={3}>
-      <div className={styles.categoryPlaceholder} />
-    </Col>
-    <Col xs={3}>
-      <div className={styles.categoryPlaceholder} />
-    </Col>
-    <Col xs={3}>
-      <div className={styles.categoryPlaceholder} />
-    </Col>
-  </Row>
+  <>
+    <Row justify="start">
+      <Col xs={6} className={styles.title}>Categories</Col>
+    </Row>
+    <Row>
+      <Col xs={3}>
+        <div className={styles.categoryPlaceholder} />
+      </Col>
+      <Col xs={3}>
+        <div className={styles.categoryPlaceholder} />
+      </Col>
+      <Col xs={3}>
+        <div className={styles.categoryPlaceholder} />
+      </Col>
+    </Row>
+  </>
 );
 
 export default CategoryPlaceholder;

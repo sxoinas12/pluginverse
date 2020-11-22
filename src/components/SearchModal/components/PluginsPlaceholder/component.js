@@ -6,26 +6,31 @@ import {
 import styles from './styles.module.less';
 
 const PluginsPlaceholder = () => (
-  <Row>
-    <Col xs={3}>
-      <div className={styles.pluginPlaceholder} />
-    </Col>
-    <Col xs={3}>
-      <div className={styles.pluginPlaceholder} />
-    </Col>
-    <Col xs={3}>
-      <div className={styles.pluginPlaceholder} />
-    </Col>
-    <Col xs={3}>
-      <div className={styles.pluginPlaceholder} />
-    </Col>
-    <Col xs={3}>
-      <div className={styles.pluginPlaceholder} />
-    </Col>
-    <Col xs={3}>
-      <div className={styles.pluginPlaceholder} />
-    </Col>
-  </Row>
+  <>
+    <Row justify="start">
+      <Col xs={6} className={styles.title}>Categories</Col>
+    </Row>
+    <Row>
+      <Col xs={3}>
+        <div className={styles.pluginPlaceholder} />
+      </Col>
+      <Col xs={3}>
+        <div className={styles.pluginPlaceholder} />
+      </Col>
+      <Col xs={3}>
+        <div className={styles.pluginPlaceholder} />
+      </Col>
+      <Col xs={3}>
+        <div className={styles.pluginPlaceholder} />
+      </Col>
+      <Col xs={3}>
+        <div className={styles.pluginPlaceholder} />
+      </Col>
+      <Col xs={3}>
+        <div className={styles.pluginPlaceholder} />
+      </Col>
+    </Row>
+  </>
 );
 
 export default PluginsPlaceholder;
