@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { useCallback, useState } from 'react';
 import {
   Container,
@@ -43,7 +44,6 @@ const SearchModal = () => {
   const searchHandler = useCallback(debounce(searchData, 1200), []);
 
   const handleSearch = useCallback(e => {
-
     const q = e.target.value;
     setQuery(q);
     setLoading(true);
@@ -75,18 +75,30 @@ const SearchModal = () => {
                 </Row>
                 <Row>
                   <Col xs={12} className={styles.categoriesContainer}>
-                    <Row justify="start">
-                      <Col xs={6} className={styles.title}>Categories</Col>
-                    </Row>
-                    { loading ? <CategoryPlaceholder /> : <CategoryData categories={(catData && catData.categories) || []} /> }
+                    { loading ? <CategoryPlaceholder /> : (
+                      catData && catData.categories && catData.categories.length > 0 ? (
+                        <>
+                          <Row justify="start">
+                            <Col xs={6} className={styles.title}>Categories</Col>
+                          </Row>
+                          <CategoryData categories={(catData && catData.categories) || []} />
+                        </>
+                      ) : null
+                    )}
                   </Col>
                 </Row>
                 <Row>
                   <Col xs={12} className={styles.pluginsContainer}>
-                    <Row justify="start">
-                      <Col xs={6} className={styles.title}>Plugins</Col>
-                    </Row>
-                    {loading ? <PluginsPlaceholder /> : <List data={getListInput((data && data.plugins) || [])} linkPrefix={(c) => `/plugin/${c.id}`} size={4} />}
+                    {loading ? <PluginsPlaceholder /> : (
+                      data && data.plugins && data.plugins.length > 0 ? (
+                        <>
+                          <Row justify="start">
+                            <Col xs={6} className={styles.title}>Plugins</Col>
+                          </Row>
+                          <List data={getListInput((data && data.plugins) || [])} linkPrefix={(c) => `/plugin/${c.id}`} size={4} />
+                        </>
+                      ) : null
+                    )}
                   </Col>
                 </Row>
               </Container>
