@@ -53,6 +53,7 @@ const Home = ({ state, history, dispatch }) => {
   subcategories = (subcategories || []).map(toOptions);
   const sections = findRandom(5, subcategories.length);
 
+
   const handleGo = useCallback(() => {
     const payload = {
       tool,

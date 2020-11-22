@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import useOutsideClick from '../../hooks/useOutsideClick';
 import styles from './styles.module.less';
 
@@ -19,6 +19,14 @@ const BaseModal = ({
     }
     setOpen(false);
   }, [beforeClose]);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    }
+    return () => { document.body.style.overflow = 'visible'; };
+  }, [isOpen]);
+
 
   const ref = useOutsideClick(isOpen, close);
   const Modal = (

@@ -13,18 +13,16 @@ import whiteMenu from '@assets/icons/menu-white.svg';
 import logo from '@assets/logo.svg';
 import darkLogo from '@assets/dark-logo.svg';
 import styles from './styles.module.less';
-import SearchBox from '../SearchBox';
 import SearchModal from '../SearchModal'
 import MegaMenu from '../MegaMenu';
 
 
 const NavBar = ({ megaStructure, theme }) => {
   const [menu, setMenu] = useState(false);
-  const [query, setQuery] = useState('');
-  const history = useHistory();
-
-  const handleSearch = useCallback(searchQuery => setQuery(searchQuery), [setQuery]);
-  const handleSubmit = useCallback(() => history.push(`/search/${query}`), [query]);
+  // const [query, setQuery] = useState('');
+  // const history = useHistory();
+  // const handleSearch = useCallback(searchQuery => setQuery(searchQuery), [setQuery]);
+  // const handleSubmit = useCallback(() => history.push(`/search/${query}`), [query]);
   let navReact = (
     <Row className={styles.navContainer}>
       <Col>
@@ -41,7 +39,6 @@ const NavBar = ({ megaStructure, theme }) => {
               </a>
             </Col>
             <Col xs={12} lg={4} align="right" className={styles.right}>
-              {/* <SearchBox onChange={handleSearch} onSubmit={handleSubmit} /> */}
               <SearchModal />
             </Col>
           </Row>
