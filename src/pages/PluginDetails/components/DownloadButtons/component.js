@@ -14,7 +14,6 @@ const DownloadButtons = ({ links }) => {
                 return (
                   <a href={clearlink} target="_new" key={index}>
                     <div className={styles.toolContainer}>
-
                       <img src={require('@assets/icons/sketch.svg')} alt="" />
                       <span className={styles.toolText}>
                         Download for&nbsp;
@@ -38,15 +37,15 @@ const DownloadButtons = ({ links }) => {
               }
               case 'Figma': {
                 return (
-                  <a href={clearlink} target="_new" key={index}>
-                    <div className={styles.toolContainer}>
+                    <a href={clearlink} target="_new" key={index}>
+                  <div className={styles.toolContainer}>
                       <img src={require('@assets/icons/figma.svg')} alt="" />
                       <span className={styles.toolText}>
                         Download for&nbsp;
                         {link.tool.name}
                       </span>
-                    </div>
-                  </a>
+                  </div>
+                    </a>
                 );
               }
               default:

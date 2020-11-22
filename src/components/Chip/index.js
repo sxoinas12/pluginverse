@@ -13,7 +13,7 @@ const Chip = (props) => {
 
   return (
     url ? 
-    <a href={url}>
+    <a href={url} className={styles.link}>
       <div className={styles.chip}>
         {text.toUpperCase()}
       </div>
