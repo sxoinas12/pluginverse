@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { Row, Col, Container } from 'react-grid-system';
 import { Link, withRouter } from 'react-router-dom';
 import Breadcrumb from '@components/Breadcrumb';
+import Chip from '@components/Chip';
 import SimilarSection from '@components/SimilarSection';
 import BaseLoader from '@components/BaseLoader';
 import Divider from '@components/Divider';
@@ -119,11 +120,8 @@ export default withRouter((props) => {
           </Row>
           <Row>
             <Col className={styles.chipsContainer}>
-              {(plugin.categories || []).map((category, _) => {
-                return (
-                  <div className={styles.categoryChip} key={category.id}>{category.name}</div>
-                );
-              })}
+              {(plugin.categories || []).map((category, _) => 
+                <Chip text={category.name} url={`/category/${category.id}`}/>)}
             </Col>
           </Row>
           <Row>
@@ -143,7 +141,7 @@ export default withRouter((props) => {
           <Row>
             <Col xs={10} className={styles.downloadDivider} />
           </Row>
-          <DownloadButtons tools={plugin.tools} links={plugin.links} />
+            <DownloadButtons tools={plugin.tools} links={plugin.links} />
           <Row>
             <Col xs={10} className={styles.downloadDivider} />
           </Row>

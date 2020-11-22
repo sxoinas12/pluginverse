@@ -7,10 +7,17 @@ import styles from './styles.module.less';
 const Chip = (props) => {
   const {
     icon,
-    text
+    text,
+    url
   } = props;
 
   return (
+    url ? 
+    <a href={url}>
+      <div className={styles.chip}>
+        {text.toUpperCase()}
+      </div>
+    </a>:
     <div className={styles.chip}>
       {text.toUpperCase()}
     </div>
