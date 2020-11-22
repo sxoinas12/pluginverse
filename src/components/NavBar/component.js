@@ -24,9 +24,9 @@ const NavBar = ({ megaStructure, theme }) => {
   // const handleSearch = useCallback(searchQuery => setQuery(searchQuery), [setQuery]);
   // const handleSubmit = useCallback(() => history.push(`/search/${query}`), [query]);
   let navReact = (
-    <Row className={styles.navContainer}>
+    <Row className={classNames([styles[theme],styles.navContainer])}>
       <Col>
-        <Container className={classNames([styles[theme]])} key={1}>
+        <Container key={1}>
           <Row>
             <Col xs={12} md={6} lg={4} className={styles.left}>
               <a role="button" onClick={() => setMenu(!menu)}>

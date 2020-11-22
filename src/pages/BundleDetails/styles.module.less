@@ -1,12 +1,12 @@
 .bundle-details-container {
-    margin-bottom: 200px;
+    background: linear-gradient(179.4deg, #443E56 0.52%, #9A8DB8 199.99%);
+    .breadcrumb {
+        margin-top: 40px;
+    }
     .bundle-header {
+        margin-top: 40px;
         position: relative;
-        background: #363044;
-        padding-left:  87.5px;
-        padding-right:  87.5px;
-        height: 34vmin;
-        overflow: hidden;
+        
         .bundle-icon {
             position: absolute;
             top: -17%;
@@ -16,27 +16,23 @@
                 height: 450px;
             }
         }
-        .design-bundle {
-            font-family: Inter;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 56px;
-            line-height: 68px;
-            color: @white;
+        .bundle-name {
+            .heading-1();
+            color: white;
+        }
+        .bundle-description {
+            margin-top: 40px;
+            .paragraph-normal();
+            color: @primary--2;
         }
         .tool-container {
+            margin-top: 16px;
             display: flex;
-            align-items: center;
-            .tool-title {
-                font-family: Inter;
-                font-style: normal;
-                font-weight: bold;
-                font-size: 22px;
-                line-height: 27px;
-                letter-spacing: -0.03em;
-                color: @primary;
-                margin-left: 13px;
-            }
         }
+
+    }
+    .bundle-plugins {
+        margin-top: 40px;
+        margin-bottom: 40px;
     }
 }

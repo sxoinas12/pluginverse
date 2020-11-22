@@ -9,7 +9,7 @@
 .description {
 	margin-top: 16px;
 	display: flex;
-	height: 100px;
+	height: 92px;
 	overflow: hidden;
 	text-overflow: ellipsis;
     .paragraph {
@@ -19,7 +19,25 @@
 		text-overflow: ellipsis;
 		line-height: 24px;
 	}
+	&.showMore {
+		height: auto;
+	}
 }
+
+.chips-container {
+	margin-left: 4px;
+	margin-right: 4px;
+
+	&>*:first-child {
+		margin-left: 0px;
+	}
+
+	&>*:last-child {
+		margin-right: 0px;
+	}
+}
+
+
 
 .read-more {
 	margin-top: 16px;
@@ -80,9 +98,24 @@
 }
 
 .download-divider {
-	margin-top: 24px;
+	margin-top: 12px;
+	margin-bottom: 12px;
 //	width: 620px;
 	border-bottom: 1px solid #DEDEDE;
+}
+
+.chip-holder {
+	margin: 0 4px;
+	&:first-child {
+		margin-left: 0;
+	}
+	&:last-child {
+		margin-right: 0;
+	}
+}
+
+.left-panel {
+	margin-bottom: 16px;
 }
 
 .headerStyle {

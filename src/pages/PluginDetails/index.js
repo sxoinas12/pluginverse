@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { Row, Col, Container } from 'react-grid-system';
 import { Link, withRouter } from 'react-router-dom';
 import Breadcrumb from '@components/Breadcrumb';
+import Chip from '@components/Chip';
 import SimilarSection from '@components/SimilarSection';
 import BaseLoader from '@components/BaseLoader';
 import Divider from '@components/Divider';
 import BaseModal from '@components/BaseModal'
 import Upvote from './components/upvote/component';
 import DownloadButtons from './components/DownloadButtons';
+import classnames from 'classnames';
 import styles from './styles.module.less';
 
 const GET_DOCS = (id) => gql`query{
@@ -83,6 +85,13 @@ const GET_DOCS = (id) => gql`query{
 
 export default withRouter((props) => {
   const id = parseInt(props.match.params.id || '1');
+
+  const [showMore, setShowMore] = useState(false);
+
+  const toggle = () => {
+    setShowMore(!showMore);
+  };
+
   const { loading, data } = useQuery(GET_DOCS(id));
 
   if (loading) {
@@ -94,9 +103,19 @@ export default withRouter((props) => {
   const { plugin } = data;
   if (!plugin) return 'No plugin';
   // TODO set max Characters for description
-  const firstSentence = new RegExp('^.{1000}.*?[\.!\?]');
-  const stripped = plugin && plugin.description && plugin.description.replace(/<[^>]*>?/gm, '');
-  const matched = stripped && stripped.match(firstSentence);
+
+  const stripped = plugin && plugin.description;// && plugin.description.replace(/<[^>]*>?/gm, '');
+  const firstSentence = /^.{350}[^.\!\?]*[.\!\?]/gms;
+  const matched = stripped && stripped.match(firstSentence) && stripped.match(firstSentence)[0];
+  let description = stripped;
+  let more = false;
+  if (stripped.length > 350) {
+    description = matched;
+    more = true;
+  }
+
+  console.log(matched, stripped);
+
   return (
     <Container className={styles.container}>
       <Row>
@@ -108,80 +127,58 @@ export default withRouter((props) => {
         </Col>
       </Row>
       <Row className={styles.box}>
-        <Col xs={8}>
+        <Col xs={12} lg={7} className={styles.leftPanel}>
           <Row>
-            <Col xs={9} className={styles.headerStyle}>
-              <div className={styles.iconContainer}>
+            <Col xs={12} className={styles.headerStyle}>
+              {/* <div className={styles.iconContainer}>
                 <img src={require('@assets/images/visual-eyes.svg')} alt="" />
-              </div>
+              </div> */}
               <div>{plugin.name}</div>
             </Col>
-          </Row>
-          <Row>
-            <Col className={styles.chipsContainer}>
-              {(plugin.categories || []).map((category, _) => {
-                return (
-                  <div className={styles.categoryChip} key={category.id}>{category.name}</div>
-                );
-              })}
+            <Col xs={12} className={styles.chipsContainer}>
+              {(plugin.categories || []).map((category, _) => 
+                <div className={styles.chipHolder}>
+                  <Chip text={category.name} url={`/category/${category.id}`}/>
+                </div>)}
             </Col>
-          </Row>
-          <Row>
-            <Col className={styles.author}>
+            <Col xs={12} className={styles.author}>
               <span>
                 by
                 {' '}
                 {plugin.author ? plugin.author.name : ''}
               </span>
             </Col>
-          </Row>
-          <Row>
             <Col>
               <Upvote stars={plugin.stars} id={plugin.id} />
             </Col>
           </Row>
-          <Row>
-            <Col xs={10} className={styles.downloadDivider} />
-          </Row>
+        </Col>
+        <Col xs={12} lg={5}>
+          {plugin.images.length ? <img alt="" src={global.API_URL + plugin.images[0].url} className={styles.featureImage} /> : ''}
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={12}>
+          <div className={styles.downloadDivider}></div>
           <DownloadButtons tools={plugin.tools} links={plugin.links} />
-          <Row>
-            <Col xs={10} className={styles.downloadDivider} />
-          </Row>
+          <div className={styles.downloadDivider}></div>
           <Row>
             <Col>
               <div className={styles.descriptionTitle}>Description</div>
-              <div className={styles.description}>
-                <div className={styles.paragraph}>
-                {matched || `${stripped}`}}
+              <div className={showMore ? classnames([styles.description, styles.showMore]) : styles.description} >
+                <div className={styles.paragraph} dangerouslySetInnerHTML={{__html: matched}}>
                 </div>
               </div>
             </Col>
           </Row>
-          <Row>
+          {more && <Row>
             <Col>
-              <BaseModal
-                renderTrigger={open =>  (
-                  <div onClick={e => {
-                    e.preventDefault()
-                    e.stopPropagation()
-                    open()
-                  }} className={styles.readMore}>
-                    Read More
-                    <img src={require('@assets/icons/arrow-down-purple.svg')} alt="" />
-                  </div>
-                )}
-              >
-                { close => (
-                  <div>
-                    {plugin.description}dasdadadada
-                  </div>
-                )}
-              </BaseModal>
+              <div className={styles.readMore} onClick={() => toggle()}>
+                {showMore ? 'Read Less' : 'Read More'}
+                {showMore ? <img src={require('@assets/icons/arrow-up-purple.svg')} alt="" /> : <img src={require('@assets/icons/arrow-down-purple.svg')} alt="" />}
+              </div>
             </Col>
-          </Row>
-        </Col>
-        <Col xs={4}>
-          {plugin.images.length ? <img alt="" src={global.API_URL + plugin.images[0].url} className={styles.featureImage} /> : ''}
+          </Row>}
         </Col>
         <div className={styles.backgroundCircle} />
       </Row>

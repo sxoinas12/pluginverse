@@ -12,8 +12,8 @@ import styles from './styles.module.less';
 const BundlesList = ({ history }) => {
   const { bundles } = useBundlesList();
 
-  const [filters, setFilters] = useState(['sketch', 'adobexd', 'figma']);
-  const fString = filters.join();
+  // const [filters, setFilters] = useState(['sketch', 'adobexd', 'figma']);
+  // const fString = filters.join();
   return (
     <Container>
       <Row className={styles.bundlesListContainer}>
@@ -36,17 +36,19 @@ const BundlesList = ({ history }) => {
               </div>
             </Col>
           </Row>
-          <Row>
+          {/* <Row>
             <Col xs={12} className={styles.toolsContainer}>
               <ToolFilter onFilter={(f) => setFilters(f)} />
             </Col>
-          </Row>
+          </Row> */}
           <Divider />
           <Row className={styles.bundlesContainer}>
-            {bundles.filter((bundle) => {
+            {bundles
+            // .filter((bundle) => {
               
-              return bundle.tools.length ? bundle.tools.map((t) => t.name.toLowerCase()).reduce((p,c) => p || fString.includes(c), false) : true;
-            }).map((bundle, index) => (
+            //   return bundle.tools.length ? bundle.tools.map((t) => t.name.toLowerCase()).reduce((p,c) => p || fString.includes(c), false) : true;
+            // })
+            .map((bundle, index) => (
               <Col xs={6} className={styles.bundleCard} key={index}>
                 <BundleCard bundle={bundle} onClick={() => history.push(`/bundle/${bundle.id}`)} />
               </Col>

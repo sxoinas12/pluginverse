@@ -36,10 +36,12 @@ const findRandom = (size, max) => {
   }
   return arr;
 };
+const nums = findRandom(5, 100);
 
 const Home = ({ state, history, dispatch }) => {
   const [tool, setTool] = useState(undefined);
   const [category, setCategory] = useState(undefined);
+  const [barCategory, setBarCategory] = useState(undefined);
   const [subcategory, setSubCategory] = useState(undefined);
 
   const bundleQ = useQuery(GET_BUNDLE(2));
@@ -51,7 +53,8 @@ const Home = ({ state, history, dispatch }) => {
   let subcategories = subcatQ.error ? [] : (subcatQ.data && subcatQ.data.categories) || [];
   subcategories = category ? subcategories.filter((item) => item.parent.id === category) : subcategories;
   subcategories = (subcategories || []).map(toOptions);
-  const sections = findRandom(5, subcategories.length);
+
+  let sections = nums.map((i) => i % subcategories.length)
 
 
   const handleGo = useCallback(() => {
@@ -98,7 +101,7 @@ const Home = ({ state, history, dispatch }) => {
           </Frame>
         </Col>
       </Row>
-      <CategoriesBar onSelect={(c) => setCategory(c)} categories={categories} selected={category} />
+      <CategoriesBar onSelect={(c) => setBarCategory(c)} categories={categories} selected={barCategory} />
       <Container>
         {(sections || []).slice(0, 1).map((item, index) => {
           return (
@@ -132,7 +135,7 @@ const Home = ({ state, history, dispatch }) => {
         </Col>
       </Row>
       <Container>
-        {(sections || []).slice(3).map((item, index) => {
+        {(sections || []).slice(3,5).map((item, index) => {
           return (
             <Row className={styles.section} key={index}>
               <Col>
