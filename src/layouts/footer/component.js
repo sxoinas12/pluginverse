@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { Row, Col, Container } from 'react-grid-system';
 
 import { NewsletterInput } from '@components/Newsletter';
+import classnames from 'classnames';
 import styles from './styles.module.less';
 
 const Footer = ({ routes, pluginCategories, latestBundles }) => {
@@ -23,9 +24,11 @@ const Footer = ({ routes, pluginCategories, latestBundles }) => {
                     <div><h4 className={styles.sectionHeader}>Menu</h4></div>
                     {routes.map((route, index) => (
                       <div key={index}>
-                        <div className={styles.sectionItem}>
-                          {route.name}
-                        </div>
+                        <a href={route.link}>
+                          <div className={styles.sectionItem}>
+                            {route.name}
+                          </div>
+                        </a>
                       </div>
                     ))}
                   </Col>
@@ -33,9 +36,11 @@ const Footer = ({ routes, pluginCategories, latestBundles }) => {
                     <div><h4 className={styles.sectionHeader}>Plguin Categories</h4></div>
                     {pluginCategories.map((category, index) => (
                       <div key={index}>
-                        <div className={styles.sectionItem}>
-                          {category.name}
-                        </div>
+                        <a href={category.link}>
+                          <div className={styles.sectionItem}>
+                            {category.name}
+                          </div>
+                        </a>
                       </div>
                     ))}
                   </Col>
@@ -43,14 +48,23 @@ const Footer = ({ routes, pluginCategories, latestBundles }) => {
                     <div><h4 className={styles.sectionHeader}>Latest Bundles</h4></div>
                     {latestBundles.map((bundle, index) => (
                       <div key={index}>
-                        <div className={styles.sectionItem}>
-                          {bundle.name}
-                        </div>
+                        <a href={bundle.link}>
+                          <div className={styles.sectionItem}>
+                            {bundle.name}
+                          </div>
+                        </a>
                       </div>
                     ))}
+                    <div key={'all'}>
+                      <a href={'/bundles'}>
+                        <div className={classnames([styles.sectionItem, styles.purple])}>
+                          View all bundles
+                        </div>
+                      </a>
+                    </div>
                   </Col>
                   <Col xs={12} md={9} lg={6}>
-                    <div><h3 className={styles.sectionHeader}>Subscribe to our newsletter</h3></div>
+                    <div><h3 className={classnames([styles.sectionHeader, styles.black])}>Subscribe to our newsletter</h3></div>
                     <div>
                       <NewsletterInput />
                     </div>
@@ -68,36 +82,33 @@ const Footer = ({ routes, pluginCategories, latestBundles }) => {
 Footer.defaultProps = {
   routes: [
     {
-      name: 'Homepage'
+      name: 'Homepage',
+      link: "/"
     },
     {
-      name: 'Contact us'
+      name: 'Contact us',
+      link: "/contact"
     },
     {
-      name: 'Submit your plugin'
+      name: 'Submit your plugin',
+      link: "/"
     }
   ],
   pluginCategories: [
     {
-      name: 'SubCategory 2'
+      name: 'Accessibility',
+      link: "/category/7"
     },
     {
-      name: 'SubCategory 2'
+      name: 'Color Management',
+      link: "/category/14"
     }
   ],
   latestBundles: [
     {
-      name: 'Spotify Bundle'
+      name: 'Spotify Bundle',
+      link: "/bundle/2"
     },
-    {
-      name: 'Spotify Bundle'
-    },
-    {
-      name: 'Spotify Bundle'
-    },
-    {
-      name: 'Spotify Bundle'
-    }
   ]
 };
 

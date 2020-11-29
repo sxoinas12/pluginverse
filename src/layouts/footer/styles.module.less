@@ -2,13 +2,25 @@
     height: 340px;
     background: @white;
     margin-top: 88px;
+
+    a {
+        text-decoration: none;
+    }
+
     .section-header {
+        margin-top: 8px;
+        margin-bottom: 16px;
+
         .paragraph-bold();
-        color: @off-black;
+        color: @gray-3;
     }
     .section-item {
+        margin-top: 8px;
+
         .paragraph-normal();
+        
         color: off-black;
+
         &:hover {
             cursor: pointer;
             text-decoration: underline;
@@ -54,5 +66,12 @@
             text-decoration: underline;
             cursor: pointer;
         }
+    }
+
+    .purple {
+        color: @primary-3;
+    }
+    .black {
+        color: @off-black;
     }
 }
