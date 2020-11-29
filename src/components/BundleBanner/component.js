@@ -6,8 +6,11 @@ import styles from './styles.module.less';
 const BundleBanner = ({ bundle }) => {
   return (
     <Container className={styles.bundleContainer}>
+      <div className={styles.bundleIcon}>
+        <img src={require('@assets/icons/bundle.svg')} alt="" />
+      </div>
       <Row>
-        <Col className={styles.toolContainer}>
+        <Col xs={12} className={styles.toolContainer}>
           <div>
             {bundle.tools.map((tool, index) => {
               switch (tool.name) {
@@ -24,14 +27,19 @@ const BundleBanner = ({ bundle }) => {
           </div>
           <div className={styles.toolTitle}>
             FOR&nbsp;
+            {bundle.tools.map((tool,index) => tool.name.toUpperCase()).join(' - ')}
           </div>
         </Col>
       </Row>
       <Row>
-        <Col xs={12}><div className={styles.designBundle}>{bundle && bundle.name}</div></Col>
+        <Col xs={12}>
+          <div className={styles.designBundle}>
+            {bundle && bundle.name}
+          </div>
+        </Col>
       </Row>
       <Row>
-        <Col xs={6} className={styles.actionsContainer}>
+        <Col xs={12} className={styles.actionsContainer}>
           <div className={styles.bundleButton}>
             <a href={`/bundle/${bundle.id}`}>Go to bundle</a>
           </div>
@@ -40,9 +48,6 @@ const BundleBanner = ({ bundle }) => {
           </div>
         </Col>
       </Row>
-      <div className={styles.bundleIcon}>
-        <img src={require('@assets/icons/bundle.svg')} alt="" />
-      </div>
     </Container>
 
   );

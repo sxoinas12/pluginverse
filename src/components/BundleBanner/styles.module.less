@@ -2,48 +2,43 @@
     position: relative;
     background: linear-gradient(109.09deg, @primary-7 4.3%, #363044 109.83%);
     border-radius: 8px;
-    padding-top: 62px;
-    padding-bottom: 62px;
-    padding-left: 92px !important;
+    padding-top: 48px;
+    padding-bottom: 48px;
+    padding-left: 80px !important;
     overflow: hidden;
     .bundle-icon {
         position: absolute;
         top: -31%;
-        left: 70%;
+        right: 0%;
         img {
             width: 450px;
             height: 450px;
         }
     }
     .design-bundle {
-        font-family: Inter;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 56px;
-        line-height: 68px;
-        color: @white;
+        margin: 8px 0;
+        .heading-3();
+        color: white;
     }
 
     .tool-container {
         display: flex;
         align-items: center;
         .tool-title {
-            font-family: Inter;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 22px;
-            line-height: 27px;
-            letter-spacing: -0.03em;
-            color: @primary;
-            margin-left: 13px;
+            padding-left: 8px;
+
+            .overline-title();
+            color: @primary-0;
         }
     }
     .actions-container {
+        margin: 16px 0;
         display: flex;
         justify-content: flex-start;
         align-items: center;
         .view-all {
             margin-left: 32px;
+            
             a {
                 text-decoration: none;
                 font-family: Inter;
