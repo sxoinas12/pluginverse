@@ -40,8 +40,8 @@ const nums = findRandom(5, 100);
 
 const Home = ({ state, history, dispatch }) => {
   const [tool, setTool] = useState(undefined);
-  const [category, setCategory] = useState(undefined);
-  const [barCategory, setBarCategory] = useState(undefined);
+  const [category, setCategory] = useState(1);
+  const [barCategory, setBarCategory] = useState(1);
   const [subcategory, setSubCategory] = useState(undefined);
 
   const bundleQ = useQuery(GET_BUNDLE(2));
@@ -51,11 +51,10 @@ const Home = ({ state, history, dispatch }) => {
   let categories = catQ.error ? [] : (catQ.data && catQ.data.categories);
   categories = (categories || []).map(toOptions);
   let subcategories = subcatQ.error ? [] : (subcatQ.data && subcatQ.data.categories) || [];
-  subcategories = category ? subcategories.filter((item) => item.parent.id === category) : subcategories;
+  subcategories = barCategory ? subcategories.filter((item) => item.parent.id == barCategory) : subcategories;
   subcategories = (subcategories || []).map(toOptions);
 
   let sections = nums.map((i) => i % subcategories.length)
-
 
   const handleGo = useCallback(() => {
     const payload = {

@@ -22,15 +22,18 @@ const Section = (props) => {
             </h3>
           </Col>
         </Row>
-        {subtitle ? (
-          <Row>
+        <Row>
+          {subtitle ? (
             <Col xs={12} md={7} className={styles.subtitle}>
               <p>
                 {subtitle}
               </p>
             </Col>
-          </Row>
-        ) : null}
+          ) : null}
+          <Col xs={12} md={5} className={styles.rightPart}>
+            {extra}
+          </Col>
+        </Row>
         <Row className={styles.content}>
           <Col xs={12}>
             {children}

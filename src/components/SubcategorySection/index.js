@@ -50,7 +50,7 @@ const SubcategorySection = ({ category }) => {
   return data.category && (
     <div className={styles.section}>
       <SimilarSection
-        title={`For ${data.category.name}`}
+        title={`${data.category.name}`}
         subtitle={data.category.description}
         extra={extra}
         data={data.category.plugins}

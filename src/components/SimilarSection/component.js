@@ -40,9 +40,8 @@ const SimilarSection = ({
         <List
           size={size}
           base={BaseCard}
-          scrollable
           linkPrefix={(c) => `/plugin/${c.id}`}
-          data={getListInput(data)}
+          data={getListInput(data).slice(0,4)}
         />
       </Section>
     </div>
