@@ -84,7 +84,7 @@ const AppRouter = () => {
       <Route path="/categories" exact component={Pages.CategoryList} />
       <LayoutRoute path="/plugin/:id" exact component={Pages.PluginDetails} header={Layouts.Header} footer={Layouts.Footer} {...rest} />
       <LayoutRoute path="/search/:query" exact component={Pages.Search} />
-      <Route path="/contact" exact component={Pages.Contact} />
+      <LayoutRoute fluid path="/contact" exact component={Pages.Contact} header={Layouts.Header}  {...rest} />
     </Router>
 
   );
