@@ -34,7 +34,7 @@ const BundleDetails = ({ match }) => {
           </div>
           <div className={styles.bundleHeader}>
             <div className={styles.bundleIcon}>
-              <img src={(bundle.image && bundle.image.url) ? '/api' + bundle.image.url : require('@assets/icons/bundle.svg')} alt="" />
+              <img src={(bundle.image && bundle.image.url) ? global.API_URL + bundle.image.url : require('@assets/icons/bundle.svg')} alt="" />
             </div>
             <Row>
               <Col xs={12}><div className={styles.bundleName}>{bundle.name}</div></Col>
