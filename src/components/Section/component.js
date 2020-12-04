@@ -23,13 +23,13 @@ const Section = (props) => {
           </Col>
         </Row>
         <Row>
-          {subtitle ? (
-            <Col xs={12} md={7} className={styles.subtitle}>
+          <Col xs={12} md={7} className={styles.subtitle}>
+            {subtitle ? (
               <p>
                 {subtitle}
               </p>
-            </Col>
-          ) : null}
+            ) : null}
+          </Col>
           <Col xs={12} md={5} className={styles.rightPart}>
             {extra}
           </Col>
