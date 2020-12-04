@@ -7,7 +7,7 @@ const BundleBanner = ({ bundle }) => {
   return (
     <Container className={styles.bundleContainer}>
       <div className={styles.bundleIcon}>
-        <img src={require('@assets/icons/bundle.svg')} alt="" />
+        <img src={ (bundle.image && bundle.image.url) ? '/api' + bundle.image.url : require('@assets/icons/bundle.svg')} alt="" />
       </div>
       <Row>
         <Col xs={12} className={styles.toolContainer}>

@@ -15,7 +15,18 @@ module.exports = {
     }
   },
   devServer: {
-    historyApiFallback: true
+    proxy: {
+      "/api": {
+          target: "http://localhost:1337",
+          pathRewrite: {
+            "^/api" : ""
+          },
+          secure: false,
+          changeOrigin: false
+      }
+    },
+    historyApiFallback: true,
+    clientLogLevel: 'trace'
   },
   entry: ['babel-polyfill', './src/index.js'],
   output: {
