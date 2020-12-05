@@ -1,6 +1,8 @@
 import React from 'react';
 import { Row, Col, Container } from 'react-grid-system';
 import BaseLoader from '@components/BaseLoader';
+import BaseInput from '@components/BaseInput';
+import BaseTextArea from '@components/BaseTextArea';
 import styles from './styles.module.less';
 
 export default () => {
@@ -23,6 +25,16 @@ export default () => {
               </Row>
               <Row>
                 <Col className={styles.footnote}>We would love to hear more from you</Col>
+              </Row>
+              <Row>
+                <Col className={styles.inputContainer}>
+                  <BaseInput isValid placeholder="example@gmail.com" />
+                </Col>
+              </Row>
+              <Row>
+                <Col className={styles.textContainer}>
+                  <BaseTextArea placeholder="Give us your feedback" />
+                </Col>
               </Row>
             </Col>
             <Col lg={6} className={styles.rightContainer}>
