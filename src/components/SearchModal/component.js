@@ -25,7 +25,9 @@ const internalStyle = {
   top: 0,
   left: 0,
   background: '#443E56',
-  opacity: 1
+  opacity: 1,
+  
+  overflowY: 'scroll'
 };
 
 const SearchModal = () => {
@@ -105,7 +107,7 @@ const SearchModal = () => {
                     )}
                   </Col>
                 </Row>
-                {data && data.plugins && data.plugins.length === 0 && catData && catData.categories && catData.categories.length === 0 ? (
+                {searchQuery && searchQuery.length > 2 && data && data.plugins && data.plugins.length === 0 && catData && catData.categories && catData.categories.length === 0 ? (
                   <Row justify="start">
                     <Col xs={8} className={styles.noResults}>
                       <div className={styles.noResultTitle}>No results were found</div>
