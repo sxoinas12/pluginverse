@@ -15,7 +15,7 @@ const BundleCard = ({ bundle, onClick }) => {
         </div>
       </div>
       <div className={styles.bundleIcon}>
-        <img src={require('@assets/icons/bundle.svg')} alt="" />
+        <img src={ (bundle.image && bundle.image.url) ? global.API_URL + bundle.image.url : require('@assets/icons/bundle.svg')} alt="" />
       </div>
     </div>
   );

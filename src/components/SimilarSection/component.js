@@ -61,7 +61,7 @@ SimilarSection.defaultProps = {
   size: 3,
   title: 'Similar Section',
   subtitle: 'Subtitle',
-  extra: 'more',
+  extra: '',
   data: [
     {
       author: { name: 'Author 1' },

@@ -6,6 +6,9 @@ query{
     id,
     description,
     name,
+    image {
+      url
+    },
     plugins{
       id,
       name,

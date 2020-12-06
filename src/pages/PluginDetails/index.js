@@ -105,16 +105,14 @@ export default withRouter((props) => {
   // TODO set max Characters for description
 
   const stripped = plugin && plugin.description;// && plugin.description.replace(/<[^>]*>?/gm, '');
-  const firstSentence = /^.{350}[^.\!\?]*[.\!\?]/gms;
+  const firstSentence = /^.{450}[^.\!\?]*[.\!\?]/gms;
   const matched = stripped && stripped.match(firstSentence) && stripped.match(firstSentence)[0];
   let description = stripped;
   let more = false;
-  if (stripped.length > 350) {
+  if (stripped.length > 400) {
     description = matched;
     more = true;
   }
-
-  console.log(matched, stripped);
 
   return (
     <Container className={styles.container}>
@@ -127,7 +125,7 @@ export default withRouter((props) => {
         </Col>
       </Row>
       <Row className={styles.box}>
-        <Col xs={12} lg={7} className={styles.leftPanel}>
+        <Col xs={12} sm={12} md={8} lg={7} className={styles.leftPanel}>
           <Row>
             <Col xs={12} className={styles.headerStyle}>
               {/* <div className={styles.iconContainer}>
@@ -153,12 +151,12 @@ export default withRouter((props) => {
             </Col>
           </Row>
         </Col>
-        <Col xs={12} lg={5}>
+        <Col xs={12} sm={12} md={4} lg={5}>
           {plugin.images.length ? <img alt="" src={global.API_URL + plugin.images[0].url} className={styles.featureImage} /> : ''}
         </Col>
       </Row>
       <Row>
-        <Col xs={12}>
+        <Col xs={12} sm={12} md={8} lg={7}>
           <div className={styles.downloadDivider}></div>
           <DownloadButtons tools={plugin.tools} links={plugin.links} />
           <div className={styles.downloadDivider}></div>
@@ -166,7 +164,7 @@ export default withRouter((props) => {
             <Col>
               <div className={styles.descriptionTitle}>Description</div>
               <div className={showMore ? classnames([styles.description, styles.showMore]) : styles.description} >
-                <div className={styles.paragraph} dangerouslySetInnerHTML={{__html: matched}}>
+                <div className={styles.paragraph} dangerouslySetInnerHTML={{__html: description}}>
                 </div>
               </div>
             </Col>

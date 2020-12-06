@@ -19,12 +19,9 @@ import MegaMenu from '../MegaMenu';
 
 const NavBar = ({ megaStructure, theme }) => {
   const [menu, setMenu] = useState(false);
-  // const [query, setQuery] = useState('');
-  // const history = useHistory();
-  // const handleSearch = useCallback(searchQuery => setQuery(searchQuery), [setQuery]);
-  // const handleSubmit = useCallback(() => history.push(`/search/${query}`), [query]);
+
   let navReact = (
-    <Row className={classNames([styles[theme],styles.navContainer])}>
+    <Row id="navBarContainer" className={classNames([styles[theme],styles.navContainer])}>
       <Col>
         <Container key={1}>
           <Row>

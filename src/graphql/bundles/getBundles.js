@@ -5,6 +5,9 @@ query{
   bundles {
    id,
    name,
+   image {
+     url
+   },
     tools {
        id,
        name,

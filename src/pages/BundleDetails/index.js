@@ -20,6 +20,7 @@ const BundleDetails = ({ match }) => {
   }, [data]);
 
   return bundle ? (
+    <div>
     <Row className={styles.bundleDetailsContainer}>
       <Col xs={12}>
         <Container>
@@ -32,6 +33,9 @@ const BundleDetails = ({ match }) => {
             </Breadcrumb>
           </div>
           <div className={styles.bundleHeader}>
+            <div className={styles.bundleIcon}>
+              <img src={(bundle.image && bundle.image.url) ? global.API_URL + bundle.image.url : require('@assets/icons/bundle.svg')} alt="" />
+            </div>
             <Row>
               <Col xs={12}><div className={styles.bundleName}>{bundle.name}</div></Col>
             </Row>
@@ -44,18 +48,18 @@ const BundleDetails = ({ match }) => {
             <Row>
               <Col xs={12} md={8} lg={6}><div className={styles.bundleDescription}>{bundle.description}</div></Col>
             </Row>
-            <div className={styles.bundleIcon}>
-              <img src={require('@assets/icons/bundle.svg')} alt="" />
-            </div>
           </div>
-          <Row>
-            <Col xs={12} className={styles.bundlePlugins}>
-              <List data={bundle.plugins} linkPrefix={(c) => `/plugin/${c.id}`} size={4} />
-            </Col>
-          </Row>
         </Container>
       </Col>
     </Row>
+    <Row>
+      <Col xs={12} className={styles.bundlePlugins}>
+        <Container>
+          <List data={bundle.plugins} linkPrefix={(c) => `/plugin/${c.id}`} size={4} />
+        </Container>
+      </Col>
+    </Row>
+    </div>
   ) : null;
 };
 

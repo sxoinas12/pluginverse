@@ -50,6 +50,11 @@ const Home = ({ state, history, dispatch }) => {
 
   let categories = catQ.error ? [] : (catQ.data && catQ.data.categories);
   categories = (categories || []).map(toOptions);
+
+  let menusubcategories = subcatQ.error ? [] : (subcatQ.data && subcatQ.data.categories) || [];
+  menusubcategories = category ? menusubcategories.filter((item) => item.parent.id == category) : menusubcategories;
+  menusubcategories = (menusubcategories || []).map(toOptions);
+
   let subcategories = subcatQ.error ? [] : (subcatQ.data && subcatQ.data.categories) || [];
   subcategories = barCategory ? subcategories.filter((item) => item.parent.id == barCategory) : subcategories;
   subcategories = (subcategories || []).map(toOptions);
@@ -86,7 +91,7 @@ const Home = ({ state, history, dispatch }) => {
               />
               <Dropdown
                 placeholder="Choose a subcategory"
-                options={subcategories}
+                options={menusubcategories}
                 value={subcategory}
                 onSelect={(selected) => setSubCategory(selected)}
               />

@@ -52,7 +52,11 @@ const SearchModal = () => {
   return (
     <BaseModal
       modalBody={internalStyle}
-      renderTrigger={open => <button onClick={open}>Search</button>}
+      renderTrigger={open => 
+      (<div role="button" className={styles.triggerSearch} onClick={open}>
+        <img src={require('@assets/icons/black-search.svg')} alt='search'/>
+      </div>
+      )}
     >
       {
             ({ close }) => (
