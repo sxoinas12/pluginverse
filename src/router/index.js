@@ -75,6 +75,7 @@ const AppRouter = () => {
   return (
     <Router>
       <LayoutRoute path="/" exact component={Pages.Home} header={Layouts.Header} footer={Layouts.Footer} {...rest} fluid />
+      
       <LayoutRoute path="/test" exact component={Pages.NikTest} header={Layouts.Header} footer={Layouts.Footer} {...rest} />
       <Route path="/author/:id" exact component={Pages.AuthorDetails} />
       <Route path="/authors" exact component={Pages.AuthorList} />
@@ -85,6 +86,7 @@ const AppRouter = () => {
       <LayoutRoute path="/plugin/:id" exact component={Pages.PluginDetails} header={Layouts.Header} footer={Layouts.Footer} {...rest} />
       <LayoutRoute path="/search/:query" exact component={Pages.Search} />
       <LayoutRoute fluid path="/contact" exact component={Pages.Contact} header={Layouts.Header}  {...rest} />
+      <Route component={Pages.Errors.Error404} />
     </Router>
 
   );
