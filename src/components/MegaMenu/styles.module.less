@@ -1,39 +1,46 @@
 .menu-container {
 	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+	padding-top: 16px;
+
 	.fix-container {
 		// padding: 0px 87.5px;
 		padding-bottom: 40px;
 	}
 
+	.bundle-title {
+		.button();
+		color: @primary--2;
+		background: @primary-6;
+		border-radius: 4px;
+		padding: 4px 8px;
+		margin-bottom: 16px;
+		width: max-content;
+		display: flex;
+		align-items: center;
+
+		img {
+			width: 16px;
+			height: 16px;
+			margin-left: 4px;
+		}
+	}
+
 	.title {
-		font-family: Inter;
-		font-style: normal;
-		font-weight: 600;
-		font-size: 12px;
-		line-height: 15px;
-		letter-spacing: 0.02em;
+		.overline-title();
+		text-align: left;
 		color: @gray-3;
 		padding-bottom: 8px;
 	}
 
 	.subtitle {
+		.paragraph-bold();
 		font-family: Inter;
-		font-style: normal;
-		font-weight: bold;
-		font-size: 22px;
-		line-height: 27px;
-		letter-spacing: -0.03em;
 		color: @off-black;
 		padding-bottom: 16px;
 	}
 
 	.category {
-		font-family: Inter;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 16px;
-		line-height: 21px;
-		letter-spacing: -0.02em;
+		.paragraph-normal();
 		color: @off-black;
 		padding-bottom: 8px;
 	}

@@ -7,6 +7,7 @@ import Contact from './Contact';
 import PluginDetails from './PluginDetails';
 import Search from './Search';
 import Home from './Home';
+import ErrorPages from './ErrorPages';
 
 import NikTest from './NikTestPage';
 
@@ -20,5 +21,6 @@ export default {
   PluginDetails,
   Search,
   Home,
+  Errors: ErrorPages,
   NikTest,
 };
