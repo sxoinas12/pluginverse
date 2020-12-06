@@ -11,7 +11,8 @@ module.exports = {
       '@assets': path.join(__dirname, 'src/assets'),
       '@components': path.join(__dirname, 'src/components'),
       '@graphql': path.join(__dirname, 'src/graphql'),
-      '@hooks': path.join(__dirname, 'src/hooks')
+      '@hooks': path.join(__dirname, 'src/hooks'),
+      '@styles': path.join(__dirname, 'src/styles'),
     }
   },
   devServer: {

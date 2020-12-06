@@ -3,13 +3,15 @@ import styles from './styles.module.less';
 import { Primary0, Primary2, Primary3 } from '../../styles/variables.js';
 
 const FocusStyle = {
-  border: `2px solid ${Primary3}`
+  border: `1px solid ${Primary3}`
 };
 
 const BaseTextArea = ({
   placeholder,
   onChange,
-  defaultValue
+  defaultValue,
+  label,
+  name,
 }) => {
   const [query, setQuery] = useState(defaultValue || '');
   const [focusStyles, setFocusStyle] = useState({});
@@ -26,25 +28,29 @@ const BaseTextArea = ({
     const { value } = e.target;
     setQuery(value);
     if (onChange) {
-      onChange(value);
+      onChange({ name, value });
     }
   }, [setQuery]);
   return (
     <div
       className={styles.textAreaContainer}
     >
-      <textarea
-        style={{
-          background: query ? Primary2 : 'none',
-          border: `1px solid ${Primary0}`,
-          ...focusStyles
-        }}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        value={query}
-        onChange={handleChange}
-        placeholder={placeholder}
-      />
+      <label htmlFor="text">
+        {label}
+        <textarea
+          name={name}
+          style={{
+            background: query ? Primary2 : 'none',
+            border: `1px solid ${Primary0}`,
+            ...focusStyles
+          }}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          value={query}
+          onChange={handleChange}
+          placeholder={placeholder}
+        />
+      </label>
     </div>
   );
 };

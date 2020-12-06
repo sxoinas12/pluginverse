@@ -1,70 +1,73 @@
-.contact-page-container {
-    position: relative;
-    .left-container {
-        .header {
-            .heading-2();
-            color: @off-black;
-        }
-        .footnote {
-            .paragraph-normal();
-            color: @off-black;
-        }
-        .input-container {
-            margin-top: 40px;
-        }
-        .text-container {
-            margin-top: 40px;
-        }
+.fluid-contact-container {
+    background: linear-gradient(to right, white 50%, @primary-7 50%);
+    @media only screen and (max-width: 1140px) {
+        background: none;
     }
 
-    .right-container {
-        padding-top: 96px;
-        padding-left: 88px !important;
-        background: @primary-7;
-        height: calc(100vmin - 96px);
+    .contact-page-container {
         position: relative;
-        .circle-container {
-            position: absolute;
-            bottom: 0;
-            right: 0;
+        .left-container {
+            .header {
+                .heading-2();
+                color: @off-black;
+            }
+            .footnote {
+                .paragraph-normal();
+                color: @off-black;
+            }
+            
         }
-    }
-    .header {
-        .heading-0();
-        margin-top: 40px;
-        color: @white;
-    }
-
-    .description {
-        margin-top: 4px;
-        .heading-3();
-        color: @primary-6;
-    }
-    .link-container {
-        margin-top: 16px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        
-        .text {
-            font-family: Inter;
-            font-style: normal;
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 21px;
-            letter-spacing: -0.05em;
-            color: @white;
-            width: auto;
-            border-bottom: 1px solid @primary-7;
-            &:hover {
-                border-color: @white;
-                cursor: pointer;
+    
+        .right-container {
+            padding-top: 96px;
+            padding-left: 88px !important;
+            background: @primary-7;
+            height: calc(100vmin - 96px);
+            position: relative;
+            .circle-container {
+                position: absolute;
+                bottom: 0;
+                right: 0;
             }
         }
-        
-        .image-style {
-            margin-left: 4px;
+        .header {
+            .heading-0();
+            margin-top: 40px;
+            color: @white;
         }
-
+    
+        .description {
+            margin-top: 4px;
+            .heading-3();
+            color: @primary-6;
+        }
+        .link-container {
+            margin-top: 16px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            
+            .text {
+                font-family: Inter;
+                font-style: normal;
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 21px;
+                letter-spacing: -0.05em;
+                color: @white;
+                width: auto;
+                border-bottom: 1px solid @primary-7;
+                &:hover {
+                    border-color: @white;
+                    cursor: pointer;
+                }
+            }
+            
+            .image-style {
+                margin-left: 4px;
+            }
+    
+        }
     }
+    
 }

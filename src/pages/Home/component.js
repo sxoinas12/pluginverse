@@ -78,19 +78,16 @@ const Home = ({ state, history, dispatch }) => {
           <Frame title="Find the best fit among hundreds of design tool plugins" subtitle="" styling={styles.homeFrame}>
             <div className={styles.categorySelect}>
               <Dropdown
-                placeholder="Choose design tool"
                 options={state.designTools}
                 value={tool}
                 onSelect={selected => setTool(selected)}
               />
               <Dropdown
-                placeholder="Choose a category"
                 options={categories}
                 value={category}
                 onSelect={selected => setCategory(selected)}
               />
               <Dropdown
-                placeholder="Choose a subcategory"
                 options={menusubcategories}
                 value={subcategory}
                 onSelect={(selected) => setSubCategory(selected)}

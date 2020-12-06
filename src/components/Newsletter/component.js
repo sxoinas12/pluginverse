@@ -27,27 +27,31 @@ export const NewsletterInput = () => {
 
   return (
     <>
-      {sent === true ? <div className={styles.successContainer}>
+      {sent === true ? (
+        <div className={styles.successContainer}>
           <img src={require('@assets/icons/success-double-mark.svg')} />
           <span className={styles.success}>Thank you for subscribing, designaut!</span>
         </div>
+      )
         : (
           <div className={styles.newsletterInput}>
             <input type="text" value={email} placeholder="Your email" onChange={(e) => setEmail(e.target.value)} />
             <button type="submit" onClick={() => sendMail()}>Join our newsletter</button>
           </div>
         )}
-      {sent === -1 && <div className={styles.errorContainer}>
-          <img src={require('@assets/icons/error-exclamation-mark.svg')} />
-          <span className={styles.error}>Invalid email address. Retry please!</span>
-        </div>}
+      {sent === -1 && (
+      <div className={styles.errorContainer}>
+        <img src={require('@assets/icons/error-exclamation-mark.svg')} />
+        <span className={styles.error}>Invalid email address. Retry please!</span>
+      </div>
+      )}
     </>
   );
 };
 
 const Newsletter = () => {
   return (
-    <Frame styling={styles.frame} title={'Want to learn about new plugins ahead of the rest?'} subtitle={'We will only send you amazing news.'}>
+    <Frame styling={styles.frame} title="Want to learn about new plugins ahead of the rest?" subtitle="We will only send you amazing news.">
       <NewsletterInput />
     </Frame>
   );

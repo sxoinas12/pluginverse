@@ -1,20 +1,22 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames'
 import styles from './styles.module.less';
 
 const Dropdown = ({
   placeholder,
   options,
   onSelect,
-  value
+  value,
+  style,
 }) => {
   useEffect(() => {
-    if (options && options[0] && options[0].value && onSelect) {
+    if (options && options[0] && options[0].value && onSelect && !placeholder) {
       onSelect(options[0].value);
     }
-  }, [options.length]);
+  }, [options.length, placeholder]);
   return (
-    <select className={styles.selectBox} required value={value} onChange={(e) => onSelect(e.target.value)}>
+    <select style={style} className={classNames(styles.selectBox)} required value={value} onChange={(e) => onSelect(e.target.value)}>
       <option value="" className={styles.placeholder} disabled hidden>{placeholder}</option>
       {options.map((option) => (
         <option value={option.value} key={option.key}>
@@ -34,11 +36,11 @@ Dropdown.propTypes = {
     })
   ),
   onSelect: PropTypes.func,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  style: PropTypes.shape({}),
 };
 
 Dropdown.defaultProps = {
-  placeholder: 'Select one option',
   options: [
     {
       key: 'Option 1',
@@ -54,7 +56,8 @@ Dropdown.defaultProps = {
     }
   ],
   onSelect: null,
-  value: 'Value 1'
+  value: 'Value 1',
+  style: {},
 };
 
 export default Dropdown;
