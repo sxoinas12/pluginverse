@@ -5,8 +5,8 @@ import styles from './styles.module.less';
 const Error404 = () => {
 
     return <div className={styles.container}>
-
-        <Container className={styles.innerContainer}>
+        <img className={styles.rocket} src={require('@assets/images/rocket.svg')} />
+        <div className={styles.innerContainer}>
             <Row>
                 <Col>
                     <img src={require('@assets/logo.svg')} />
@@ -28,8 +28,7 @@ const Error404 = () => {
                     </div>
                 </Col>
             </Row>
-        </Container>
-        <img className={styles.rocket} src={require('@assets/images/rocket.svg')} />
+        </div>
     </div>
 }
 
