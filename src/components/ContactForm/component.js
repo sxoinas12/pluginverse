@@ -3,7 +3,7 @@ import { Row, Col } from 'react-grid-system';
 import BaseInput from '@components/BaseInput';
 import BaseTextArea from '@components/BaseTextArea';
 import Dropdown from '@components/Dropdown';
-import { Primary0 } from '@styles/variables.js';
+import { Primary0, black } from '@styles/variables.js';
 import styles from './styles.module.less';
 
 const dropdownOptions = [
@@ -23,6 +23,10 @@ const dropdownStyles = {
   margin: 0,
   padding: '8px',
   backgroundImage: 'url("/assets/icons/arrow-down-black.svg")'
+};
+
+const selectedDropdown = {
+  color: black
 };
 
 const ContactForm = ({
@@ -57,7 +61,7 @@ const ContactForm = ({
       })
         .then(() => {
           setSent(true);
-          // onSubmited(true);
+          onSubmited(true);
         })
         .catch(() => setSent(false));
     } else {
@@ -112,7 +116,10 @@ const ContactForm = ({
         <Col className={styles.dropdownContainer}>
           <div className={styles.dropdownLabel}>Subject</div>
           <Dropdown
-            style={dropdownStyles}
+            style={{
+              ...dropdownStyles,
+              ...(formData.subject ? selectedDropdown : {})
+            }}
             className={styles.dropdown}
             placeholder="Placeholder Text"
             options={dropdownOptions}

@@ -2,19 +2,37 @@ import React, { useState } from 'react';
 import { Row, Col, Container } from 'react-grid-system';
 import BaseLoader from '@components/BaseLoader';
 import ContactForm from '@components/ContactForm';
+import { withRouter } from 'react-router-dom';
+import gql from 'graphql-tag';
+import { useQuery } from '@apollo/react-hooks';
+import SuccessMessage from './SuccessMessage';
 import styles from './styles.module.less';
 
-export default () => {
-  const navbar = document.getElementById('navBarContainer');
-  const pluginsCount = 1794;
+const GET_BUNDLES = () => gql`
+query{
+  bundles {
+    id
+  }
+ }
+ `;
+
+const GET_PLUGINS = () => gql`
+ query{
+  plugins {
+    id
+  }
+ }
+ `;
+
+export default withRouter(({ history }) => {
   const categoriesCount = 46;
-  const bundleCount = 16;
-  const loading = false;
 
   const [sent, setSent] = useState(false);
 
-  if (loading) return <BaseLoader />;
+  const bundles = useQuery(GET_BUNDLES());
+  const plugins = useQuery(GET_PLUGINS());
 
+  if (plugins && bundles && bundles.loading && plugins.loading) return <BaseLoader />;
   return (
     <div className={styles.fluidContactContainer}>
       <Container>
@@ -23,16 +41,16 @@ export default () => {
             <Row>
               <Col lg={6} className={styles.leftContainer}>
                 <Row>
-                  <Col className={styles.header}>Hello there!</Col>
+                  <Col className={styles.header}>{sent ? 'Thank you!' : 'Hello there!'}</Col>
                 </Row>
                 <Row>
-                  <Col className={styles.footnote}>We would love to hear more from you</Col>
+                  <Col className={styles.footnote}>{sent ? 'Hope to hear from you again.' : 'We would love to hear more from you'}</Col>
                 </Row>
-                <ContactForm onSubmited={val => setSent(val)} />
+                {sent ? <SuccessMessage onClick={() => history.push('/')} /> : <ContactForm onSubmited={val => setSent(val)} />}
               </Col>
               <Col lg={6} className={styles.rightContainer}>
                 <Row>
-                  <Col className={styles.header}>{pluginsCount}</Col>
+                  <Col className={styles.header}>{plugins.data && plugins.data.plugins.length}</Col>
                 </Row>
                 <Row className={styles.description}>
                   <Col>Unique Design Plugins</Col>
@@ -52,7 +70,7 @@ export default () => {
                   <Col className={styles.description}>Plugin Categories</Col>
                 </Row>
                 <Row>
-                  <Col className={styles.header}>{bundleCount}</Col>
+                  <Col className={styles.header}>{bundles.data && bundles.data.bundles.length}</Col>
                 </Row>
                 <Row>
                   <Col className={styles.description}>Curated Bundles</Col>
@@ -60,7 +78,9 @@ export default () => {
                 <Row>
                   <Col>
                     <div className={styles.linkContainer}>
-                      <div className={styles.text}>Your next plugin stack</div>
+                      <div role="button" className={styles.text} onClick={() => history.push('/bundles')}>
+                        Your next plugin stack
+                      </div>
                       <img className={styles.imageStyle} src={require('@assets/icons/arrow-go.svg')} alt="->" />
                     </div>
                   </Col>
@@ -72,9 +92,4 @@ export default () => {
       </Container>
     </div>
   );
-};
-
-
-{ /* <div className={styles.circleContainer}>
-<img src={require('@assets/icons/circle.svg')} alt="" />
-</div> */ }
+});

@@ -40,7 +40,7 @@ const LayoutRoute = (props) => {
             {fluid ? (
               <>
                 { children }
-                { component && React.createElement(component, { state, dispatch, match })}
+                { component && React.createElement(component, { state, dispatch, match, ...rest })}
               </>
             ) : (
               <Container>
